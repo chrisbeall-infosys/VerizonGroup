@@ -42,7 +42,7 @@ create table Booking(
 	booking_id number(8),
 	login_id varchar2(15),
 	date_of_travel date,
-	number_of_travellers number(2),
+	number_of_travelers number(2),
 	flight_id number(8),
 	constraint booking_booking_id_pk primary key(booking_id),
 	constraint booking_login_id_fk foreign key (login_id) references traveler(login_id),
