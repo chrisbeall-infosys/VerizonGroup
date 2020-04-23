@@ -1,7 +1,7 @@
+drop table booking;
+drop table flights;
 drop table traveler;
 drop table admin;
-drop table flights;
-drop table booking;
 drop table airport;
 
 create table traveler(
