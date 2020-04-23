@@ -1,4 +1,4 @@
-drop table Traveler
+drop table traveler;
 drop table admin;
 drop table flights;
 drop table booking;
@@ -45,6 +45,6 @@ create table Booking(
 	number_of_travellers number(2),
 	flight_id number(8),
 	constraint booking_booking_id_pk primary key(booking_id),
-	constraint booking_login_id_fk foreign key (traveler_id) references traveler(login_id),
+	constraint booking_login_id_fk foreign key (login_id) references traveler(login_id),
 	constraint booking_flight_id_fk foreign key (flight_id) references flights(flight_id)
 );
