@@ -1,29 +1,11 @@
-package com.infy.verizon.entity;
+package com.infy.verizon.model;
 
-
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
-import com.infy.verizon.model.Airport;
-
-@Entity
-@Table(name = "Flights")
-public class FlightEntity {
+public class Flight {
 	
-	@Id
 	private Integer FlightId;
 	private Double fare;
 	private Double taxes;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "airport_id", unique = true)
 	private Airport fromAirport;
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "airport_id", unique = true)
 	private Airport toAirport;
 	
 	public Integer getFlightId() {
@@ -56,5 +38,5 @@ public class FlightEntity {
 	public void setToAirport(Airport toAirport) {
 		this.toAirport = toAirport;
 	}
-
+	
 }
