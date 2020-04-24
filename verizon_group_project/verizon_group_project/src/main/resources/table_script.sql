@@ -4,7 +4,7 @@ drop table traveler;
 drop table admin;
 drop table airport;
 
-create table traveler(
+create table Traveler(
 	login_id varchar2(15),
 	email varchar2(30),
 	name varchar2(30),
@@ -14,7 +14,7 @@ create table traveler(
 
 );
 
-create table admin(
+create table Admin(
 	login_id varchar2(15),
 	email varchar2(30),
 	name varchar2(30),
