@@ -1,9 +1,8 @@
-package com.infy.verizon.dao;
+package com.infy.verizon.service;
 
 import com.infy.verizon.model.Traveler;
 
-public interface TravelerDAO {
+public interface TravelerService {
 	public String registerNewTraveler(Traveler traveler);
 	public String authenticateTraveler(String email, String password);
-	public Traveler getTravelerByLoginId(String loginId);
 }
