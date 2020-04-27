@@ -25,20 +25,21 @@ public class AdminAPI {
 	
 	@Autowired
 	private AdminService adminLoginService;
+	
 	@Autowired
 	private Environment environment;
 	
 	static Logger logger = LogManager.getLogger(AdminAPI.class.getName());
 	
 	@PostMapping(value = "registerAdmin")
-	public ResponseEntity<String> registerSeller(@RequestBody Admin admin) throws Exception {
+	public ResponseEntity<String> registerAdmin(@RequestBody Admin admin) throws Exception {
 		try
 		{
-			logger.info("SELLER TRYING TO REGISTER. SELLER LOGIN ID: "+admin.getLoginId());
+			logger.info("ADMIN TRYING TO REGISTER. ADMIN LOGIN ID: "+admin.getLoginId());
 			
 			String registeredWithLoginId = adminService.registerNewAdmin(admin);
 			
-			logger.info("SELLER REGISTRATION SUCCESSFUL. SELLER LOGIN ID: "+admin.getLoginId());
+			logger.info("ADMIN REGISTRATION SUCCESSFUL. ADMIN LOGIN ID: "+admin.getLoginId());
 			
 			registeredWithLoginId = environment.getProperty("AdminAPI.ADMIN_REGISTRATION_SUCCESS")+registeredWithLoginId;
 			
@@ -54,7 +55,7 @@ public class AdminAPI {
 	}
 	
 	@PostMapping(value = "adminLogin")
-	public ResponseEntity<Admin> authenticateSeller(@RequestBody Admin admin) throws Exception {
+	public ResponseEntity<Admin> authenticateAdmin(@RequestBody Admin admin) throws Exception {
 		try
 		{
 			logger.info("ADMIN TRYING TO LOGIN. ADMIN LOGIN ID: "+admin.getEmail());

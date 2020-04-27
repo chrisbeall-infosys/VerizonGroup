@@ -8,7 +8,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.infy.verizon.model.Airport;
 
 @Entity
 @Table(name = "Flights")
@@ -20,11 +19,12 @@ public class FlightEntity {
 	private Double taxes;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "airport_id", unique = true)
-	private Airport fromAirport;
+	@JoinColumn(name = "airport_id", insertable=false, updatable=false)
+	private AirportEntity fromAirport;
+	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "airport_id", unique = true)
-	private Airport toAirport;
+	@JoinColumn(name = "airport_id", insertable=false, updatable=false)
+	private AirportEntity toAirport;
 	
 	public Integer getFlightId() {
 		return FlightId;
@@ -44,16 +44,16 @@ public class FlightEntity {
 	public void setTaxes(Double taxes) {
 		this.taxes = taxes;
 	}
-	public Airport getFromAirport() {
+	public AirportEntity getFromAirport() {
 		return fromAirport;
 	}
-	public void setFromAirport(Airport fromAirport) {
+	public void setFromAirport(AirportEntity fromAirport) {
 		this.fromAirport = fromAirport;
 	}
-	public Airport getToAirport() {
+	public AirportEntity getToAirport() {
 		return toAirport;
 	}
-	public void setToAirport(Airport toAirport) {
+	public void setToAirport(AirportEntity toAirport) {
 		this.toAirport = toAirport;
 	}
 

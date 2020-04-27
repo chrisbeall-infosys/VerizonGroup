@@ -17,6 +17,21 @@ public class TravelerValidator {
 			
 	}
 	
+	public static void validateTravelerForRegistration(Traveler traveler) throws Exception {
+		if(!validateEmail(traveler.getEmail()))
+			throw new Exception("AdminValidator.INVALID_EMAIL_FORMAT");
+
+		if(!validateName(traveler.getName()))
+			throw new Exception("AdminValidator.INVALID_NAME");
+		
+		if(!validatePassword(traveler.getPassword()))
+			throw new Exception("AdminValidator.INVALID_PASSWORD_FORMAT");
+		
+		if(!validateLoginId(traveler.getLoginId()))
+			throw new Exception("AdminValidator.INVALID_LOGINID");
+		
+	}
+	
 	public static Boolean validateName(String name){
 		Boolean flag = false;
 		if(!name.matches("[ ]*") && name.matches("([A-Za-z])+(\\s[A-Za-z]+)*"))
@@ -44,5 +59,10 @@ public class TravelerValidator {
 							flag = true;
 		return flag;
 	}
+	
+	public static Boolean validateLoginId(String loginId)  {
+		return loginId.matches("[a-zA-Z0-9]{6,15}");
+	}
+	
 	
 }
