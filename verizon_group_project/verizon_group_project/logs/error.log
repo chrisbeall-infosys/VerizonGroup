@@ -619,3 +619,4 @@ java.lang.NullPointerException: null
 2020-04-27 14:18:50.331  INFO 78756 --- [http-nio-3333-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 23 ms
 2020-04-27 14:18:50.656  INFO 78756 --- [http-nio-3333-exec-2] com.infy.verizon.api.TravelerAPI         : TRAVELER TRYING TO LOGIN. TRAVELER LOGIN ID: thu1234
 2020-04-27 14:18:51.908  INFO 78756 --- [http-nio-3333-exec-2] com.infy.verizon.api.TravelerAPI         : TRAVELER LOGIN SUCCESSFUL. TRAVELER LOGIN ID: thu1234
+2020-04-27 16:13:41.034  WARN 78756 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=57m58s619ms633µs600ns).
