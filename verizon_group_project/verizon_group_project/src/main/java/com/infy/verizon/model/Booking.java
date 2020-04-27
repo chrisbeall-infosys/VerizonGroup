@@ -2,10 +2,6 @@ package com.infy.verizon.model;
 
 import java.time.LocalDate;
 
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 
 public class Booking {
 

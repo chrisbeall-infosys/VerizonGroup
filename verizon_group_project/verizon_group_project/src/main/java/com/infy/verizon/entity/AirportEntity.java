@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Airport")
-public class airportEntity {
+public class AirportEntity {
 	
 	@Id
 	private Integer airportId;
