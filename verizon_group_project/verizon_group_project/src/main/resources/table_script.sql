@@ -4,6 +4,10 @@ drop table traveler;
 drop table admin;
 drop table airport;
 
+drop sequence hibernate_sequence;
+
+create sequence hibernate_sequence start with 1 increment by 1;
+
 create table Traveler(
 	login_id varchar2(15),
 	email varchar2(30),
