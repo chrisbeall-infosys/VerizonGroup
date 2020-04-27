@@ -1,5 +1,6 @@
 package com.infy.verizon.dao;
 
+
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.infy.verizon.entity.TravelerEntity;
 import com.infy.verizon.model.Traveler;
+
 
 @Repository(value = "travelerDAO")
 public class TravelerDAOImpl implements TravelerDAO {
@@ -36,22 +38,42 @@ public class TravelerDAOImpl implements TravelerDAO {
 	}
 
 	@Override
-	public String authenticateTraveler(String loginId, String password) {
-
-		Query query = entityManager.createQuery("select t from TravelerEntity t where t.email = '"+loginId+"' and t.password = '"+password+"'");
+	public String authenticateTraveler(String loginId, String password) throws Exception {
 		
+		
+		Query query = entityManager.createQuery("select t from TravelerEntity t where t.loginId = '"+loginId+"' and t.password = '"+password+"'");
+		/*Query query = entityManager.createQuery("select t from TravelerEntity t where t.loginId =: loginId and t.password =: password");
+		query.setParameter("loginId", loginId);
+		query.setParameter("password", password);*/
+		
+
 		@SuppressWarnings("unchecked")
 		List<TravelerEntity> travelerEntities = query.getResultList();
-		if(travelerEntities.isEmpty())
+		if(travelerEntities.isEmpty()) {
+			System.out.println("Is empty");
 			return null;
+		}
 
-		return travelerEntities.get(0).getEmail();
+		return travelerEntities.get(0).getLoginId();
 	}
 
 	@Override
 	public Traveler getTravelerByLoginId(String loginId) {
 
-		return null;
+		Traveler traveler = null;
+		loginId = loginId.toLowerCase();
+		
+		
+		TravelerEntity travelerEntity = entityManager.find(TravelerEntity.class, loginId);
+		if (travelerEntity!=null){
+			traveler = new Traveler();
+			traveler.setEmail(travelerEntity.getEmail());
+			traveler.setName(travelerEntity.getName());
+			traveler.setLoginId(travelerEntity.getLoginId());
+			
+		}
+		
+		return traveler;
 	}
 
 	@Override

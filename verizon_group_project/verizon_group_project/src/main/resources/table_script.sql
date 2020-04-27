@@ -50,3 +50,4 @@ create table Booking(
 );
 
 select * from Admin;
+select * from Traveler;

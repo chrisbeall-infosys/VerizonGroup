@@ -38,7 +38,7 @@ public class AdminDAOImpl implements AdminDAO {
 
 	@Override
 	public Admin getAdminByLoginId(String loginId) {
-	
+		
 		AdminEntity adminEntity = entityManager.find(AdminEntity.class, loginId);
 		
 			Admin admin = new Admin();
