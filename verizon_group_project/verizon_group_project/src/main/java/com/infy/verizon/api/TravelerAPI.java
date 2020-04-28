@@ -54,12 +54,12 @@ public class TravelerAPI {
 	@PostMapping(value = "travelerLogin")
 	public ResponseEntity<Traveler> authenticateTraveler(@RequestBody Traveler traveler) throws Exception {
 		try
-		{
-			logger.info("TRAVELER TRYING TO LOGIN. TRAVELER LOGIN ID: "+traveler.getEmail());
+		{	System.out.println("Hello login: " + traveler.getPassword());
+			logger.info("TRAVELER TRYING TO LOGIN. TRAVELER LOGIN ID: "+traveler.getLoginId());
 			
 			Traveler travelerFromDB =  travelerService.authenticateTraveler(traveler.getLoginId(), traveler.getPassword());
 			
-			logger.info("ADMIN LOGIN SUCCESSFUL. ADMIN LOGIN ID: "+traveler.getLoginId());
+			logger.info("TRAVELER LOGIN SUCCESSFUL. TRAVELER LOGIN ID: "+traveler.getLoginId());
 			
 			return new ResponseEntity<Traveler>(travelerFromDB, HttpStatus.OK);
 		}
