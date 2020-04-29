@@ -59,3 +59,4 @@
 2020-04-29 12:30:52.223  INFO 93952 --- [http-nio-3333-exec-8] com.infy.verizon.api.TravelerAPI         : TRAVELER TRYING TO LOGIN. TRAVELER LOGIN ID: thu1234
 2020-04-29 12:30:53.026  INFO 93952 --- [http-nio-3333-exec-8] com.infy.verizon.api.TravelerAPI         : TRAVELER LOGIN SUCCESSFUL. TRAVELER LOGIN ID: thu1234
 2020-04-29 12:31:04.364  INFO 93952 --- [http-nio-3333-exec-10] com.infy.verizon.api.AdminAPI            : ADMIN TRYING TO LOGIN. ADMIN LOGIN ID: thu123
+2020-04-29 12:31:05.167  INFO 93952 --- [http-nio-3333-exec-10] com.infy.verizon.api.AdminAPI            : ADMIN LOGIN SUCCESSFUL. ADMIN LOGIN ID: thu123
