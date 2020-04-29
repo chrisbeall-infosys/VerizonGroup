@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-landing-page.component.css']
 })
 export class AdminLandingPageComponent implements OnInit {
-
+  activity: string="login";
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  userActivity(option: string) {
+    this.activity = option;
   }
 
 }

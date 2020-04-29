@@ -3,28 +3,26 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AdminHomeComponent } from './admin/admin-home/admin-home/admin-home.component';
-import { AdminLandingPageComponent } from './admin/admin-landing-page/admin-landing-page.component';
-import { LoginComponent } from './admin/admin-landing-page/login/login.component';
-import { RegistrationComponent } from './admin/admin-landing-page/registration/registration.component';
-import { TravelerHomeComponent } from './traveler/traveler-home/traveler-home.component';
-import { TravelerLandingPageComponent } from './traveler/traveler-landing-page/traveler-landing-page.component';
+import { AuthorizationErrorComponent } from './shared/authorization-error/authorization-error.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminModule } from './admin/admin.module';
+import { TravelerModule } from './traveler/traveler.module';
+import { VerizonRoutingGuard } from './app.routing-guard';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdminHomeComponent,
-    AdminLandingPageComponent,
-    LoginComponent,
-    RegistrationComponent,
-    TravelerHomeComponent,
-    TravelerLandingPageComponent
+    AuthorizationErrorComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    AdminModule,
+    TravelerModule
   ],
-  providers: [],
+  providers: [VerizonRoutingGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
