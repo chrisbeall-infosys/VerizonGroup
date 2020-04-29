@@ -10,7 +10,7 @@ import { catchError } from '../../../node_modules/rxjs/operators';
 export class BookingService {
 
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { } 
 
   addNewBooking(booking: Booking): Observable<string>{
     const url = "http://localhost:3333/verizon_group_project/bookingAPI/addNewBooking";
