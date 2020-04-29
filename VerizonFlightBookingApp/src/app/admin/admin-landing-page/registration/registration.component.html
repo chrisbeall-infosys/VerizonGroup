@@ -1,1 +1,93 @@
-<p>registration works!</p>
+<div class="page-top-offset"></div>
+<div class="row">
+    <div class="container-fluid">
+        <div class="col-md-4 offset-md-4">
+            <div class="form-bg-light">
+
+                <h3 class="title">Admin Registration</h3>
+                <form [formGroup]="registerAdminForm" (ngSubmit)="registerAdmin()">
+
+
+                    <div class="form-group">
+                        <label class="label-text-black" for="name">Name:</label>
+                        <input class="form-control" formControlName="name" placeholder="Name" id="name" />
+
+                        <div *ngIf="registerAdminForm.controls.name.invalid
+                                            && registerAdminForm.controls.name.touched">
+
+                            <div class="text-danger" *ngIf="registerAdminForm.controls.name.hasError('required')">
+                                Name is Mandatory
+                            </div>
+                            <div class="field-error-message" *ngIf="registerAdminForm.controls.name.dirty && registerAdminForm.controls.name.hasError('namePatternError')">
+                                Name pattern is invalid
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label-text-black" for="email">Email:</label>
+                        <input class="form-control" formControlName="email" placeholder="Email" id="email" />
+                        <div *ngIf="registerAdminForm.controls.email.invalid
+                                            && registerAdminForm.controls.email.touched">
+
+                            <div class="text-danger" *ngIf="registerAdminForm.controls.email.hasError('required')">
+                                Email is Mandatory
+                            </div>
+                            <div class="field-error-message" *ngIf="registerAdminForm.controls.email.dirty && registerAdminForm.controls.email.hasError('emailPatternError')">
+                                Email pattern is invalid
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="form-group">
+                        <label class="label-text-black" for="password">Password:</label>
+                        <input type="password" class="form-control" formControlName="password" placeholder="Password" id="password" />
+                        <div *ngIf="registerAdminForm.controls.password.invalid
+                        && registerAdminForm.controls.password.touched">
+
+                            <div class="text-danger" *ngIf="registerAdminForm.controls.password.hasError('required')">
+                                Password is Mandatory
+                            </div>
+                            <div class="field-error-message" *ngIf="registerAdminForm.controls.password.dirty && registerAdminForm.controls.password.hasError('passwordPatternError')">
+                                Password pattern is invalid
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label-text-black" for="loginId">Username:</label>
+                        <input class="form-control" formControlName="loginId" placeholder="Username" id="loginId" />
+
+                        <div *ngIf="registerAdminForm.controls.loginId.invalid
+                                            && registerAdminForm.controls.loginId.touched">
+
+                            <div class="text-danger" *ngIf="registerAdminForm.controls.loginId.hasError('required')">
+                                Username is Mandatory
+                            </div>
+                            <div class="field-error-message" *ngIf="registerAdminForm.controls.loginId.dirty && registerAdminForm.controls.loginId.hasError('loginIdPatternError')">
+                                Username pattern is invalid
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="row">
+                        <button [disabled]="!registerAdminForm.valid" class="col-md-4 offset-md-1 btn btn-info">
+                            Register
+                        </button>
+                        <button type="reset" [disabled]="registerAdminForm.pristine" class="col-md-4 offset-md-2 btn btn-warning">
+                            Reset
+                        </button>
+
+                    </div>
+                </form>
+                <h5 class="error-message">{{errorMessage}}</h5>
+                <h5 class="success-message">{{successMessage}}</h5>
+                <br/>
+                <div class="text-info">Are you a registered admin? <a routerLink="../login">Sign in</a></div>
+            </div>
+        </div>
+    </div>
+</div>
