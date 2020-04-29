@@ -42,24 +42,28 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public Admin authenticateAdmin(String loginId, String password) throws Exception {
+		System.out.println("In authenticate 1");
 		Admin admin = null;
 		loginId = loginId.toLowerCase();
 		
 		AdminValidator.validateAdminForLogin(loginId, password);
 
 		String passwordFromDB = adminDAO.getPasswordOfAdmin(loginId);
+		System.out.println("In authenticate 2");
 		if(passwordFromDB != null){
 			String hashedPassword = HashingUtility.getHashValue(password);
-
+			System.out.println("In authenticate 3: " + hashedPassword + "Password: " + passwordFromDB);
 			if(hashedPassword.equals(passwordFromDB)){
+				System.out.println("In authenticate 4");
 				admin  = adminDAO.getAdminByLoginId(loginId);
 			}
 			else
-				throw new Exception ("SellerService.INVALID_CREDENTIALS");
+				throw new Exception ("AdminService.INVALID_CREDENTIALS");
 		}
 		else
-			throw new Exception ("SellerService.INVALID_CREDENTIALS");
-
+			
+			throw new Exception ("AdminService.INVALID_CREDENTIALS");
+		
 		return admin;
 	}
 

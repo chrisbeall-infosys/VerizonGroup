@@ -43,11 +43,13 @@ public class TravelerServiceImpl implements TravelerService {
 
 	@Override
 	public Traveler authenticateTraveler(String loginId, String password) throws Exception {
-		
+		System.out.println("Hello service 1");
 		Traveler traveler = null;
-		String travelerLoginIdFromDAO = travelerDAO.authenticateTraveler(loginId.toLowerCase(), password);
+		String passwordToDB = HashingUtility.getHashValue(password);
+		String travelerLoginIdFromDAO = travelerDAO.authenticateTraveler(loginId, passwordToDB);
+		System.out.println("Hello service 2: " + travelerLoginIdFromDAO);
 		if(travelerLoginIdFromDAO!=null){
-			
+			System.out.println("Hello service 3");
 				traveler  = travelerDAO.getTravelerByLoginId(travelerLoginIdFromDAO);
 		}
 		else

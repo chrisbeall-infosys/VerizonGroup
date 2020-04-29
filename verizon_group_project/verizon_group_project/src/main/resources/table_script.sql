@@ -9,20 +9,20 @@ drop sequence hibernate_sequence;
 create sequence hibernate_sequence start with 1 increment by 1;
 
 create table Traveler(
-	login_id varchar2(15),
-	email varchar2(30),
-	name varchar2(30),
-	password varchar2(30),
+	login_id varchar2(50),
+	email varchar2(50),
+	name varchar2(50),
+	password varchar2(70),
 	
 	constraint traveler_login_id_pk primary key ( login_id )
 
 );
 
 create table Admin(
-	login_id varchar2(15),
-	email varchar2(30),
-	name varchar2(30),
-	password varchar2(30),
+	login_id varchar2(50),
+	email varchar2(50),
+	name varchar2(50),
+	password varchar2(70),
 	
 	constraint admin_login_id_pk primary key ( login_id )
 );
@@ -52,3 +52,6 @@ create table Booking(
 	constraint booking_login_id_fk foreign key (login_id) references traveler(login_id),
 	constraint booking_flight_id_fk foreign key (flight_id) references flights(flight_id)
 );
+
+select * from Admin;
+select * from Traveler;
