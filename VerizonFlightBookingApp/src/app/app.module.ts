@@ -7,6 +7,7 @@ import { AuthorizationErrorComponent } from './shared/authorization-error/author
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminModule } from './admin/admin.module';
 import { TravelerModule } from './traveler/traveler.module';
+import { BookingService } from './booking/booking-service.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { TravelerModule } from './traveler/traveler.module';
     AdminModule,
     TravelerModule
   ],
-  providers: [],
+  providers: [BookingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
