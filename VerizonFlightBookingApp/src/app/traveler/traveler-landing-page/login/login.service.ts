@@ -4,6 +4,7 @@ import { Traveler } from "../../../shared/models/traveler";
 import { environment } from "../../../../environments/environment";
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,6 +12,7 @@ export class LoginService {
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }
+  
   login(traveler: Traveler): Observable<Traveler> {
     const url = environment.travelerAPIUrl + '/travelerLogin';
 

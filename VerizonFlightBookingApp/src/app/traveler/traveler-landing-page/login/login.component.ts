@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './login.service';
 import { RouterModule, Router } from '@angular/router';
-
+import { LoginValidators } from '../../../shared/validators/login.validator';
 import { Traveler } from '../../../shared/models/traveler';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './login.component.html'
+  //styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
   traveler: Traveler;
@@ -26,8 +26,8 @@ export class LoginComponent implements OnInit {
   createForm() {
 
     this.loginForm = this.fb.group({
-        loginId: [this.traveler.loginId, [Validators.required], null],
-        password: [this.traveler.password, [Validators.required], null]
+        loginId: [this.traveler.loginId, [Validators.required, LoginValidators.validateLoginId], null],
+        password: [this.traveler.password, [Validators.required, LoginValidators.validatePassword], null]
     });
 }
 
@@ -42,7 +42,7 @@ login() {
           sessionStorage.setItem("traveler", JSON.stringify(this.traveler));
           sessionStorage.setItem("userType", JSON.stringify("Traveler"));
           this.tryToLogin = false;
-          this.router.navigate(['/home']);
+          this.router.navigate(['/travelerHome']);
       },
       (error) => {
           this.tryToLogin = false;

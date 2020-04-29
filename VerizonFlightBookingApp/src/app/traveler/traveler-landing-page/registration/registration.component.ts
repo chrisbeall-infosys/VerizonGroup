@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Traveler } from "../../../shared/models/traveler";
 import { RegistrationService } from "./registration.service";
+import { LoginValidators } from "../../../shared/validators/login.validator";
 
 @Component({
   selector: 'app-traveler-registration',
-  templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css']
+  templateUrl: './registration.component.html'
+  //styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
     traveler: Traveler;
@@ -23,10 +24,10 @@ export class RegistrationComponent implements OnInit {
   }
 createForm() {
       this.registerTravelerForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', Validators.required],
-      password:['', Validators.required],
-      loginId: ['', Validators.required],
+      name: [this.traveler.name, [Validators.required,LoginValidators.validateName], null],
+      email: [this.traveler.email, [Validators.required,LoginValidators.validateEmail], null],
+      password:[this.traveler.password, [Validators.required, LoginValidators.validatePassword], null],
+      loginId: [this.traveler.loginId, [Validators.required,LoginValidators.validateLoginId], null],
 
     });
   }
@@ -37,12 +38,11 @@ createForm() {
     this.traveler = this.registerTravelerForm.value as Traveler;
     
     this.registerService.registerTraveler(this.traveler).subscribe(
-      (response) => {console.log(response);
-                      this.successMessage = response; 
-                      this.registerTravelerForm.reset()}, 
-       error => this.errorMessage = <any>error
-
-    );
+      message => {
+        this.successMessage = message;
+        this.registerTravelerForm.reset();
+      }, 
+      error => this.errorMessage = <any>error );
   }
 
 }

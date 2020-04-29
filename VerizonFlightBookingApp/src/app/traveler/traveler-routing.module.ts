@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { VerizonRoutingGuard } from '../app.routing-guard';
+
 import { RouterModule, Routes } from '@angular/router';
 import { TravelerHomeComponent } from './traveler-home/traveler-home.component';
 import { TravelerLandingPageComponent } from './traveler-landing-page/traveler-landing-page.component';
@@ -12,7 +14,9 @@ const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegistrationComponent}
   ] },
-  { path: 'travelerHome', component: TravelerHomeComponent, children: []},
+  { path: 'travelerHome', component: TravelerHomeComponent,canActivate: [VerizonRoutingGuard], children: [
+    {path: '', redirectTo: 'travelerHome', pathMatch: 'full'}
+  ]},
   { path: '', redirectTo: '/applicationHome', pathMatch: 'full' }
 ];
 

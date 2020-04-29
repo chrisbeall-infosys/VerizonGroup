@@ -18,7 +18,7 @@
                             <div class="text-danger" *ngIf="registerTravelerForm.controls.name.hasError('required')">
                                 Name is Mandatory
                             </div>
-                            <div class="field-error-message" *ngIf="registerTravelerForm.controls.name.dirty && registerTravelerForm.controls.name.hasError('namePatternError')">
+                            <div class="text-danger" *ngIf="registerTravelerForm.controls.name.dirty && registerTravelerForm.controls.name.hasError('namePatternError')">
                                 Name pattern is invalid
                             </div>
                         </div>
@@ -33,7 +33,7 @@
                             <div class="text-danger" *ngIf="registerTravelerForm.controls.email.hasError('required')">
                                 Email is Mandatory
                             </div>
-                            <div class="field-error-message" *ngIf="registerTravelerForm.controls.email.dirty && registerTravelerForm.controls.email.hasError('emailPatternError')">
+                            <div class="text-danger" *ngIf="registerTravelerForm.controls.email.dirty && registerTravelerForm.controls.email.hasError('emailPatternError')">
                                 Email pattern is invalid
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                             <div class="text-danger" *ngIf="registerTravelerForm.controls.password.hasError('required')">
                                 Password is Mandatory
                             </div>
-                            <div class="field-error-message" *ngIf="registerTravelerForm.controls.password.dirty && registerTravelerForm.controls.password.hasError('passwordPatternError')">
+                            <div class="text-danger" *ngIf="registerTravelerForm.controls.password.dirty && registerTravelerForm.controls.password.hasError('passwordPatternError')">
                                 Password pattern is invalid
                             </div>
                         </div>
@@ -66,7 +66,7 @@
                             <div class="text-danger" *ngIf="registerTravelerForm.controls.loginId.hasError('required')">
                                 Username is Mandatory
                             </div>
-                            <div class="field-error-message" *ngIf="registerTravelerForm.controls.loginId.dirty && registerTravelerForm.controls.loginId.hasError('loginIdPatternError')">
+                            <div class="text-danger" *ngIf="registerTravelerForm.controls.loginId.dirty && registerTravelerForm.controls.loginId.hasError('loginIdLengthError')">
                                 Username pattern is invalid
                             </div>
                         </div>
@@ -83,8 +83,8 @@
 
                     </div>
                 </form>
-                <h5 class="error-message">{{errorMessage}}</h5>
-                <h5 class="success-message">{{successMessage}}</h5>
+                <h5 class="text-danger">{{errorMessage}}</h5>
+                <h5 class="text-success">{{successMessage}}</h5>
                 <br/>
                 <div class="text-info">Are you a registered traveler? <a routerLink="../login">Sign in</a></div>
             </div>
