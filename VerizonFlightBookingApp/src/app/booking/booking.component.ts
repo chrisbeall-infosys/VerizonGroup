@@ -12,21 +12,29 @@ import { Airport } from '../shared/models/airport';
 })
 export class BookingComponent implements OnInit {
 
-  flightList: Flight;
+  flightList: Flight[];
   airportList: Airport[];
   airportMap: object;
-  airportToList: Airport[]; 
+  airportToList: Airport[];
 
-  fromSelected(value: any){
-    
+  fromSelected(value: any) {
+    this.airportToList = this.airportMap[value];
   }
 
-  constructor(private fb :FormBuilder, private bookingService: BookingService) { }
+
+  constructor(private fb: FormBuilder, private bookingService: BookingService, private flightService: FlightService) { }
 
   ngOnInit() {
-    this.airportList = getAirportList();
-    for (let airport in this.airportList){
-      this.airportMap[airport] = getAirportToList();
+    let flightList = this.flightService.getFlights();
+    for (let flight of this.flightList) {
+      if (this.airportMap.hasOwnProperty(flight.fromAirport.airportId)) {
+        this.airportMap[flight.fromAirport.airportId].push(flight.toAirport.airportId)
+      }
+      else {
+        this.airportList.push(flight.fromAirport);
+        this.airportMap[flight.fromAirport.airportId] = [flight.toAirport.airportId]
+      }
+
     }
   }
 
