@@ -19,7 +19,7 @@ import com.infy.verizon.service.AirportService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("AirportAPI")
+@RequestMapping("AirportAPI")	// http://localhost:3333/verizon_group_project/AirportAPI/
 public class AirportAPI {
 	
 	@Autowired
@@ -28,7 +28,7 @@ public class AirportAPI {
 	@Autowired
 	private Environment environment;
 	
-	@PostMapping(value = "addAirport/")
+	@PostMapping(value = "addAirport")
 	public ResponseEntity<String> addAirport(@RequestBody Airport airport) throws Exception{
 		
 		try{
@@ -42,7 +42,7 @@ public class AirportAPI {
 		}	
 	}
 	
-	@PostMapping(value = "removeAirport/")
+	@PostMapping(value = "removeAirport")
 	public ResponseEntity<String> removeAirport(@RequestBody String airportId) throws Exception{
 		
 		try{

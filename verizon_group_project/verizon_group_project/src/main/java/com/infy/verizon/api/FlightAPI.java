@@ -20,7 +20,7 @@ import com.infy.verizon.service.FlightService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("FlightAPI")
+@RequestMapping("FlightAPI")	// http://localhost:3333/verizon_group_project/FlightAPI
 public class FlightAPI {
 	
 	@Autowired
@@ -28,7 +28,7 @@ public class FlightAPI {
 	@Autowired
 	private Environment environment;
 	
-	@PostMapping(value = "addFlight/")
+	@PostMapping(value = "addFlight")
 	public ResponseEntity<String> addFlight(@RequestBody Flight flight) throws Exception{
 		
 		try{
@@ -42,7 +42,7 @@ public class FlightAPI {
 		}	
 	}
 	
-	@PostMapping(value = "removeFlight/")
+	@PostMapping(value = "removeFlight")
 	public ResponseEntity<String> removeFlight(@RequestBody String flightId) throws Exception{
 		
 		try{
