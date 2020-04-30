@@ -39,10 +39,6 @@ public class TravelerEntity {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> fd12166bbe214cb08faa3e675ce36b75bfa83011
+
