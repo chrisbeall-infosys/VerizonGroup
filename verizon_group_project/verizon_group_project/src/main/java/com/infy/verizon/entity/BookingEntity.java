@@ -2,6 +2,7 @@ package com.infy.verizon.entity;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,11 +26,14 @@ public class BookingEntity {
 	
 	private Integer numberOfTravelers;
 	
+	private Double cost;
+	
 	@ManyToOne
 	@JoinColumn(name="flight_id")
 	private FlightEntity flightEntity;
 	
-	private Double cost;
+	
+	
 
 	public Double getCost() {
 		return cost;

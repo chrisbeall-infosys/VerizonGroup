@@ -63,5 +63,5 @@ insert into Traveler values ('test', 'test@infy.com', 'Test' , 'test');
 insert into Airport values ('TST');
 insert into Airport values ('TSF');
 insert into Flights values (1, 100.20, 10.20, 'TSF', 'TST');
-insert into Booking (booking_id, login_id, date_of_travel, number_of_travelers, flight_id, cost) values (1000, 'test', TO_DATE('2003/07/09', 'yyyy/mm/dd'), 2, 1, 2000.20);
+insert into Booking (booking_id, login_id, date_of_travel, number_of_travelers, flight_id, COST) values (1000, 'test', TO_DATE('2003/07/09', 'yyyy/mm/dd'), 2, 1, 2000.20);
 
