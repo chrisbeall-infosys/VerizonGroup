@@ -18,6 +18,16 @@ public class Booking {
 	
 	private Flight flight;
 	
+	private Double cost; 
+
+	public Double getCost() {
+		return cost;
+	}
+
+	public void setCost(Double cost) {
+		this.cost = cost;
+	}
+
 	public Integer getBookingId() {
 		return bookingId;
 	}

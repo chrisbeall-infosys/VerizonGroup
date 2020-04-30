@@ -22,7 +22,8 @@ public class BookingDAOImpl implements BookingDAO{
 		
 		bookingEntity.setDateOfTravel(booking.getDateOfTravel());
 		bookingEntity.setNumberOfTravelers(booking.getNumberOfTravelers());
-		
+		bookingEntity.setCost(booking.getCost());
+		System.out.println(bookingEntity.getCost());
 		if (booking.getTraveler() == null || booking.getFlight() == null){
 			return -1;
 		}

@@ -28,6 +28,16 @@ public class BookingEntity {
 	@ManyToOne
 	@JoinColumn(name="flight_id")
 	private FlightEntity flightEntity;
+	
+	private Double cost;
+
+	public Double getCost() {
+		return cost;
+	}
+
+	public void setCost(Double cost) {
+		this.cost = cost;
+	}
 
 	public Integer getBookingId() {
 		return BookingId;

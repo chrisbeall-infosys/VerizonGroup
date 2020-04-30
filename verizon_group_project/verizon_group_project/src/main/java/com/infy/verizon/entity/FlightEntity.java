@@ -19,10 +19,10 @@ public class FlightEntity {
 	private Double taxes;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "airport_id", insertable = false, updatable = false, unique = true)
+	@JoinColumn(name="from_airport", insertable = false, updatable = false, unique = true)
 	private AirportEntity fromAirportEntity;
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "airport_id", insertable = false, updatable = false, unique = true)
+	@JoinColumn(name="to_airport", insertable = false, updatable = false, unique = true)
 	private AirportEntity toAirportEntity;
 
 	

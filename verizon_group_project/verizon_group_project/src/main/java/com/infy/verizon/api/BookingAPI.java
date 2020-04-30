@@ -47,7 +47,7 @@ public class BookingAPI {
 			if(e.getMessage().contains("Validator")){
 				throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, environment.getProperty(e.getMessage()));
 			}
-			throw new ResponseStatusException(HttpStatus.CONFLICT, environment.getProperty(e.getMessage()));
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, environment.getProperty(e.getMessage()));
 		}
 	}
 
