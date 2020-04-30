@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Admin } from 'src/app/shared/models/admin';
+import { Admin } from '../../../shared/models/admin';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { LoginValidators } from "../../../shared/validators/login.validator";
 import { AdminRegistrationService } from './admin-registration.service';

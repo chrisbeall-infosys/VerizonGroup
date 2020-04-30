@@ -1,5 +1,7 @@
 package com.infy.verizon.dao;
 
-public class BookingDAO {
+import com.infy.verizon.model.Booking;
 
+public interface BookingDAO {
+	public Integer addNewBooking(Booking booking);
 }

@@ -6,7 +6,9 @@ import java.time.LocalDate;
 public class Booking {
 
 	
-	private Integer BookingId;
+
+	private Integer bookingId;
+
 	
 	private Traveler traveler;
 	
@@ -17,11 +19,11 @@ public class Booking {
 	private Flight flight;
 	
 	public Integer getBookingId() {
-		return BookingId;
+		return bookingId;
 	}
 
 	public void setBookingId(Integer bookingId) {
-		BookingId = bookingId;
+		this.bookingId = bookingId;
 	}
 
 	public Traveler getTraveler() {

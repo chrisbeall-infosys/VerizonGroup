@@ -1,5 +1,8 @@
 package com.infy.verizon.service;
 
-public class BookingService {
+import com.infy.verizon.model.Booking;
 
+public interface BookingService {
+
+	public Integer addNewBooking(Booking booking) throws Exception;
 }
