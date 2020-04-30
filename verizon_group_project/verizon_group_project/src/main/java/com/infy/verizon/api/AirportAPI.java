@@ -8,33 +8,33 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.infy.verizon.model.Flight;
-import com.infy.verizon.service.FlightService;
+import com.infy.verizon.model.Airport;
+import com.infy.verizon.service.AirportService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("FlightAPI")
-public class FlightAPI {
+@RequestMapping("AirportAPI")
+public class AirportAPI {
 	
 	@Autowired
-	private FlightService flightService;
+	AirportService airportService;
+	
 	@Autowired
 	private Environment environment;
 	
-	@PostMapping(value = "addFlight/")
-	public ResponseEntity<String> addFlight(@RequestBody Flight flight) throws Exception{
+	@PostMapping(value = "addAirport/")
+	public ResponseEntity<String> addAirport(@RequestBody Airport airport) throws Exception{
 		
 		try{
-			flightService.addFlight(flight);
+			airportService.addAirport(airport);
 			
-			String message = environment.getProperty("FlightAPI.FLIGHT_ADDED_SUCCESSFULLY");
+			String message = environment.getProperty("AirportAPI.AIRPORT_ADDED_SUCCESSFULLY");
 			return new ResponseEntity<String>(message, HttpStatus.OK);
 		}
 		catch(Exception e){
@@ -42,13 +42,13 @@ public class FlightAPI {
 		}	
 	}
 	
-	@PostMapping(value = "removeFlight/")
-	public ResponseEntity<String> removeFlight(@RequestBody String flightId) throws Exception{
+	@PostMapping(value = "removeAirport/")
+	public ResponseEntity<String> removeAirport(@RequestBody String airportId) throws Exception{
 		
 		try{
-			flightService.removeFlight(Integer.parseInt(flightId));
+			airportService.removeAirport(Integer.parseInt(airportId));
 			
-			String message = environment.getProperty("FlightAPI.FLIGHT_DELETED_SUCCESSFULLY");
+			String message = environment.getProperty("AirportAPI.AIRPORT_DELETED_SUCCESSFULLY");
 			return new ResponseEntity<String>(message, HttpStatus.OK);
 		}
 		catch(Exception e){
@@ -56,15 +56,15 @@ public class FlightAPI {
 		}
 	}
 	
-	@GetMapping(value = "getFlights")
-	public ResponseEntity<List<Flight>> getFlights() throws Exception{
+	@GetMapping(value = "getAirports")
+	public ResponseEntity<List<Airport>> getAirports() throws Exception{
 		
-		List<Flight> flightList = null;
+		List<Airport> airportList = null;
 		
 		try{
-			flightList = flightService.getFlights();
+			airportList = airportService.getAirports();
 			
-			ResponseEntity<List<Flight>> response = new ResponseEntity<List<Flight>>(flightList, HttpStatus.OK);
+			ResponseEntity<List<Airport>> response = new ResponseEntity<List<Airport>>(airportList, HttpStatus.OK);
 			return response;
 		}
 		catch(Exception e){

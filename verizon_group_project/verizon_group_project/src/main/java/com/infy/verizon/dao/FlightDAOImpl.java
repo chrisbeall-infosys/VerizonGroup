@@ -66,13 +66,15 @@ public class FlightDAOImpl implements FlightDAO {
 			flight.setFare(flightEntity.getFare());
 			flight.setTaxes(flightEntity.getTaxes());
 			
-			Airport fromAirport = new Airport();
+			Airport fromAirport = new Airport();	// could do error checking here
 			fromAirport.setAirportId(flightEntity.getFromAirportEntity().getAirportId());
 			flight.setFromAirport(fromAirport);
 			
 			Airport toAirport = new Airport();
 			toAirport.setAirportId(flightEntity.getToAirportEntity().getAirportId());
 			flight.setToAirport(toAirport);
+			
+			flightList.add(flight);
 		}
 		return flightList;
 	}
