@@ -4,21 +4,21 @@ drop table traveler;
 drop table admin;
 drop table airport;
 
-create table traveler(
-	login_id varchar2(15),
-	email varchar2(30),
-	name varchar2(30),
-	password varchar2(30),
+create table Traveler(
+	login_id varchar2(50),
+	email varchar2(50),
+	name varchar2(50),
+	password varchar2(70),
 	
 	constraint traveler_login_id_pk primary key ( login_id )
 
 );
 
-create table admin(
-	login_id varchar2(15),
-	email varchar2(30),
-	name varchar2(30),
-	password varchar2(30),
+create table Admin(
+	login_id varchar2(50),
+	email varchar2(50),
+	name varchar2(50),
+	password varchar2(70),
 	
 	constraint admin_login_id_pk primary key ( login_id )
 );
@@ -49,4 +49,9 @@ create table Booking(
 	constraint booking_flight_id_fk foreign key (flight_id) references flights(flight_id)
 );
 
+<<<<<<< HEAD
 select * from Flights;
+=======
+select * from Admin;
+select * from Traveler;
+>>>>>>> fd12166bbe214cb08faa3e675ce36b75bfa83011

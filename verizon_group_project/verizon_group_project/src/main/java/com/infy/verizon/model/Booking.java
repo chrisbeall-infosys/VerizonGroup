@@ -2,23 +2,19 @@ package com.infy.verizon.model;
 
 import java.time.LocalDate;
 
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 
 public class Booking {
 
 	
-	Integer BookingId;
+	private Integer BookingId;
 	
-	Traveler traveler;
+	private Traveler traveler;
 	
-	LocalDate dateOfTravel;
+	private LocalDate dateOfTravel;
 	
-	Integer numberOfTravelers;
+	private Integer numberOfTravelers;
 	
-	Flight flight;
+	private Flight flight;
 	
 	public Integer getBookingId() {
 		return BookingId;

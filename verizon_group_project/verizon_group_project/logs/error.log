@@ -1,0 +1,62 @@
+2020-04-29 12:11:06.476  INFO 93952 --- [main] c.i.v.VerizonGroupProjectApplication     : Starting VerizonGroupProjectApplication on USABOS251490L with PID 93952 (C:\Users\thu.vuong\Desktop\VerizonGroup\verizon_group_project\verizon_group_project\target\classes started by thu.vuong in C:\Users\thu.vuong\Desktop\VerizonGroup\verizon_group_project\verizon_group_project)
+2020-04-29 12:11:06.639  INFO 93952 --- [main] c.i.v.VerizonGroupProjectApplication     : No active profile set, falling back to default profiles: default
+2020-04-29 12:11:09.198  INFO 93952 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-04-29 12:11:09.282  INFO 93952 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 62ms. Found 0 JPA repository interfaces.
+2020-04-29 12:11:14.402  INFO 93952 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 3333 (http)
+2020-04-29 12:11:14.648  INFO 93952 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-29 12:11:14.649  INFO 93952 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-04-29 12:11:15.655  INFO 93952 --- [main] o.a.c.c.C.[.[.[/verizon_group_project]   : Initializing Spring embedded WebApplicationContext
+2020-04-29 12:11:15.656  INFO 93952 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 8831 ms
+2020-04-29 12:11:18.779  INFO 93952 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-04-29 12:11:25.203  INFO 93952 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-04-29 12:11:27.987  INFO 93952 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-04-29 12:11:32.700  INFO 93952 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.12.Final
+2020-04-29 12:11:40.350  INFO 93952 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-04-29 12:11:44.347  INFO 93952 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2020-04-29 12:11:52.822  INFO 93952 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-04-29 12:11:52.860  INFO 93952 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-29 12:11:54.168  WARN 93952 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-29 12:11:55.379  INFO 93952 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-29 12:11:57.819  INFO 93952 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 3333 (http) with context path '/verizon_group_project'
+2020-04-29 12:11:57.853  INFO 93952 --- [main] c.i.v.VerizonGroupProjectApplication     : Started VerizonGroupProjectApplication in 52.089 seconds (JVM running for 52.964)
+2020-04-29 12:13:50.219  INFO 93952 --- [http-nio-3333-exec-1] o.a.c.c.C.[.[.[/verizon_group_project]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-29 12:13:50.219  INFO 93952 --- [http-nio-3333-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-29 12:13:50.258  INFO 93952 --- [http-nio-3333-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 38 ms
+2020-04-29 12:13:51.659  INFO 93952 --- [http-nio-3333-exec-2] com.infy.verizon.api.AdminAPI            : ADMIN TRYING TO LOGIN. ADMIN LOGIN ID: thuv123
+2020-04-29 12:13:52.989 ERROR 93952 --- [http-nio-3333-exec-2] com.infy.verizon.utility.LoggingAspect   : AdminService.INVALID_CREDENTIALS
+2020-04-29 12:13:54.532  INFO 93952 --- [http-nio-3333-exec-4] com.infy.verizon.api.AdminAPI            : ADMIN TRYING TO LOGIN. ADMIN LOGIN ID: thuv123
+2020-04-29 12:13:55.065 ERROR 93952 --- [http-nio-3333-exec-4] com.infy.verizon.utility.LoggingAspect   : AdminService.INVALID_CREDENTIALS
+2020-04-29 12:14:33.201  INFO 93952 --- [http-nio-3333-exec-6] com.infy.verizon.api.AdminAPI            : ADMIN TRYING TO LOGIN. ADMIN LOGIN ID: thuv1234
+2020-04-29 12:14:33.733 ERROR 93952 --- [http-nio-3333-exec-6] com.infy.verizon.utility.LoggingAspect   : AdminService.INVALID_CREDENTIALS
+2020-04-29 12:14:48.381  INFO 93952 --- [http-nio-3333-exec-9] com.infy.verizon.api.TravelerAPI         : TRAVELER TRYING TO LOGIN. TRAVELER LOGIN ID: thu1234
+2020-04-29 12:14:50.141  INFO 93952 --- [http-nio-3333-exec-9] com.infy.verizon.api.TravelerAPI         : TRAVELER LOGIN SUCCESSFUL. TRAVELER LOGIN ID: thu1234
+2020-04-29 12:15:13.308  INFO 93952 --- [http-nio-3333-exec-10] com.infy.verizon.api.AdminAPI            : ADMIN TRYING TO LOGIN. ADMIN LOGIN ID: thu1234
+2020-04-29 12:15:14.161  INFO 93952 --- [http-nio-3333-exec-10] com.infy.verizon.api.AdminAPI            : ADMIN LOGIN SUCCESSFUL. ADMIN LOGIN ID: thu1234
+2020-04-29 12:15:32.763  INFO 93952 --- [http-nio-3333-exec-3] com.infy.verizon.api.TravelerAPI         : TRAVELER TRYING TO LOGIN. TRAVELER LOGIN ID: thu123
+2020-04-29 12:15:33.292 ERROR 93952 --- [http-nio-3333-exec-3] com.infy.verizon.utility.LoggingAspect   : TravelerService.INVALID_CREDENTIALS
+2020-04-29 12:15:49.250  INFO 93952 --- [http-nio-3333-exec-5] com.infy.verizon.api.TravelerAPI         : TRAVELER TRYING TO LOGIN. TRAVELER LOGIN ID: thu1234
+2020-04-29 12:15:50.050  INFO 93952 --- [http-nio-3333-exec-5] com.infy.verizon.api.TravelerAPI         : TRAVELER LOGIN SUCCESSFUL. TRAVELER LOGIN ID: thu1234
+2020-04-29 12:16:44.204  INFO 93952 --- [http-nio-3333-exec-9] com.infy.verizon.api.TravelerAPI         : TRAVELER TRYING TO REGISTER. TRAVELER LOGIN ID: thu1234
+2020-04-29 12:16:44.844 ERROR 93952 --- [http-nio-3333-exec-9] com.infy.verizon.utility.LoggingAspect   : TravelerService.LOGIN_ID_ALREADY_IN_USE
+2020-04-29 12:16:48.698  INFO 93952 --- [http-nio-3333-exec-10] com.infy.verizon.api.TravelerAPI         : TRAVELER TRYING TO REGISTER. TRAVELER LOGIN ID: thu12345
+2020-04-29 12:16:49.885  INFO 93952 --- [http-nio-3333-exec-10] com.infy.verizon.api.TravelerAPI         : TRAVELER REGISTRATION SUCCESSFUL. TRAVELER LOGIN ID: thu12345
+2020-04-29 12:17:23.168  INFO 93952 --- [http-nio-3333-exec-2] com.infy.verizon.api.TravelerAPI         : TRAVELER TRYING TO LOGIN. TRAVELER LOGIN ID: thu12345
+2020-04-29 12:17:23.985  INFO 93952 --- [http-nio-3333-exec-2] com.infy.verizon.api.TravelerAPI         : TRAVELER LOGIN SUCCESSFUL. TRAVELER LOGIN ID: thu12345
+2020-04-29 12:18:02.196  INFO 93952 --- [http-nio-3333-exec-5] com.infy.verizon.api.AdminAPI            : ADMIN TRYING TO REGISTER. ADMIN LOGIN ID: thu12345
+2020-04-29 12:18:03.326  INFO 93952 --- [http-nio-3333-exec-5] com.infy.verizon.api.AdminAPI            : ADMIN REGISTRATION SUCCESSFUL. ADMIN LOGIN ID: thu12345
+2020-04-29 12:18:18.888  INFO 93952 --- [http-nio-3333-exec-7] com.infy.verizon.api.AdminAPI            : ADMIN TRYING TO LOGIN. ADMIN LOGIN ID: thu12345
+2020-04-29 12:18:19.675  INFO 93952 --- [http-nio-3333-exec-7] com.infy.verizon.api.AdminAPI            : ADMIN LOGIN SUCCESSFUL. ADMIN LOGIN ID: thu12345
+2020-04-29 12:28:59.503  INFO 93952 --- [http-nio-3333-exec-9] com.infy.verizon.api.AdminAPI            : ADMIN TRYING TO REGISTER. ADMIN LOGIN ID: tom123
+2020-04-29 12:29:00.762  INFO 93952 --- [http-nio-3333-exec-9] com.infy.verizon.api.AdminAPI            : ADMIN REGISTRATION SUCCESSFUL. ADMIN LOGIN ID: tom123
+2020-04-29 12:29:13.621  INFO 93952 --- [http-nio-3333-exec-1] com.infy.verizon.api.AdminAPI            : ADMIN TRYING TO LOGIN. ADMIN LOGIN ID: tom123
+2020-04-29 12:29:14.410  INFO 93952 --- [http-nio-3333-exec-1] com.infy.verizon.api.AdminAPI            : ADMIN LOGIN SUCCESSFUL. ADMIN LOGIN ID: tom123
+2020-04-29 12:29:43.251  INFO 93952 --- [http-nio-3333-exec-3] com.infy.verizon.api.TravelerAPI         : TRAVELER TRYING TO REGISTER. TRAVELER LOGIN ID: tom123
+2020-04-29 12:29:44.316  INFO 93952 --- [http-nio-3333-exec-3] com.infy.verizon.api.TravelerAPI         : TRAVELER REGISTRATION SUCCESSFUL. TRAVELER LOGIN ID: tom123
+2020-04-29 12:30:01.484  INFO 93952 --- [http-nio-3333-exec-5] com.infy.verizon.api.TravelerAPI         : TRAVELER TRYING TO LOGIN. TRAVELER LOGIN ID: tom123
+2020-04-29 12:30:02.284  INFO 93952 --- [http-nio-3333-exec-5] com.infy.verizon.api.TravelerAPI         : TRAVELER LOGIN SUCCESSFUL. TRAVELER LOGIN ID: tom123
+2020-04-29 12:30:45.981  INFO 93952 --- [http-nio-3333-exec-7] com.infy.verizon.api.TravelerAPI         : TRAVELER TRYING TO LOGIN. TRAVELER LOGIN ID: thu123
+2020-04-29 12:30:46.560 ERROR 93952 --- [http-nio-3333-exec-7] com.infy.verizon.utility.LoggingAspect   : TravelerService.INVALID_CREDENTIALS
+2020-04-29 12:30:52.223  INFO 93952 --- [http-nio-3333-exec-8] com.infy.verizon.api.TravelerAPI         : TRAVELER TRYING TO LOGIN. TRAVELER LOGIN ID: thu1234
+2020-04-29 12:30:53.026  INFO 93952 --- [http-nio-3333-exec-8] com.infy.verizon.api.TravelerAPI         : TRAVELER LOGIN SUCCESSFUL. TRAVELER LOGIN ID: thu1234
+2020-04-29 12:31:04.364  INFO 93952 --- [http-nio-3333-exec-10] com.infy.verizon.api.AdminAPI            : ADMIN TRYING TO LOGIN. ADMIN LOGIN ID: thu123
+2020-04-29 12:31:05.167  INFO 93952 --- [http-nio-3333-exec-10] com.infy.verizon.api.AdminAPI            : ADMIN LOGIN SUCCESSFUL. ADMIN LOGIN ID: thu123
