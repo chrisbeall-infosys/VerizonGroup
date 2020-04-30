@@ -6,15 +6,17 @@ import java.time.LocalDate;
 public class Booking {
 
 	
-	Integer bookingId;
+
+	private Integer bookingId;
+
 	
-	Traveler traveler;
+	private Traveler traveler;
 	
-	LocalDate dateOfTravel;
+	private LocalDate dateOfTravel;
 	
-	Integer numberOfTravelers;
+	private Integer numberOfTravelers;
 	
-	Flight flight;
+	private Flight flight;
 	
 	public Integer getBookingId() {
 		return bookingId;

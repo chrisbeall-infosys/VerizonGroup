@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminLoginService } from './admin-login.service';
 import { RouterModule, Router } from '@angular/router';
+import { LoginValidators } from '../../../shared/validators/login.validator';
 
 import { Admin } from '../../../shared/models/admin';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -22,14 +23,14 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.admin = new Admin();
-    
+    this.createForm();
   }
 
   createForm() {
 
     this.loginForm = this.fb.group({
-        loginId: [this.admin.loginId, [Validators.required], null],
-        password: [this.admin.password, [Validators.required], null]
+        loginId: [this.admin.loginId, [Validators.required, LoginValidators.validateLoginId], null],
+        password: [this.admin.password, [Validators.required, LoginValidators.validatePassword], null]
     });
   
 }

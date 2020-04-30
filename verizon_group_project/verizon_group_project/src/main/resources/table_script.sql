@@ -53,5 +53,7 @@ create table Booking(
 	constraint booking_flight_id_fk foreign key (flight_id) references flights(flight_id)
 );
 
+select * from Flights;
 select * from Admin;
 select * from Traveler;
+

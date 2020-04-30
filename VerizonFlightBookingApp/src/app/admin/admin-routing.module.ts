@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { VerizonRoutingGuard } from '../app.routing-guard';
+
 import { CommonModule } from '@angular/common';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 
@@ -15,9 +17,7 @@ const routes: Routes = [
     {path: '', redirectTo: 'login', pathMatch: 'full'}
   ]},
   {
-    path: 'adminHome', component: AdminHomeComponent, children: [
-      
-    ]
+    path: 'adminHome', component: AdminHomeComponent,canActivate:[VerizonRoutingGuard], children: []
   },
   {path:'adminRegistration',component:RegistrationComponent},
   { path: '', redirectTo: '/applicationHome', pathMatch: 'full' }

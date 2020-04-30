@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Admin } from '../../../shared/models/admin';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { AdminLandingPageComponent } from '../admin-landing-page.component';
+import { LoginValidators } from "../../../shared/validators/login.validator";
 import { AdminRegistrationService } from './admin-registration.service';
 @Component({
   selector: 'app-registration',
-  templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css']
+  templateUrl: './registration.component.html'
+  //styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
   admin: Admin;
@@ -23,10 +23,10 @@ export class RegistrationComponent implements OnInit {
   }
   createForm() {
     this.registerAdminForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', Validators.required],
-      password:['', Validators.required],
-      loginId: ['', Validators.required],
+      name: ['', [Validators.required, LoginValidators.validateName], null],
+      email: ['', [Validators.required, LoginValidators.validateEmail], null],
+      password:['', [Validators.required, LoginValidators.validatePassword], null],
+      loginId: ['', [Validators.required, LoginValidators.validateLoginId], null],
 
     });
   }

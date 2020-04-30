@@ -14,8 +14,8 @@
                             <div class="text-danger" *ngIf="loginForm.controls.loginId.hasError('required')">
                                 Username is Mandatory
                             </div>
-                            <div class="field-error-message"
-                                *ngIf="loginForm.controls.loginId.dirty && loginForm.controls.loginId.hasError('loginIdPatternError')">
+                            <div class="text-danger"
+                                *ngIf="loginForm.controls.loginId.dirty && loginForm.controls.loginId.hasError('loginIdLengthError')">
                                 Username pattern is invalid
                             </div>
                         </div>
@@ -28,10 +28,10 @@
                         <div *ngIf="loginForm.controls.password.invalid
                                                         && loginForm.controls.password.touched">
 
-                            <div class="field-error-message" *ngIf="loginForm.controls.password.hasError('required')">
+                            <div class="text-danger" *ngIf="loginForm.controls.password.hasError('required')">
                                 Password is Mandatory
                             </div>
-                            <div class="field-error-message"
+                            <div class="text-danger"
                                 *ngIf="loginForm.controls.password.dirty && loginForm.controls.password.hasError('passwordPatternError')">
                                 Password pattern is invalid
                             </div>
@@ -57,7 +57,7 @@
                 <div *ngIf="tryToLogin">
                     <h3 class="text-center"> Logging...Please Wait!!</h3>
                 </div>
-                <h5 class="error-message text-center">{{errorMessage}}</h5>
+                <h5 class="text-danger text-center">{{errorMessage}}</h5>
                 <!-- <h4 class="success-message">TO REMOVE: {{customer.name}}</h4> -->
                 <br />
                 <div class="text-info">Are you a new admin? <a routerLink="../register">Sign up</a></div>

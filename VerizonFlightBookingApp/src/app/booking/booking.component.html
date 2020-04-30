@@ -1,0 +1,18 @@
+<p>booking works!</p>
+
+<form (ngSubmit)="" [formGroup]="addBookingForm">
+    <label for="from">Departing Airport</label>
+    <option id="from" *ngFor="let airport of airportList">
+        <select>{{airport.airportId}}</select>
+    </option>
+    <label for="to">Arriving Airport</label>
+    <option id="to" *ngFor="let airportTo of airportToList">
+        <select>{{airportTo.airportId}}</select>
+    </option>
+
+    <label for="date">Date of Travel</label>
+    <input id="date" type="datetime" required>
+
+    <label for="numTravelers">Enter Number of Travelers</label>
+    <input id="numTravelers" type="number" required>
+</form>
