@@ -7,7 +7,10 @@ import { AuthorizationErrorComponent } from './shared/authorization-error/author
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminModule } from './admin/admin.module';
 import { TravelerModule } from './traveler/traveler.module';
+
+import { BookingService } from './booking/booking-service.service';
 import { VerizonRoutingGuard } from './app.routing-guard';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +25,9 @@ import { VerizonRoutingGuard } from './app.routing-guard';
     AdminModule,
     TravelerModule
   ],
-  providers: [VerizonRoutingGuard],
+
+  providers: [VerizonRoutingGuard, BookingService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

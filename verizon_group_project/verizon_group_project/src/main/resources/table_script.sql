@@ -4,6 +4,10 @@ drop table traveler;
 drop table admin;
 drop table airport;
 
+drop sequence hibernate_sequence;
+
+create sequence hibernate_sequence start with 1 increment by 1;
+
 create table Traveler(
 	login_id varchar2(50),
 	email varchar2(50),
@@ -49,5 +53,7 @@ create table Booking(
 	constraint booking_flight_id_fk foreign key (flight_id) references flights(flight_id)
 );
 
+select * from Flights;
 select * from Admin;
 select * from Traveler;
+
