@@ -697,3 +697,22 @@ Identify and stop the process that's listening on port 3333 or configure this ap
 2020-04-30 15:04:17.802  INFO 79100 --- [http-nio-3333-exec-1] o.a.c.c.C.[.[.[/verizon_group_project]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2020-04-30 15:04:17.803  INFO 79100 --- [http-nio-3333-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2020-04-30 15:04:17.816  INFO 79100 --- [http-nio-3333-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 12 ms
+2020-04-30 16:45:26.011  INFO 99060 --- [main] c.i.v.VerizonGroupProjectApplication     : Starting VerizonGroupProjectApplication on USABOS273415L with PID 99060 (C:\Users\christopher.beall\VerizonGroup\verizon_group_project\verizon_group_project\target\classes started by christopher.beall in C:\Users\christopher.beall\VerizonGroup\verizon_group_project\verizon_group_project)
+2020-04-30 16:45:26.020  INFO 99060 --- [main] c.i.v.VerizonGroupProjectApplication     : No active profile set, falling back to default profiles: default
+2020-04-30 16:45:27.589  INFO 99060 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-04-30 16:45:27.661  INFO 99060 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 56ms. Found 0 JPA repository interfaces.
+2020-04-30 16:45:29.398  INFO 99060 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 3333 (http)
+2020-04-30 16:45:29.411  INFO 99060 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-30 16:45:29.412  INFO 99060 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-04-30 16:45:29.664  INFO 99060 --- [main] o.a.c.c.C.[.[.[/verizon_group_project]   : Initializing Spring embedded WebApplicationContext
+2020-04-30 16:45:29.665  INFO 99060 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3531 ms
+2020-04-30 16:45:30.003  INFO 99060 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-04-30 16:45:33.859  INFO 99060 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-04-30 16:45:40.077  INFO 99060 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-30 16:45:40.499  WARN 99060 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-30 16:45:40.875  INFO 99060 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-30 16:45:41.435  INFO 99060 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 3333 (http) with context path '/verizon_group_project'
+2020-04-30 16:45:41.441  INFO 99060 --- [main] c.i.v.VerizonGroupProjectApplication     : Started VerizonGroupProjectApplication in 16.268 seconds (JVM running for 17.226)
+2020-04-30 16:45:50.858  INFO 99060 --- [http-nio-3333-exec-1] o.a.c.c.C.[.[.[/verizon_group_project]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-30 16:45:50.859  INFO 99060 --- [http-nio-3333-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-30 16:45:50.879  INFO 99060 --- [http-nio-3333-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 19 ms
