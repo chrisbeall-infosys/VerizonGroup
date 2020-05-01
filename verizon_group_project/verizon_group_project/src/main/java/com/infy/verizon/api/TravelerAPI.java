@@ -54,7 +54,7 @@ public class TravelerAPI {
 	@PostMapping(value = "travelerLogin")
 	public ResponseEntity<Traveler> authenticateTraveler(@RequestBody Traveler traveler) throws Exception {
 		try
-		{	System.out.println("Hello login: " + traveler.getPassword());
+		{	
 			logger.info("TRAVELER TRYING TO LOGIN. TRAVELER LOGIN ID: "+traveler.getLoginId());
 			
 			Traveler travelerFromDB =  travelerService.authenticateTraveler(traveler.getLoginId(), traveler.getPassword());

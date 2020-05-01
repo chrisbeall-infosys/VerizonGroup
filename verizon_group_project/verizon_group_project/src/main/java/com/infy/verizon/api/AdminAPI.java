@@ -59,10 +59,10 @@ public class AdminAPI {
 		try
 		{
 			logger.info("ADMIN TRYING TO LOGIN. ADMIN LOGIN ID: "+admin.getLoginId());
-			System.out.println("In api 1");
+			
 			
 			Admin adminFromDB =  adminLoginService.authenticateAdmin(admin.getLoginId(), admin.getPassword());
-			System.out.println("In api 2");
+			
 			
 			logger.info("ADMIN LOGIN SUCCESSFUL. ADMIN LOGIN ID: "+admin.getLoginId());
 			

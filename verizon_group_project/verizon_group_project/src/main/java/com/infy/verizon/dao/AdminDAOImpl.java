@@ -37,17 +37,18 @@ public class AdminDAOImpl implements AdminDAO {
 
 
 	@Override
-	public Admin getAdminByLoginId(String loginId) {
+	public Admin getAdminByLoginId(String loginId) throws Exception {
 		
 		AdminEntity adminEntity = entityManager.find(AdminEntity.class, loginId);
 		
-			Admin admin = new Admin();
-			
-			admin.setEmail(adminEntity.getEmail());
-			admin.setName(adminEntity.getName());
-			admin.setPassword(adminEntity.getPassword());
-			admin.setLoginId(adminEntity.getLoginId());
-
+			Admin admin = null;
+			if (adminEntity != null) {
+				admin = new Admin();
+				admin.setEmail(adminEntity.getEmail());
+				admin.setName(adminEntity.getName());
+				admin.setPassword(adminEntity.getPassword());
+				admin.setLoginId(adminEntity.getLoginId());
+			}
 		return admin;
 	}
 

@@ -5,18 +5,7 @@ import com.infy.verizon.model.Admin;
 
 public class AdminValidator {
 
-	public static void validateAdmin(Admin admin) throws Exception {
-		
-		if(!validateEmail(admin.getEmail()))
-			throw new Exception("AdminValidator.INVALID_EMAIL_FORMAT");
-		
-		if(!validateName(admin.getName()))
-			throw new Exception("AdminValidator.INVALID_NAME");
-		
-		if(!validatePassword(admin.getPassword()))
-			throw new Exception("AdminValidator.INVALID_PASSWORD_FORMAT");
-			
-	}
+	
 	public static void validateAdminForLogin(String loginId, String password) throws Exception{
 		if( !validateLoginId(loginId) )
 			throw new Exception("AdminValidator.INVALID_LOGINID_FORMAT_FOR_LOGIN");

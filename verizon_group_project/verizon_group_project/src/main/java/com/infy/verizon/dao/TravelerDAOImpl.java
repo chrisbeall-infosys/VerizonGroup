@@ -38,19 +38,14 @@ public class TravelerDAOImpl implements TravelerDAO {
 	}
 
 	@Override
-	public String authenticateTraveler(String loginId, String password) throws Exception {
+	public String authenticateTraveler(String loginId, String password){
 		
 		
 		Query query = entityManager.createQuery("select t from TravelerEntity t where t.loginId = '"+loginId+"' and t.password = '"+password+"'");
-		/*Query query = entityManager.createQuery("select t from TravelerEntity t where t.loginId =: loginId and t.password =: password");
-		query.setParameter("loginId", loginId);
-		query.setParameter("password", password);*/
-		
 
 		@SuppressWarnings("unchecked")
 		List<TravelerEntity> travelerEntities = query.getResultList();
 		if(travelerEntities.isEmpty()) {
-			System.out.println("Is empty");
 			return null;
 		}
 
@@ -58,7 +53,7 @@ public class TravelerDAOImpl implements TravelerDAO {
 	}
 
 	@Override
-	public Traveler getTravelerByLoginId(String loginId) {
+	public Traveler getTravelerByLoginId(String loginId)  {
 
 		Traveler traveler = null;
 		loginId = loginId.toLowerCase();
@@ -77,7 +72,7 @@ public class TravelerDAOImpl implements TravelerDAO {
 	}
 
 	@Override
-	public String getPasswordOfTraveler(String loginId) {
+	public String getPasswordOfTraveler(String loginId){
 		String password = null;
 		loginId = loginId.toLowerCase();
 		TravelerEntity travelerEntity = entityManager.find(TravelerEntity.class, loginId);
@@ -89,7 +84,7 @@ public class TravelerDAOImpl implements TravelerDAO {
 	}
 
 	@Override
-	public Boolean checkAvailabilityOfLoginId(String loginId) {
+	public Boolean checkAvailabilityOfLoginId(String loginId)  {
 		Boolean flag = false;
 
 		TravelerEntity customerEntity = null;
