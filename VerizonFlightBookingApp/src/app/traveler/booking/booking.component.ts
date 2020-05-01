@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '../../../node_modules/@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '../../../node_modules/@angular/forms';
 import { BookingService } from './booking-service.service';
 import { Flight } from '../shared/models/Flight';
 import { Airport } from '../shared/models/airport';
+import { BookingGetFlightsService } from './booking-get-flights.service';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { Airport } from '../shared/models/airport';
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit {
-
+  newBookingForm: FormGroup;
   flightList: Flight[];
   airportList: Airport[];
   airportMap: object;
@@ -22,9 +23,14 @@ export class BookingComponent implements OnInit {
   }
 
 
-  constructor(private fb: FormBuilder, private bookingService: BookingService, private flightService: FlightService) { }
+  constructor(private fb: FormBuilder, private bookingService: BookingService, private flightService: BookingGetFlightsService) { }
 
   ngOnInit() {
+    this.newBookingForm = this.fb.group({
+      filler: ['', [Validators.required ]],
+      
+    });
+
     let flightList = this.flightService.getFlights();
     for (let flight of this.flightList) {
       if (this.airportMap.hasOwnProperty(flight.fromAirport.airportId)) {
