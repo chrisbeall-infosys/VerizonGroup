@@ -2,21 +2,23 @@
 <div class="jumbotron">
     <form (ngSubmit)="" [formGroup]="addBookingForm">
         <div class="form-group">
+            <label for="date">Date of Travel</label>
+            <input id="date" type="datetime" required formControlName="dateOfTravel" class="form-control">
+        </div>
+        <div class="form-group">
             <label for="from">Departing Airport</label>
-            <select id="from" *ngFor="let airport of airportList" (change)="fromSelected($event.target.value)" formControlName="fromAirport" class="form-control">
-                <option>{{airport.airportId}}</select>
+            <select id="from" *ngFor="let airport of airportList" (change)="fromSelected($event.target.value)" formControlName="fromAirport"
+                class="form-control">
+                <option>{{airport.airportId}}</option>
             </select>
         </div>
         <div class="form-group">
             <label for="to">Arriving Airport</label>
             <select id="to" *ngFor="let airportTo of airportToList" fromControlName="toAirport" class="form-control">
-                <option>{{airportTo.airportId}}</select>
+                <option>{{airportTo.airportId}}</option>
             </select>
         </div>
-        <div class="form-group">
-            <label for="date">Date of Travel</label>
-            <input id="date" type="datetime" required formControlName="dateOfTravel" class="form-control">
-        </div>
+
         <div class="form-group">
             <label for="numTravelers">Enter Number of Travelers</label>
             <input id="numTravelers" type="number" required formControlName="numberOfTravelers" class="form-control">
