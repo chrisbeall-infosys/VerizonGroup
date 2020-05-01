@@ -14,29 +14,32 @@ import { Booking } from '../../shared/models/booking';
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit {
-  newBookingForm: FormGroup;
+  addBookingForm: FormGroup;
   flightList: Flight[];
   airportList: Airport[];
   
   airportMap: object;
-  airportToList: Airport[];
   selectedFlight: Flight;
   successMessage:string;
   errorMessage:string;
 
   fromSelected(value: any) {
-    this.airportToList = this.airportMap[value];
+    this.flightList = this.airportMap[value];
+  }
+
+  selectFlight(flight: Flight){
+    this.selectedFlight = flight;
   }
 
   bookingSubmit(){
     let booking:Booking = new Booking();
-    booking.dateOfTravel = this.newBookingForm.get('dateOfTravel').value;
+    booking.dateOfTravel = this.addBookingForm.get('dateOfTravel').value;
     booking.flight = this.selectedFlight;
-    booking.numberOfTravelers = this.newBookingForm.get('numberOfTravelers').value;
+    booking.numberOfTravelers = this.addBookingForm.get('numberOfTravelers').value;
     booking.traveler = JSON.parse(sessionStorage.getItem("traveler"));
     this.bookingService.addNewBooking(booking).subscribe(
       (success) => {
-        this.successMessage = "Deal Added!";
+        this.successMessage = "Your flight has been booked!";
       },
       (error) => {
         this.errorMessage = error.error.message;
@@ -47,7 +50,7 @@ export class BookingComponent implements OnInit {
   constructor(private fb: FormBuilder, private bookingService: BookingService, private flightService: BookingGetFlightsService) { }
 
   ngOnInit() {
-    this.newBookingForm = this.fb.group({
+    this.addBookingForm = this.fb.group({
       flight: ['', [Validators.required]],
       traveler: ['', [Validators.required]],
       fromAirport: ['', [Validators.required]],
@@ -59,11 +62,11 @@ export class BookingComponent implements OnInit {
     let flightList = this.flightService.getFlights();
     for (let flight of this.flightList) {
       if (this.airportMap.hasOwnProperty(flight.fromAirport.airportId)) {
-        this.airportMap[flight.fromAirport.airportId].push(flight.toAirport.airportId)
+        this.airportMap[flight.fromAirport.airportId].push(flight)
       }
       else {
         this.airportList.push(flight.fromAirport);
-        this.airportMap[flight.fromAirport.airportId] = [flight.toAirport.airportId]
+        this.airportMap[flight.fromAirport.airportId] = [flight]
       }
 
     }
