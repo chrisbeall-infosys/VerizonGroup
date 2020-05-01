@@ -9,12 +9,15 @@ import javax.persistence.Table;
 public class AirportEntity {
 	
 	@Id
-	private Integer airportId;
+	private String airportId;
 
-	public Integer getAirportId() {
+	public String getAirportId() {
 		return airportId;
 	}
-	public void setAirportId(Integer airportId) {
+
+	public void setAirportId(String airportId) {
 		this.airportId = airportId;
 	}
+	
+	
 }

@@ -2,27 +2,46 @@ package com.infy.verizon.entity;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="Booking")
 public class BookingEntity {
 	@Id
-	Integer BookingId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer BookingId;
 	
 	@ManyToOne
 	@JoinColumn(name="login_id")
-	TravelerEntity travelerEntity;
+	private TravelerEntity travelerEntity;
 	
-	LocalDate dateOfTravel;
+	private LocalDate dateOfTravel;
 	
-	Integer numberOfTravelers;
+	private Integer numberOfTravelers;
+	
+	private Double cost;
 	
 	@ManyToOne
 	@JoinColumn(name="flight_id")
-	FlightEntity flightEntity;
+	private FlightEntity flightEntity;
+	
+	
+	
+
+	public Double getCost() {
+		return cost;
+	}
+
+	public void setCost(Double cost) {
+		this.cost = cost;
+	}
 
 	public Integer getBookingId() {
 		return BookingId;

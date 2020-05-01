@@ -32,5 +32,5 @@ public class Traveler {
 		this.password = password;
 	}
 	
-	
 }
+

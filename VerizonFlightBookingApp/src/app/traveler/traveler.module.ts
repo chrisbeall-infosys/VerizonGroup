@@ -10,6 +10,9 @@ import { LoginService } from './traveler-landing-page/login/login.service';
 import { RegistrationService } from './traveler-landing-page/registration/registration.service';
 import { TravelerHomeComponent } from './traveler-home/traveler-home.component';
 import { TravelerLandingPageComponent } from './traveler-landing-page/traveler-landing-page.component';
+import { BookingGetFlightsService } from './booking/booking-get-flights.service';
+import { BookingService } from './booking/booking-service.service';
+import { BookingComponent } from './booking/booking.component';
 
 
 
@@ -18,7 +21,8 @@ import { TravelerLandingPageComponent } from './traveler-landing-page/traveler-l
     TravelerHomeComponent,
     TravelerLandingPageComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    BookingComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +35,9 @@ import { TravelerLandingPageComponent } from './traveler-landing-page/traveler-l
   ],
   providers: [
     LoginService,
-    RegistrationService
+    RegistrationService,
+    BookingService,
+    BookingGetFlightsService
   ],
   exports: []
 })

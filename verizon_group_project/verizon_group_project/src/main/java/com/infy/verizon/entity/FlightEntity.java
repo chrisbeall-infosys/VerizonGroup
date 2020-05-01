@@ -19,12 +19,12 @@ public class FlightEntity {
 	private Double taxes;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "airport_id", insertable=false, updatable=false)
-	private AirportEntity fromAirport;
-	
+	@JoinColumn(name="from_airport")
+	private AirportEntity fromAirportEntity;
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "airport_id", insertable=false, updatable=false)
-	private AirportEntity toAirport;
+	@JoinColumn(name="to_airport")
+	private AirportEntity toAirportEntity;
+
 	
 	public Integer getFlightId() {
 		return FlightId;
@@ -44,17 +44,18 @@ public class FlightEntity {
 	public void setTaxes(Double taxes) {
 		this.taxes = taxes;
 	}
-	public AirportEntity getFromAirport() {
-		return fromAirport;
+
+	public AirportEntity getFromAirportEntity() {
+		return fromAirportEntity;
 	}
-	public void setFromAirport(AirportEntity fromAirport) {
-		this.fromAirport = fromAirport;
+	public void setFromAirportEntity(AirportEntity fromAirportEntity) {
+		this.fromAirportEntity = fromAirportEntity;
 	}
-	public AirportEntity getToAirport() {
-		return toAirport;
+	public AirportEntity getToAirportEntity() {
+		return toAirportEntity;
 	}
-	public void setToAirport(AirportEntity toAirport) {
-		this.toAirport = toAirport;
+	public void setToAirportEntity(AirportEntity toAirportEntity) {
+		this.toAirportEntity = toAirportEntity;
 	}
 
 }

@@ -6,22 +6,34 @@ import java.time.LocalDate;
 public class Booking {
 
 	
-	Integer BookingId;
+
+	private Integer bookingId;
+
 	
-	Traveler traveler;
+	private Traveler traveler;
 	
-	LocalDate dateOfTravel;
+	private LocalDate dateOfTravel;
 	
-	Integer numberOfTravelers;
+	private Integer numberOfTravelers;
 	
-	Flight flight;
+	private Flight flight;
 	
+	private Double cost; 
+
+	public Double getCost() {
+		return cost;
+	}
+
+	public void setCost(Double cost) {
+		this.cost = cost;
+	}
+
 	public Integer getBookingId() {
-		return BookingId;
+		return bookingId;
 	}
 
 	public void setBookingId(Integer bookingId) {
-		BookingId = bookingId;
+		this.bookingId = bookingId;
 	}
 
 	public Traveler getTraveler() {
