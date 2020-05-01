@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpErrorResponse, HttpClient } from '../../../node_modules/@angular/common/http';
-import { Flight } from '../shared/models/Flight';
-import { Observable, throwError } from '../../../node_modules/rxjs';
-import { catchError } from '../../../node_modules/rxjs/operators';
+import { Observable, throwError } from '../../../../node_modules/rxjs';
+import { Flight } from '../../shared/models/Flight';
+import { HttpErrorResponse, HttpClient} from '../../../../node_modules/@angular/common/http';
+import { catchError } from '../../../../node_modules/rxjs/operators';
 
 
 @Injectable({

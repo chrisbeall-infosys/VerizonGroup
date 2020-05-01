@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Booking } from '../shared/models/booking';
-import { Observable, throwError } from '../../../node_modules/rxjs';
-import { HttpClient, HttpResponse, HttpErrorResponse } from '../../../node_modules/@angular/common/http';
-import { catchError } from '../../../node_modules/rxjs/operators';
+
+import { catchError } from '../../../../node_modules/rxjs/operators';
+import { Booking } from '../../shared/models/booking';
+import { Observable, throwError } from '../../../../node_modules/rxjs';
+import { HttpClient, HttpErrorResponse } from '../../../../node_modules/@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookingService {
 
-  
+
   constructor(private http: HttpClient) { } 
 
   addNewBooking(booking: Booking): Observable<string>{

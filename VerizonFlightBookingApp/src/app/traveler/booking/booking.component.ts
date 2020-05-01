@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '../../../node_modules/@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '../../../../node_modules/@angular/forms';
 import { BookingService } from './booking-service.service';
-import { Flight } from '../shared/models/Flight';
-import { Airport } from '../shared/models/airport';
+
 import { BookingGetFlightsService } from './booking-get-flights.service';
+import { Flight } from '../../shared/models/Flight';
+import { Airport } from '../../shared/models/airport';
 
 
 @Component({
