@@ -4,31 +4,29 @@ import com.infy.verizon.model.Traveler;
 
 public class TravelerValidator {
 	
-	public static void validateTraveler(Traveler traveler) throws Exception {
+	public static void validateTravelerForLogin(String loginId, String password) throws Exception {
 		
-		if(!validateEmail(traveler.getEmail()))
-			throw new Exception("TravelerValidator.INVALID_EMAIL_FORMAT");
+		if(!validateLoginId(loginId))
+			throw new Exception("TravelerValidator.INVALID_LOGINID_FORMAT_FOR_LOGIN");
+	
 		
-		if(!validateName(traveler.getName()))
-			throw new Exception("TravelerValidator.INVALID_NAME");
-		
-		if(!validatePassword(traveler.getPassword()))
-			throw new Exception("TravelerValidator.INVALID_PASSWORD_FORMAT");
+		if(!validatePassword(password))
+			throw new Exception("TravelerValidator.INVALID_PASSWORD_FORMAT_FOR_LOGIN");
 			
 	}
 	
 	public static void validateTravelerForRegistration(Traveler traveler) throws Exception {
 		if(!validateEmail(traveler.getEmail()))
-			throw new Exception("AdminValidator.INVALID_EMAIL_FORMAT");
+			throw new Exception("TravelerValidator.INVALID_EMAIL_FORMAT");
 
 		if(!validateName(traveler.getName()))
-			throw new Exception("AdminValidator.INVALID_NAME");
+			throw new Exception("TravelerValidator.INVALID_NAME");
 		
 		if(!validatePassword(traveler.getPassword()))
-			throw new Exception("AdminValidator.INVALID_PASSWORD_FORMAT");
+			throw new Exception("TravelerValidator.INVALID_PASSWORD_FORMAT");
 		
 		if(!validateLoginId(traveler.getLoginId()))
-			throw new Exception("AdminValidator.INVALID_LOGINID");
+			throw new Exception("TravelerValidator.INVALID_LOGINID");
 		
 	}
 	
