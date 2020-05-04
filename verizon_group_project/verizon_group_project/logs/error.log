@@ -165,3 +165,44 @@
 2020-05-04 13:22:06.875  INFO 74656 --- [http-nio-3333-exec-6] com.infy.verizon.api.AdminAPI            : ADMIN TRYING TO REGISTER. ADMIN LOGIN ID: thu211
 2020-05-04 13:22:07.269  INFO 74656 --- [http-nio-3333-exec-6] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
 2020-05-04 13:22:08.459  INFO 74656 --- [http-nio-3333-exec-6] com.infy.verizon.api.AdminAPI            : ADMIN REGISTRATION SUCCESSFUL. ADMIN LOGIN ID: thu211
+2020-05-04 13:25:16.312  INFO 74656 --- [http-nio-3333-exec-9] com.infy.verizon.api.AdminAPI            : ADMIN TRYING TO LOGIN. ADMIN LOGIN ID: thu211
+2020-05-04 13:25:17.263  INFO 74656 --- [http-nio-3333-exec-9] com.infy.verizon.api.AdminAPI            : ADMIN LOGIN SUCCESSFUL. ADMIN LOGIN ID: thu211
+2020-05-04 13:25:28.652  INFO 74656 --- [http-nio-3333-exec-2] com.infy.verizon.api.TravelerAPI         : TRAVELER TRYING TO LOGIN. TRAVELER LOGIN ID: thu123
+2020-05-04 13:25:29.536  INFO 74656 --- [http-nio-3333-exec-2] com.infy.verizon.api.TravelerAPI         : TRAVELER LOGIN SUCCESSFUL. TRAVELER LOGIN ID: thu123
+2020-05-04 13:26:13.367  INFO 74656 --- [http-nio-3333-exec-6] com.infy.verizon.api.BookingAPI          : Registering new booking
+2020-05-04 13:26:15.289  INFO 74656 --- [http-nio-3333-exec-6] com.infy.verizon.api.BookingAPI          : Booking Successful, ID: 1
+2020-05-04 13:26:27.542  INFO 74656 --- [http-nio-3333-exec-8] com.infy.verizon.api.BookingAPI          : Registering new booking
+2020-05-04 13:26:29.303  INFO 74656 --- [http-nio-3333-exec-8] com.infy.verizon.api.BookingAPI          : Booking Successful, ID: 2
+2020-05-04 13:30:00.651  INFO 74656 --- [http-nio-3333-exec-10] com.infy.verizon.api.BookingAPI          : Registering new booking
+2020-05-04 13:30:02.431  INFO 74656 --- [http-nio-3333-exec-10] com.infy.verizon.api.BookingAPI          : Booking Successful, ID: 3
+2020-05-04 13:30:20.831  INFO 74656 --- [http-nio-3333-exec-2] com.infy.verizon.api.BookingAPI          : Registering new booking
+2020-05-04 13:30:23.282  INFO 74656 --- [http-nio-3333-exec-2] com.infy.verizon.api.BookingAPI          : Booking Successful, ID: 4
+2020-05-04 16:50:28.202  INFO 51408 --- [main] c.i.v.VerizonGroupProjectApplication     : Starting VerizonGroupProjectApplication on USABOS251490L with PID 51408 (C:\Users\thu.vuong\Desktop\VerizonGroup\verizon_group_project\verizon_group_project\target\classes started by thu.vuong in C:\Users\thu.vuong\Desktop\VerizonGroup\verizon_group_project\verizon_group_project)
+2020-05-04 16:50:28.220  INFO 51408 --- [main] c.i.v.VerizonGroupProjectApplication     : No active profile set, falling back to default profiles: default
+2020-05-04 16:50:30.025  INFO 51408 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-05-04 16:50:30.110  INFO 51408 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 70ms. Found 0 repository interfaces.
+2020-05-04 16:50:30.705  INFO 51408 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$34533490] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-04 16:50:32.215  INFO 51408 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 3333 (http)
+2020-05-04 16:50:32.280  INFO 51408 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-05-04 16:50:32.281  INFO 51408 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.13
+2020-05-04 16:50:32.385  INFO 51408 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_141\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\AdoptOpenJDK\jdk-8.0.202.08\bin;C:\Program Files\AdoptOpenJDK\jre-8.0.202.08\bin;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;c:\python34;c:\MongoDB\MongoDB\bin;c:\instantclient_12_1;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Users\thu.vuong\AppData\Local\Microsoft\WindowsApps;C:\Users\thu.vuong\AppData\Roaming\npm;C:\Users\thu.vuong\AppData\Local\Programs\Microsoft VS Code\bin;.]
+2020-05-04 16:50:32.595  INFO 51408 --- [main] o.a.c.c.C.[.[.[/verizon_group_project]   : Initializing Spring embedded WebApplicationContext
+2020-05-04 16:50:32.596  INFO 51408 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4293 ms
+2020-05-04 16:50:33.241  INFO 51408 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-05-04 16:50:37.085  INFO 51408 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-05-04 16:50:37.305  INFO 51408 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-05-04 16:50:37.466  INFO 51408 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2020-05-04 16:50:37.469  INFO 51408 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2020-05-04 16:50:37.826  INFO 51408 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2020-05-04 16:50:38.491  INFO 51408 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.Oracle12cDialect
+2020-05-04 16:50:41.550  INFO 51408 --- [main] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [byte[]] overrides previous : org.hibernate.type.BinaryType@1280682
+2020-05-04 16:50:41.551  INFO 51408 --- [main] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [[B] overrides previous : org.hibernate.type.BinaryType@1280682
+2020-05-04 16:50:41.552  INFO 51408 --- [main] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [Byte[]] overrides previous : org.hibernate.type.WrapperBinaryType@1e84f3c8
+2020-05-04 16:50:41.552  INFO 51408 --- [main] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [[Ljava.lang.Byte;] overrides previous : org.hibernate.type.WrapperBinaryType@1e84f3c8
+2020-05-04 16:50:43.259  INFO 51408 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-05-04 16:50:44.378  INFO 51408 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-04 16:50:44.489  WARN 51408 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-05-04 16:50:45.079  INFO 51408 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 3333 (http) with context path '/verizon_group_project'
+2020-05-04 16:50:45.085  INFO 51408 --- [main] c.i.v.VerizonGroupProjectApplication     : Started VerizonGroupProjectApplication in 17.412 seconds (JVM running for 18.057)
