@@ -1,21 +1,21 @@
-<p>booking works!</p>
+
 <div class="jumbotron">
     <form (ngSubmit)="bookingSubmit()" [formGroup]="addBookingForm">
         <div class="form-group">
             <label for="date">Date of Travel</label>
-            <input id="date" type="datetime" required formControlName="dateOfTravel" class="form-control">
+            <input id="date" type="date" required formControlName="dateOfTravel" class="form-control">
         </div>
         <div class="form-group">
             <label for="from">Departing Airport</label>
-            <select id="from" *ngFor="let airport of airportList" (change)="fromSelected($event.target.value)" formControlName="fromAirport"
+            <select id="from"  (change)="fromSelected($event.target.value)" formControlName="fromAirport"
                 class="form-control">
-                <option>{{airport.airportId}}</option>
+                <option *ngFor="let airport of airportList" [value]="airport.airportId">{{airport.airportId}}</option>
             </select>
         </div>
         <div class="form-group">
             <label for="to">Arriving Airport</label>
-            <select id="to" *ngFor="let flight of flightList" fromControlName="toAirport" class="form-control" (change)="selectFlight(flight)">
-                <option>{{flight.toAirport.airportId}}</option>
+            <select id="to"  formControlName="toAirport" class="form-control" (change)="selectFlight()">
+                <option *ngFor="let flight of flightList" [ngValue]="flight" >{{flight.toAirport.airportId}}</option>
             </select>
         </div>
 
@@ -23,5 +23,8 @@
             <label for="numTravelers">Enter Number of Travelers</label>
             <input id="numTravelers" type="number" required formControlName="numberOfTravelers" class="form-control">
         </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
     </form>
 </div>
