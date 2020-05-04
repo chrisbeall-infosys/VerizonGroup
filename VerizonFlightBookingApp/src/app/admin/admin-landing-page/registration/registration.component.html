@@ -1,9 +1,10 @@
+
 <div class="page-top-offset"></div>
 <div class="row">
     <div class="container-fluid">
         <div class="col-md-4 offset-md-4">
             <div class="form-bg-light">
-
+                <br/>
                 <h3 class="title">Admin Registration</h3>
                 <form [formGroup]="registerAdminForm" (ngSubmit)="registerAdmin()">
 
@@ -83,8 +84,13 @@
 
                     </div>
                 </form>
-                <h5 class="text-danger">{{errorMessage}}</h5>
-                <h5 class="text-success">{{successMessage}}</h5>
+                <div *ngIf="errorMessage!=null">
+                    <h6 class="text-danger">{{errorMessage}}</h6>
+                </div> 
+                <div *ngIf="successMessage!=null">
+                    <h6 class="text-success">{{successMessage}}</h6>
+                    <h6 class="text-success">Confirmation is sent to {{admin.email}}</h6>
+                </div>
                 <br/>
                 <div class="text-info">Are you a registered admin? <a routerLink="../login">Sign in</a></div>
             </div>

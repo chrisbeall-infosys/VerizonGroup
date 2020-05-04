@@ -38,8 +38,7 @@ public class TravelerAPI {
 			
 			logger.info("TRAVELER REGISTRATION SUCCESSFUL. TRAVELER LOGIN ID: "+ traveler.getLoginId());
 			
-			registeredWithLoginId = environment.getProperty("TravelerAPI.TRAVELER_REGISTRATION_SUCCESS")+registeredWithLoginId
-					 + ". Confirmation is sent to " + traveler.getEmail();
+			registeredWithLoginId = environment.getProperty("TravelerAPI.TRAVELER_REGISTRATION_SUCCESS")+registeredWithLoginId;
 			
 			return new ResponseEntity<String>(registeredWithLoginId, HttpStatus.OK);
 			

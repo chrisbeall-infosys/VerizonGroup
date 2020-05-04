@@ -75,3 +75,6 @@ insert into Flights values (5, 100.20, 10.20, 'TST', 'LAX');
 
 insert into Booking (booking_id, login_id, date_of_travel, number_of_travelers, flight_id, COST) values (1000, 'testtest', TO_DATE('2003/07/09', 'yyyy/mm/dd'), 2, 1, 2000.20);
 
+select * from Flights;
+select * from Admin;
+select * from Traveler;

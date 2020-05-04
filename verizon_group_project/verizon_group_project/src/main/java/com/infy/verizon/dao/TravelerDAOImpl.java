@@ -21,7 +21,7 @@ public class TravelerDAOImpl implements TravelerDAO {
 	
 	@Override
 	public String registerNewTraveler(Traveler traveler) {
-		String registeredWithEmail = null;
+		String registeredWithLoginId = null;
 
 		TravelerEntity travelerEntity = new TravelerEntity();
 
@@ -32,9 +32,9 @@ public class TravelerDAOImpl implements TravelerDAO {
 		
 		entityManager.persist(travelerEntity);
 		
-		registeredWithEmail = travelerEntity.getEmail();
+		registeredWithLoginId = travelerEntity.getLoginId();
 		
-		return registeredWithEmail;
+		return registeredWithLoginId;
 	}
 
 	@Override
