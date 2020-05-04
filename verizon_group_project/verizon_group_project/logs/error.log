@@ -241,3 +241,40 @@
 2020-05-04 13:59:15.785  INFO 66180 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
 2020-05-04 14:02:02.114  INFO 66180 --- [http-nio-3333-exec-3] o.a.c.c.C.[.[.[/verizon_group_project]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
 >>>>>>> c15596e959329755c50a6a42589622f2260b64e3
+2020-05-04 16:31:54.573  INFO 53316 --- [main] c.i.v.VerizonGroupProjectApplication     : Starting VerizonGroupProjectApplication on USABOS279988L with PID 53316 (C:\Users\jonathan.sisneros\Documents\VerizonGroupProject\jrs-branch\VerizonGroup\verizon_group_project\verizon_group_project\target\classes started by jonathan.sisneros in C:\Users\jonathan.sisneros\Documents\VerizonGroupProject\jrs-branch\VerizonGroup\verizon_group_project\verizon_group_project)
+2020-05-04 16:31:54.595  INFO 53316 --- [main] c.i.v.VerizonGroupProjectApplication     : No active profile set, falling back to default profiles: default
+2020-05-04 16:32:06.367  INFO 53316 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-05-04 16:32:06.452  INFO 53316 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 70ms. Found 0 repository interfaces.
+2020-05-04 16:32:07.232  INFO 53316 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$78f1a53c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-04 16:32:08.752  INFO 53316 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 3333 (http)
+2020-05-04 16:32:08.805  INFO 53316 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-05-04 16:32:08.805  INFO 53316 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.13
+2020-05-04 16:32:08.821  INFO 53316 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\AdoptOpenJDK\jdk-8.0.202.08\jre\bin\compressedrefs;C:\Program Files\AdoptOpenJDK\jdk-8.0.202.08\jre\bin;C:\windows\system32;C:\windows;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\AdoptOpenJDK\jdk-8.0.202.08\bin;C:\Program Files\AdoptOpenJDK\jre-8.0.202.08\bin;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;c:\python34;c:\MongoDB\MongoDB\bin;c:\instantclient_12_1;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Users\jonathan.sisneros\AppData\Local\Microsoft\WindowsApps;C:\Users\jonathan.sisneros\AppData\Roaming\npm;C:\Users\jonathan.sisneros\AppData\Local\Programs\Microsoft VS Code\bin;.]
+2020-05-04 16:32:09.107  INFO 53316 --- [main] o.a.c.c.C.[.[.[/verizon_group_project]   : Initializing Spring embedded WebApplicationContext
+2020-05-04 16:32:09.107  INFO 53316 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 14396 ms
+2020-05-04 16:32:09.561  INFO 53316 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-05-04 16:32:13.109  INFO 53316 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-05-04 16:32:13.358  INFO 53316 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-05-04 16:32:13.525  INFO 53316 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2020-05-04 16:32:13.525  INFO 53316 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2020-05-04 16:32:13.902  INFO 53316 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2020-05-04 16:32:14.518  INFO 53316 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.Oracle12cDialect
+2020-05-04 16:32:17.313  INFO 53316 --- [main] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [byte[]] overrides previous : org.hibernate.type.BinaryType@4e37ea1
+2020-05-04 16:32:17.315  INFO 53316 --- [main] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [[B] overrides previous : org.hibernate.type.BinaryType@4e37ea1
+2020-05-04 16:32:17.316  INFO 53316 --- [main] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [Byte[]] overrides previous : org.hibernate.type.WrapperBinaryType@c0d888ca
+2020-05-04 16:32:17.317  INFO 53316 --- [main] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [[Ljava.lang.Byte;] overrides previous : org.hibernate.type.WrapperBinaryType@c0d888ca
+2020-05-04 16:32:18.805  INFO 53316 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-05-04 16:32:19.892  INFO 53316 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-04 16:32:19.990  WARN 53316 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-05-04 16:32:20.630  INFO 53316 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 3333 (http) with context path '/verizon_group_project'
+2020-05-04 16:32:20.636  INFO 53316 --- [main] c.i.v.VerizonGroupProjectApplication     : Started VerizonGroupProjectApplication in 26.77 seconds (JVM running for 27.83)
+2020-05-04 16:38:57.459  INFO 53316 --- [http-nio-3333-exec-4] o.a.c.c.C.[.[.[/verizon_group_project]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-05-04 16:38:57.460  INFO 53316 --- [http-nio-3333-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-05-04 16:38:57.477  INFO 53316 --- [http-nio-3333-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 17 ms
+2020-05-04 16:38:57.874  INFO 53316 --- [http-nio-3333-exec-2] com.infy.verizon.api.AdminAPI            : ADMIN TRYING TO LOGIN. ADMIN LOGIN ID: jon123
+2020-05-04 16:39:01.158  INFO 53316 --- [http-nio-3333-exec-2] com.infy.verizon.api.AdminAPI            : ADMIN LOGIN SUCCESSFUL. ADMIN LOGIN ID: jon123
+2020-05-04 16:39:23.925  INFO 53316 --- [http-nio-3333-exec-6] com.infy.verizon.api.TravelerAPI         : TRAVELER TRYING TO LOGIN. TRAVELER LOGIN ID: jay123
+2020-05-04 16:39:24.271  INFO 53316 --- [http-nio-3333-exec-6] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2020-05-04 16:39:24.958  INFO 53316 --- [http-nio-3333-exec-6] com.infy.verizon.api.TravelerAPI         : TRAVELER LOGIN SUCCESSFUL. TRAVELER LOGIN ID: jay123
