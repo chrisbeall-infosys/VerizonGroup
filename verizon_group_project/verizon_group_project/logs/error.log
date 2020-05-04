@@ -165,3 +165,12 @@
 2020-05-04 13:22:06.875  INFO 74656 --- [http-nio-3333-exec-6] com.infy.verizon.api.AdminAPI            : ADMIN TRYING TO REGISTER. ADMIN LOGIN ID: thu211
 2020-05-04 13:22:07.269  INFO 74656 --- [http-nio-3333-exec-6] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
 2020-05-04 13:22:08.459  INFO 74656 --- [http-nio-3333-exec-6] com.infy.verizon.api.AdminAPI            : ADMIN REGISTRATION SUCCESSFUL. ADMIN LOGIN ID: thu211
+2020-05-04 13:59:09.670  INFO 66180 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-05-04 13:59:09.745  INFO 66180 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 59ms. Found 0 repository interfaces.
+2020-05-04 13:59:11.826  INFO 66180 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-05-04 13:59:11.826  INFO 66180 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.13
+2020-05-04 13:59:11.837  INFO 66180 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\AdoptOpenJDK\jdk-8.0.202.08\jre\bin\compressedrefs;C:\Program Files\AdoptOpenJDK\jdk-8.0.202.08\jre\bin;C:\windows\system32;C:\windows;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\AdoptOpenJDK\jdk-8.0.202.08\bin;C:\Program Files\AdoptOpenJDK\jre-8.0.202.08\bin;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;c:\python34;c:\MongoDB\MongoDB\bin;c:\instantclient_12_1;C:\Program Files\nodejs\;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\PuTTY\;C:\Program Files\Git\cmd;C:\Users\christopher.beall\AppData\Local\Microsoft\WindowsApps;C:\Users\christopher.beall\AppData\Roaming\npm;.]
+2020-05-04 13:59:12.032  INFO 66180 --- [main] o.a.c.c.C.[.[.[/verizon_group_project]   : Initializing Spring embedded WebApplicationContext
+2020-05-04 13:59:12.329  INFO 66180 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-05-04 13:59:15.785  INFO 66180 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-05-04 14:02:02.114  INFO 66180 --- [http-nio-3333-exec-3] o.a.c.c.C.[.[.[/verizon_group_project]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
