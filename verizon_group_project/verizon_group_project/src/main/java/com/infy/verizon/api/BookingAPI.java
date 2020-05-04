@@ -39,6 +39,7 @@ public class BookingAPI {
 			logger.info("Booking Successful, ID: " + newBookingId);
 			
 			String bookingMessage = environment.getProperty("BookingAPI.NEW_BOOKING_SUCCESS")+ newBookingId;
+			System.out.println(bookingMessage);
 			
 			return new ResponseEntity<String>(bookingMessage, HttpStatus.OK);
 			

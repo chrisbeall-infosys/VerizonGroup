@@ -8,7 +8,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminModule } from './admin/admin.module';
 import { TravelerModule } from './traveler/traveler.module';
 
-import { BookingService } from './booking/booking-service.service';
 import { VerizonRoutingGuard } from './app.routing-guard';
 import { FlightComponent } from './flight/flight.component';
 import { AirportComponent } from './airport/airport.component';
@@ -30,7 +29,7 @@ import { AirportComponent } from './airport/airport.component';
     TravelerModule
   ],
 
-  providers: [VerizonRoutingGuard, BookingService],
+  providers: [VerizonRoutingGuard],
 
   bootstrap: [AppComponent]
 })

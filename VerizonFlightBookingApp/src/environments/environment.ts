@@ -7,7 +7,9 @@ const APPLICATION_NAME: string = '/verizon_group_project';
 export const environment = {
   production: false,
   adminAPIUrl: 'http://' + HOSTNAME + ':' + PORT_NUMBER + APPLICATION_NAME + '/AdminAPI',
-  travelerAPIUrl: 'http://' + HOSTNAME + ':' + PORT_NUMBER + APPLICATION_NAME + '/TravelerAPI'
+  travelerAPIUrl: 'http://' + HOSTNAME + ':' + PORT_NUMBER + APPLICATION_NAME + '/TravelerAPI',
+  flightAPIUrl: 'http://' + HOSTNAME + ':' + PORT_NUMBER + APPLICATION_NAME+ '/FlightAPI',
+  bookingAPIUrl: 'http://' + HOSTNAME + ':' + PORT_NUMBER + APPLICATION_NAME + '/BookingAPI'
 
 };
 

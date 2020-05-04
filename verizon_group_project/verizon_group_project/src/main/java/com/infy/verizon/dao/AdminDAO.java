@@ -8,7 +8,7 @@ public interface AdminDAO {
 	
 	public String registerNewAdmin(Admin admin);
 	
-	public Admin getAdminByLoginId(String loginId);
+	public Admin getAdminByLoginId(String loginId) throws Exception;
 	public String getPasswordOfAdmin(String emailId);
 	public Boolean checkAvailabilityOfLoginId(String loginId);
 	

@@ -1,0 +1,46 @@
+<div class="jumbotron">
+    <form (ngSubmit)="bookingSubmit()" [formGroup]="addBookingForm">
+        <div class="form-group">
+            <div class="col-sm-4">
+                <label for="date">Date of Travel</label>
+                <input id="date" type="date" required formControlName="dateOfTravel" class="form-control">
+            </div>
+            <div class="text-danger" *ngIf="!addBookingForm.get('dateOfTravel').valid && addBookingForm.get('dateOfTravel').dirty">
+                The Date needs to be a future date and within a year.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-4">
+                <label for="from">Departing Airport</label>
+                <select id="from" (change)="fromSelected($event.target.value)" formControlName="fromAirport" class="form-control">
+                    <option *ngFor="let airport of airportList" [value]="airport.airportId">{{airport.airportId}}</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="form-group col-sm-4">
+            <label for="to">Arriving Airport</label>
+            <select id="to" formControlName="toAirport" class="form-control">
+                <option *ngFor="let flight of flightList" [ngValue]="flight">{{flight.toAirport.airportId}}</option>
+            </select>
+
+        </div>
+
+        <div class="form-group col-sm-4">
+            <label for="numTravelers">Enter Number of Travelers</label>
+            <input id="numTravelers" type="number" required formControlName="numberOfTravelers" class="form-control" (ngModelChange)="changeNumberOfTravelers()"
+                min="1">
+            <div class="text-danger" *ngIf="!addBookingForm.get('numberOfTravelers').valid && addBookingForm.get('numberOfTravelers').dirty">
+                Please enter a value greater than zero.
+            </div>
+        </div>
+        <div *ngIf="isNumberEntered && total > 0">
+            <p>
+                Your total is: {{total | currency:'USD'}}
+            </p>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="addBookingForm.pristine" *ngIf="successMessage == null">Submit</button>
+        <div class="text-success" *ngIf="successMessage != null">{{successMessage}}</div>
+    </form>
+</div>
