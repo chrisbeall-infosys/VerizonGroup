@@ -6,6 +6,7 @@ import { BookingGetFlightsService } from './booking-get-flights.service';
 import { Flight } from '../../shared/models/Flight';
 import { Airport } from '../../shared/models/airport';
 import { Booking } from '../../shared/models/booking';
+import { DateValidator } from './booking.validator';
 
 
 @Component({
@@ -17,18 +18,33 @@ export class BookingComponent implements OnInit {
   addBookingForm: FormGroup;
   flightList: Flight[] = [];
   airportList: Airport[] = [];
-
+  isNumberEntered: boolean =false;
   airportMap: object = {};
-  selectedFlight: Flight;
+  
+  
   successMessage: string;
   errorMessage: string;
+  total: number = 0; 
 
   fromSelected(value: any) {
     this.flightList = this.airportMap[value];
+    this.addBookingForm.get('toAirport').enable();
   }
 
-  selectFlight() {
-    console.log(this.addBookingForm.get('toAirport').value);
+
+  changeNumberOfTravelers(){
+   
+    if (this.addBookingForm.get('numberOfTravelers').value > 0){
+      this.calculateTotal();
+      this.isNumberEntered = true;
+    }
+    else{
+      this.isNumberEntered = false;
+    }
+  }
+  calculateTotal(){
+    let selectedFlight: Flight = this.addBookingForm.get('toAirport').value;
+    this.total =  (selectedFlight.fare + selectedFlight.taxes) * this.addBookingForm.get('numberOfTravelers').value;
   }
 
   bookingSubmit() {
@@ -40,7 +56,8 @@ export class BookingComponent implements OnInit {
     console.log(booking);
     this.bookingService.addNewBooking(booking).subscribe(
       success => {
-        this.successMessage = "Your flight has been booked!";
+        console.log(success);
+        this.successMessage = success;
       },
       error => {
         console.log(error);
@@ -54,12 +71,11 @@ export class BookingComponent implements OnInit {
 
   ngOnInit() {
     this.addBookingForm = this.fb.group({
-      flight: ['', [Validators.required]],
       traveler: ['', [Validators.required]],
       fromAirport: ['', [Validators.required]],
-      toAirport: ['', [Validators.required]],
-      numberOfTravelers: ['', Validators.required],
-      dateOfTravel: ['', [Validators.required]]
+      toAirport: [ {value: '', disabled: true}, [Validators.required]],
+      numberOfTravelers: ['', [Validators.required, Validators.min(1)]],
+      dateOfTravel: ['', [Validators.required, DateValidator.today, DateValidator.year]]
     });
 
     this.flightService.getFlights()

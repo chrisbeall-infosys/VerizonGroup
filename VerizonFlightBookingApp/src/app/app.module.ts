@@ -9,12 +9,16 @@ import { AdminModule } from './admin/admin.module';
 import { TravelerModule } from './traveler/traveler.module';
 
 import { VerizonRoutingGuard } from './app.routing-guard';
+import { FlightComponent } from './flight/flight.component';
+import { AirportComponent } from './airport/airport.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthorizationErrorComponent
+    AuthorizationErrorComponent,
+    FlightComponent,
+    AirportComponent
   ],
   imports: [
     BrowserModule,

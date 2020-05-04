@@ -1,3 +1,69 @@
+<<<<<<< HEAD
+2020-05-04 15:30:50.735  INFO 80368 --- [main] c.i.v.VerizonGroupProjectApplication     : Starting VerizonGroupProjectApplication on USABOS279988L with PID 80368 (C:\Users\jonathan.sisneros\Documents\VerizonGroupProject\jrs-branch\VerizonGroup\verizon_group_project\verizon_group_project\target\classes started by jonathan.sisneros in C:\Users\jonathan.sisneros\Documents\VerizonGroupProject\jrs-branch\VerizonGroup\verizon_group_project\verizon_group_project)
+2020-05-04 15:30:50.751  INFO 80368 --- [main] c.i.v.VerizonGroupProjectApplication     : No active profile set, falling back to default profiles: default
+2020-05-04 15:30:52.222  INFO 80368 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-05-04 15:30:52.300  INFO 80368 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 57ms. Found 0 JPA repository interfaces.
+2020-05-04 15:30:58.458  INFO 60036 --- [main] c.i.v.VerizonGroupProjectApplication     : Starting VerizonGroupProjectApplication on USABOS279988L with PID 60036 (C:\Users\jonathan.sisneros\Documents\VerizonGroupProject\jrs-branch\VerizonGroup\verizon_group_project\verizon_group_project\target\classes started by jonathan.sisneros in C:\Users\jonathan.sisneros\Documents\VerizonGroupProject\jrs-branch\VerizonGroup\verizon_group_project\verizon_group_project)
+2020-05-04 15:30:58.458  INFO 60036 --- [main] c.i.v.VerizonGroupProjectApplication     : No active profile set, falling back to default profiles: default
+2020-05-04 15:30:59.561  INFO 60036 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-05-04 15:30:59.630  INFO 60036 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 61ms. Found 0 JPA repository interfaces.
+2020-05-04 15:31:01.411  INFO 60036 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 3333 (http)
+2020-05-04 15:31:01.431  INFO 60036 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-05-04 15:31:01.431  INFO 60036 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-05-04 15:31:01.664  INFO 60036 --- [main] o.a.c.c.C.[.[.[/verizon_group_project]   : Initializing Spring embedded WebApplicationContext
+2020-05-04 15:31:01.664  INFO 60036 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3090 ms
+2020-05-04 15:31:02.041  INFO 60036 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-05-04 15:31:05.692  INFO 60036 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-05-04 15:31:05.910  INFO 60036 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-05-04 15:31:06.346  INFO 60036 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.12.Final
+2020-05-04 15:31:06.694  INFO 60036 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-05-04 15:31:07.296  INFO 60036 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2020-05-04 15:31:13.055  INFO 60036 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-05-04 15:31:13.055  INFO 60036 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-05-04 15:31:13.572  WARN 60036 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-05-04 15:31:14.010  INFO 60036 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-04 15:31:14.674  INFO 60036 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 3333 (http) with context path '/verizon_group_project'
+2020-05-04 15:31:14.674  INFO 60036 --- [main] c.i.v.VerizonGroupProjectApplication     : Started VerizonGroupProjectApplication in 16.963 seconds (JVM running for 17.636)
+2020-05-04 15:37:00.035  INFO 60036 --- [http-nio-3333-exec-1] o.a.c.c.C.[.[.[/verizon_group_project]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-05-04 15:37:00.036  INFO 60036 --- [http-nio-3333-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-05-04 15:37:00.072  INFO 60036 --- [http-nio-3333-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 36 ms
+2020-05-04 15:37:00.492  INFO 60036 --- [http-nio-3333-exec-2] com.infy.verizon.api.TravelerAPI         : TRAVELER TRYING TO LOGIN. TRAVELER LOGIN ID: tom123
+2020-05-04 15:37:01.525 ERROR 60036 --- [http-nio-3333-exec-2] com.infy.verizon.utility.LoggingAspect   : TravelerService.INVALID_CREDENTIALS
+2020-05-04 16:02:59.866  INFO 66892 --- [main] c.i.v.VerizonGroupProjectApplication     : Starting VerizonGroupProjectApplication on USABOS279988L with PID 66892 (C:\Users\jonathan.sisneros\Documents\VerizonGroupProject\jrs-branch\VerizonGroup\verizon_group_project\verizon_group_project\target\classes started by jonathan.sisneros in C:\Users\jonathan.sisneros\Documents\VerizonGroupProject\jrs-branch\VerizonGroup\verizon_group_project\verizon_group_project)
+2020-05-04 16:02:59.873  INFO 66892 --- [main] c.i.v.VerizonGroupProjectApplication     : No active profile set, falling back to default profiles: default
+2020-05-04 16:03:01.074  INFO 66892 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-05-04 16:03:01.138  INFO 66892 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 50ms. Found 0 JPA repository interfaces.
+2020-05-04 16:03:02.818  INFO 66892 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 3333 (http)
+2020-05-04 16:03:02.834  INFO 66892 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-05-04 16:03:02.835  INFO 66892 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-05-04 16:03:03.019  INFO 66892 --- [main] o.a.c.c.C.[.[.[/verizon_group_project]   : Initializing Spring embedded WebApplicationContext
+2020-05-04 16:03:03.019  INFO 66892 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3027 ms
+2020-05-04 16:03:03.492  INFO 66892 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-05-04 16:03:07.148  INFO 66892 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-05-04 16:03:07.270  INFO 66892 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-05-04 16:03:07.403  INFO 66892 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.12.Final
+2020-05-04 16:03:07.619  INFO 66892 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-05-04 16:03:08.152  INFO 66892 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2020-05-04 16:03:12.986  INFO 66892 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-05-04 16:03:13.001  INFO 66892 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-05-04 16:03:13.401  WARN 66892 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-05-04 16:03:13.802  INFO 66892 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-04 16:03:14.317  INFO 66892 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 3333 (http) with context path '/verizon_group_project'
+2020-05-04 16:03:14.321  INFO 66892 --- [main] c.i.v.VerizonGroupProjectApplication     : Started VerizonGroupProjectApplication in 15.213 seconds (JVM running for 15.938)
+2020-05-04 16:03:33.444  INFO 66892 --- [http-nio-3333-exec-1] o.a.c.c.C.[.[.[/verizon_group_project]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-05-04 16:03:33.445  INFO 66892 --- [http-nio-3333-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-05-04 16:03:33.465  INFO 66892 --- [http-nio-3333-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 19 ms
+2020-05-04 16:03:33.736  INFO 66892 --- [http-nio-3333-exec-3] com.infy.verizon.api.AdminAPI            : ADMIN TRYING TO REGISTER. ADMIN LOGIN ID: jon123
+2020-05-04 16:03:35.313  INFO 66892 --- [http-nio-3333-exec-3] com.infy.verizon.api.AdminAPI            : ADMIN REGISTRATION SUCCESSFUL. ADMIN LOGIN ID: jon123
+2020-05-04 16:03:49.734  INFO 66892 --- [http-nio-3333-exec-5] com.infy.verizon.api.AdminAPI            : ADMIN TRYING TO LOGIN. ADMIN LOGIN ID: jon123
+2020-05-04 16:03:50.615  INFO 66892 --- [http-nio-3333-exec-5] com.infy.verizon.api.AdminAPI            : ADMIN LOGIN SUCCESSFUL. ADMIN LOGIN ID: jon123
+2020-05-04 16:04:53.026  INFO 66892 --- [http-nio-3333-exec-7] com.infy.verizon.api.TravelerAPI         : TRAVELER TRYING TO REGISTER. TRAVELER LOGIN ID: jay123
+2020-05-04 16:04:54.164  INFO 66892 --- [http-nio-3333-exec-7] com.infy.verizon.api.TravelerAPI         : TRAVELER REGISTRATION SUCCESSFUL. TRAVELER LOGIN ID: jay123
+2020-05-04 16:05:17.688  INFO 66892 --- [http-nio-3333-exec-8] com.infy.verizon.api.TravelerAPI         : TRAVELER TRYING TO LOGIN. TRAVELER LOGIN ID: jon123
+2020-05-04 16:05:18.269 ERROR 66892 --- [http-nio-3333-exec-8] com.infy.verizon.utility.LoggingAspect   : TravelerService.INVALID_CREDENTIALS
+2020-05-04 16:05:23.863  INFO 66892 --- [http-nio-3333-exec-9] com.infy.verizon.api.TravelerAPI         : TRAVELER TRYING TO LOGIN. TRAVELER LOGIN ID: jay123
+2020-05-04 16:05:24.700  INFO 66892 --- [http-nio-3333-exec-9] com.infy.verizon.api.TravelerAPI         : TRAVELER LOGIN SUCCESSFUL. TRAVELER LOGIN ID: jay123
+=======
 2020-05-04 12:05:24.276  INFO 79544 --- [main] c.i.v.VerizonGroupProjectApplication     : Starting VerizonGroupProjectApplication on USABOS251490L with PID 79544 (C:\Users\thu.vuong\Desktop\VerizonGroup\verizon_group_project\verizon_group_project\target\classes started by thu.vuong in C:\Users\thu.vuong\Desktop\VerizonGroup\verizon_group_project\verizon_group_project)
 2020-05-04 12:05:24.540  INFO 79544 --- [main] c.i.v.VerizonGroupProjectApplication     : No active profile set, falling back to default profiles: default
 2020-05-04 12:05:30.426  INFO 79544 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
@@ -165,6 +231,7 @@
 2020-05-04 13:22:06.875  INFO 74656 --- [http-nio-3333-exec-6] com.infy.verizon.api.AdminAPI            : ADMIN TRYING TO REGISTER. ADMIN LOGIN ID: thu211
 2020-05-04 13:22:07.269  INFO 74656 --- [http-nio-3333-exec-6] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
 2020-05-04 13:22:08.459  INFO 74656 --- [http-nio-3333-exec-6] com.infy.verizon.api.AdminAPI            : ADMIN REGISTRATION SUCCESSFUL. ADMIN LOGIN ID: thu211
+<<<<<<< HEAD
 2020-05-04 13:25:16.312  INFO 74656 --- [http-nio-3333-exec-9] com.infy.verizon.api.AdminAPI            : ADMIN TRYING TO LOGIN. ADMIN LOGIN ID: thu211
 2020-05-04 13:25:17.263  INFO 74656 --- [http-nio-3333-exec-9] com.infy.verizon.api.AdminAPI            : ADMIN LOGIN SUCCESSFUL. ADMIN LOGIN ID: thu211
 2020-05-04 13:25:28.652  INFO 74656 --- [http-nio-3333-exec-2] com.infy.verizon.api.TravelerAPI         : TRAVELER TRYING TO LOGIN. TRAVELER LOGIN ID: thu123
@@ -206,3 +273,15 @@
 2020-05-04 16:50:44.489  WARN 51408 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 2020-05-04 16:50:45.079  INFO 51408 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 3333 (http) with context path '/verizon_group_project'
 2020-05-04 16:50:45.085  INFO 51408 --- [main] c.i.v.VerizonGroupProjectApplication     : Started VerizonGroupProjectApplication in 17.412 seconds (JVM running for 18.057)
+=======
+2020-05-04 13:59:09.670  INFO 66180 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-05-04 13:59:09.745  INFO 66180 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 59ms. Found 0 repository interfaces.
+2020-05-04 13:59:11.826  INFO 66180 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-05-04 13:59:11.826  INFO 66180 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.13
+2020-05-04 13:59:11.837  INFO 66180 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\AdoptOpenJDK\jdk-8.0.202.08\jre\bin\compressedrefs;C:\Program Files\AdoptOpenJDK\jdk-8.0.202.08\jre\bin;C:\windows\system32;C:\windows;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\AdoptOpenJDK\jdk-8.0.202.08\bin;C:\Program Files\AdoptOpenJDK\jre-8.0.202.08\bin;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;c:\python34;c:\MongoDB\MongoDB\bin;c:\instantclient_12_1;C:\Program Files\nodejs\;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\PuTTY\;C:\Program Files\Git\cmd;C:\Users\christopher.beall\AppData\Local\Microsoft\WindowsApps;C:\Users\christopher.beall\AppData\Roaming\npm;.]
+2020-05-04 13:59:12.032  INFO 66180 --- [main] o.a.c.c.C.[.[.[/verizon_group_project]   : Initializing Spring embedded WebApplicationContext
+2020-05-04 13:59:12.329  INFO 66180 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-05-04 13:59:15.785  INFO 66180 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-05-04 14:02:02.114  INFO 66180 --- [http-nio-3333-exec-3] o.a.c.c.C.[.[.[/verizon_group_project]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+>>>>>>> c15596e959329755c50a6a42589622f2260b64e3
+>>>>>>> 4e982aae3d1a620bca737d9dff04e9b7d003f043
