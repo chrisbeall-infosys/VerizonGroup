@@ -164,3 +164,4 @@
 2020-05-04 13:21:36.702  INFO 74656 --- [http-nio-3333-exec-3] com.infy.verizon.api.TravelerAPI         : TRAVELER REGISTRATION SUCCESSFUL. TRAVELER LOGIN ID: thu331
 2020-05-04 13:22:06.875  INFO 74656 --- [http-nio-3333-exec-6] com.infy.verizon.api.AdminAPI            : ADMIN TRYING TO REGISTER. ADMIN LOGIN ID: thu211
 2020-05-04 13:22:07.269  INFO 74656 --- [http-nio-3333-exec-6] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2020-05-04 13:22:08.459  INFO 74656 --- [http-nio-3333-exec-6] com.infy.verizon.api.AdminAPI            : ADMIN REGISTRATION SUCCESSFUL. ADMIN LOGIN ID: thu211
