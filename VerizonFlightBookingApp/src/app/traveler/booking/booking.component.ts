@@ -56,7 +56,8 @@ export class BookingComponent implements OnInit {
     console.log(booking);
     this.bookingService.addNewBooking(booking).subscribe(
       success => {
-        this.successMessage = "Your flight has been booked!";
+        console.log(success);
+        this.successMessage = success;
       },
       error => {
         console.log(error);
