@@ -14,59 +14,75 @@ import { Booking } from '../../shared/models/booking';
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit {
-  newBookingForm: FormGroup;
-  flightList: Flight[];
-  airportList: Airport[];
-  
-  airportMap: object;
-  airportToList: Airport[];
+  addBookingForm: FormGroup;
+  flightList: Flight[] = [];
+  airportList: Airport[] = [];
+
+  airportMap: object = {};
   selectedFlight: Flight;
-  successMessage:string;
-  errorMessage:string;
+  successMessage: string;
+  errorMessage: string;
 
   fromSelected(value: any) {
-    this.airportToList = this.airportMap[value];
+    this.flightList = this.airportMap[value];
   }
 
-  bookingSubmit(){
-    let booking:Booking = new Booking();
-    booking.dateOfTravel = this.newBookingForm.get('dateOfTravel').value;
-    booking.flight = this.selectedFlight;
-    booking.numberOfTravelers = this.newBookingForm.get('numberOfTravelers').value;
+  selectFlight() {
+    console.log(this.addBookingForm.get('toAirport').value);
+  }
+
+  bookingSubmit() {
+    let booking: Booking = new Booking();
+    booking.dateOfTravel = this.addBookingForm.get('dateOfTravel').value;
+    booking.flight = this.addBookingForm.get('toAirport').value;
+    booking.numberOfTravelers = this.addBookingForm.get('numberOfTravelers').value;
     booking.traveler = JSON.parse(sessionStorage.getItem("traveler"));
+    console.log(booking);
     this.bookingService.addNewBooking(booking).subscribe(
-      (success) => {
-        this.successMessage = "Deal Added!";
+      success => {
+        this.successMessage = "Your flight has been booked!";
       },
-      (error) => {
+      error => {
+        console.log(error);
         this.errorMessage = error.error.message;
-      }
-    )};
+      },
+    )
+  };
 
 
   constructor(private fb: FormBuilder, private bookingService: BookingService, private flightService: BookingGetFlightsService) { }
 
   ngOnInit() {
-    this.newBookingForm = this.fb.group({
+    this.addBookingForm = this.fb.group({
       flight: ['', [Validators.required]],
       traveler: ['', [Validators.required]],
       fromAirport: ['', [Validators.required]],
-      toAirport :['', [Validators.required]],
+      toAirport: ['', [Validators.required]],
       numberOfTravelers: ['', Validators.required],
-      dateOfTravel: ['', [Validators.required]]      
+      dateOfTravel: ['', [Validators.required]]
     });
 
-    let flightList = this.flightService.getFlights();
-    for (let flight of this.flightList) {
-      if (this.airportMap.hasOwnProperty(flight.fromAirport.airportId)) {
-        this.airportMap[flight.fromAirport.airportId].push(flight.toAirport.airportId)
-      }
-      else {
-        this.airportList.push(flight.fromAirport);
-        this.airportMap[flight.fromAirport.airportId] = [flight.toAirport.airportId]
-      }
+    this.flightService.getFlights()
+      .subscribe((flightList) => {
+        this.flightList = flightList;
+      }, (err) => {
+        console.error(err);
+        this.errorMessage = err.error.message;
+      },
+        () => {
+          for (let flight of this.flightList) {
+            if (this.airportMap.hasOwnProperty(flight.fromAirport.airportId)) {
+              this.airportMap[flight.fromAirport.airportId].push(flight)
+              
+            }
+            else {
+              this.airportList.push(flight.fromAirport);
+              this.airportMap[flight.fromAirport.airportId] = [flight]
+            }
+            
+          }
 
-    }
+        });
   }
 
 }
