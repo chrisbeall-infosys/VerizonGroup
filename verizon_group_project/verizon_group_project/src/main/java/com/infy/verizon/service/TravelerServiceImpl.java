@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.infy.verizon.dao.TravelerDAO;
 import com.infy.verizon.model.Traveler;
 import com.infy.verizon.utility.HashingUtility;
-import com.infy.verizon.validator.AdminValidator;
 import com.infy.verizon.validator.TravelerValidator;
 
 @Service(value="travelerService" )

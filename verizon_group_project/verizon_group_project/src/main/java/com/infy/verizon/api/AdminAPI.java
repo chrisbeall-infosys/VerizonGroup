@@ -41,7 +41,8 @@ public class AdminAPI {
 			
 			logger.info("ADMIN REGISTRATION SUCCESSFUL. ADMIN LOGIN ID: "+admin.getLoginId());
 			
-			registeredWithLoginId = environment.getProperty("AdminAPI.ADMIN_REGISTRATION_SUCCESS")+registeredWithLoginId;
+			registeredWithLoginId = environment.getProperty("AdminAPI.ADMIN_REGISTRATION_SUCCESS")+registeredWithLoginId
+					+ ". Confirmation is sent to " + admin.getEmail();
 			
 			return new ResponseEntity<String>(registeredWithLoginId, HttpStatus.OK);
 			
