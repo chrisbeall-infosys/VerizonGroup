@@ -9,7 +9,7 @@ import com.infy.verizon.dao.BookingDAOImpl;
 import com.infy.verizon.model.Booking;
 import com.infy.verizon.validator.BookingValidator;
 
-@Service(value="bookingServiceImpl")
+@Service(value="bookingService")
 @Transactional
 public class BookingServiceImpl implements BookingService{
 	@Autowired
@@ -18,6 +18,12 @@ public class BookingServiceImpl implements BookingService{
 	@Override
 	public Integer addNewBooking(Booking booking) throws Exception{
 		BookingValidator.validateBooking(booking);
-		return bookingDAO.addNewBooking(booking);
+		
+		Integer value = bookingDAO.addNewBooking(booking);
+		
+		if (value.equals(-1)){
+			throw new Exception("A field was left null");
+		}
+		return value;
 	}
 }

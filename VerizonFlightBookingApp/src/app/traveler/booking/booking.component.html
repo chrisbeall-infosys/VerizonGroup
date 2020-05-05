@@ -37,6 +37,8 @@
         </div>
         <div *ngIf="isNumberEntered && total > 0">
             <p>
+                Fare per person: {{fare}}
+                Taxes per person: {{taxes}}
                 Your total is: {{total | currency:'USD'}}
             </p>
         </div>
