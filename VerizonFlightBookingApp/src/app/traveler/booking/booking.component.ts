@@ -25,6 +25,8 @@ export class BookingComponent implements OnInit {
   successMessage: string;
   errorMessage: string;
   total: number = 0; 
+  fare: number;
+  taxes: number;
 
   fromSelected(value: any) {
     this.flightList = this.airportMap[value];
@@ -45,6 +47,8 @@ export class BookingComponent implements OnInit {
   calculateTotal(){
     let selectedFlight: Flight = this.addBookingForm.get('toAirport').value;
     this.total =  (selectedFlight.fare + selectedFlight.taxes) * this.addBookingForm.get('numberOfTravelers').value;
+    this.fare = selectedFlight.fare;
+    this.taxes = selectedFlight.taxes;
   }
 
   bookingSubmit() {
