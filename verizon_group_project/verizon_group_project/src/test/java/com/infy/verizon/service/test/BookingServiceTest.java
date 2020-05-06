@@ -1,6 +1,6 @@
 package com.infy.verizon.service.test;
 
-import org.junit.After;
+
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -8,8 +8,9 @@ import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.MockitoAnnotations;
+
+import static org.mockito.Mockito.*;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.junit.Assert;
@@ -38,11 +39,10 @@ public class BookingServiceTest {
 	@Rule
 	public ExpectedException expectedException=ExpectedException.none();
 	
-	public Booking booking;
 	
-	@Before
-	public void setupBooking(){
-		this.booking = new Booking();
+	@Test 
+	public void testAddNewBookingCorrectly() throws Exception{
+		Booking booking = new Booking();
 		Traveler traveler = new Traveler();
 		traveler.setLoginId("test");
 		traveler.setEmail("test@test.com");
@@ -60,31 +60,55 @@ public class BookingServiceTest {
 		flight.setToAirport(airportTo);
 		flight.setTaxes(1.0);
 		
-		this.booking.setFlight(flight);
-		this.booking.setTraveler(traveler);
-		this.booking.setBookingId(1);
-		this.booking.setCost(2.0);
-		this.booking.setNumberOfTravelers(1);
-		this.booking.setDateOfTravel(LocalDate.now());
+		booking.setFlight(flight);
+		booking.setTraveler(traveler);
+		booking.setBookingId(1);
+		booking.setCost(2.0);
+		booking.setNumberOfTravelers(1);
+		booking.setDateOfTravel(LocalDate.now());
+		booking.setBookingId(1);
 		
-	}
-	
-	
-	@Test 
-	public void testAddNewBookingCorrectly() throws Exception{
+		doReturn(1).when(this.bookingDAO).addNewBooking(booking);
+
+		Integer value = bookingService.addNewBooking(booking);
+		System.out.println(value);
 		
 		
-		
-		Mockito.when(this.bookingDAO.addNewBooking(this.booking)).thenReturn(1);
-		Integer test = bookingDAO.addNewBooking(this.booking);
-		
+<<<<<<< HEAD
 		Assert.assertNotNull(this.bookingService.addNewBooking(this.booking));
+=======
+>>>>>>> 89d56d3573c457e979dc9d7b9653a06c6222e1d9
 	}
-	
+
 	@Test 
 	public void testAddNewBookingNullTraveler() throws Exception{
 		expectedException.expect(Exception.class);
 		expectedException.expectMessage("BookingValidator.TRAVELER_IS_NULL");
+		Booking booking = new Booking();
+		Traveler traveler = new Traveler();
+		traveler.setLoginId("test");
+		traveler.setEmail("test@test.com");
+		traveler.setName("Test Testman");
+		traveler.setPassword("TestPass@1");
+		
+		Flight flight = new Flight();
+		flight.setFare(1.0);
+		flight.setFlightId(1);
+		Airport airportTo = new Airport();
+		airportTo.setAirportId("TST");
+		Airport airportFrom = new Airport();
+		airportFrom.setAirportId("TFT");
+		flight.setFromAirport(airportFrom);
+		flight.setToAirport(airportTo);
+		flight.setTaxes(1.0);
+		
+		booking.setFlight(flight);
+		booking.setTraveler(traveler);
+		booking.setBookingId(1);
+		booking.setCost(2.0);
+		booking.setNumberOfTravelers(1);
+		booking.setDateOfTravel(LocalDate.now());
+		booking.setBookingId(1);
 		
 		booking.setTraveler(null);
 		bookingService.addNewBooking(booking);
