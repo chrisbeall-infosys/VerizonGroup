@@ -16,16 +16,30 @@ public class BookingDAOImpl implements BookingDAO{
 	private EntityManager entityManager;
 
 	@Override
-	public Integer addNewBooking(Booking booking){
+	public BookingEntity addNewBooking(Booking booking){
 		BookingEntity bookingEntity = new BookingEntity();
 		
+		if (booking.getCost() == null){
+			return null;
+		}
+		if (booking.getDateOfTravel() == null){
+			return null;
+		}
+		if (booking.getFlight() == null){
+			return null;
+		}
+		if (booking.getNumberOfTravelers() == null){
+			return null;
+		}
+		if (booking.getTraveler() == null){
+			return null;
+		}
 		
 		bookingEntity.setDateOfTravel(booking.getDateOfTravel());
 		bookingEntity.setNumberOfTravelers(booking.getNumberOfTravelers());
 		bookingEntity.setCost(booking.getCost());
-		System.out.println(bookingEntity.getCost());
 		if (booking.getTraveler() == null || booking.getFlight() == null){
-			return -1;
+			return null;
 		}
 		TravelerEntity travelerEntity = entityManager.find(TravelerEntity.class, booking.getTraveler().getLoginId());
 		FlightEntity flightEntity = entityManager.find(FlightEntity.class, booking.getFlight().getFlightId());
@@ -36,7 +50,7 @@ public class BookingDAOImpl implements BookingDAO{
 		
 		entityManager.persist(bookingEntity);
 		
-		return bookingEntity.getBookingId();
+		return bookingEntity;
 	}
 	
 }

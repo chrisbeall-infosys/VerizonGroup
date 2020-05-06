@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.infy.verizon.dao.BookingDAOImpl;
+import com.infy.verizon.entity.BookingEntity;
 import com.infy.verizon.model.Booking;
 import com.infy.verizon.validator.BookingValidator;
 
@@ -19,11 +20,11 @@ public class BookingServiceImpl implements BookingService{
 	public Integer addNewBooking(Booking booking) throws Exception{
 		BookingValidator.validateBooking(booking);
 		
-		Integer value = bookingDAO.addNewBooking(booking);
+		BookingEntity value = bookingDAO.addNewBooking(booking);
 		
-		if (value.equals(-1)){
+		if (value == null){
 			throw new Exception("A field was left null");
 		}
-		return value;
+		return value.getBookingId();
 	}
 }

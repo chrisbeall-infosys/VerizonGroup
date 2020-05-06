@@ -1,9 +1,16 @@
 package com.infy.verizon.validator;
 
+import org.springframework.validation.Validator;
+
 import com.infy.verizon.model.Booking;
 
-public class BookingValidator {
-
+public class BookingValidator{
+	
+	
+	public boolean supports(Class clazz) {
+        return Booking.class.equals(clazz);
+    }
+	
 	public static void validateBooking(Booking booking) throws Exception{
 		if (booking == null){
 			throw new Exception("Booking is null");
