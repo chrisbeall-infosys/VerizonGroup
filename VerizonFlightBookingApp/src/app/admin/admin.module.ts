@@ -11,6 +11,8 @@ import { RegistrationComponent } from './admin-landing-page/registration/registr
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminLoginService } from './admin-landing-page/login/admin-login.service';
 import { AdminRegistrationService } from './admin-landing-page/registration/admin-registration.service';
+import { AdminViewFlightComponent } from './admin-home/admin-view-flight/admin-view-flight.component';
+import { AddFlightComponent } from './admin-home/add-flight/add-flight.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { AdminRegistrationService } from './admin-landing-page/registration/admi
     AdminHomeComponent,
     LoginComponent,
     RegistrationComponent,
+    AdminViewFlightComponent,
+    AddFlightComponent,
   ],
   imports: [
     CommonModule,

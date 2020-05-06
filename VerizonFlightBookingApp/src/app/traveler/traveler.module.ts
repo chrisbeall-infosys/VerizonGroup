@@ -13,7 +13,7 @@ import { TravelerLandingPageComponent } from './traveler-landing-page/traveler-l
 import { BookingGetFlightsService } from './booking/booking-get-flights.service';
 import { BookingService } from './booking/booking-service.service';
 import { BookingComponent } from './booking/booking.component';
-
+import { TravelerViewFlightComponent } from './traveler-home/traveler-view-flight/traveler-view-flight.component';
 
 
 @NgModule({
@@ -22,7 +22,8 @@ import { BookingComponent } from './booking/booking.component';
     TravelerLandingPageComponent,
     LoginComponent,
     RegistrationComponent,
-    BookingComponent
+    BookingComponent,
+    TravelerViewFlightComponent
   ],
   imports: [
     CommonModule,
