@@ -11,7 +11,7 @@
                 <input type="number" class="form-control"  formControlName="flightId" required/>
                 <div class="text-danger" *ngIf="addFlightForm.get('flightId').invalid &&
                     addFlightForm.get('flightId').dirty">
-                    Flight ID needs to be greater than 1000
+                    Flight ID needs to be greater than 0
                 </div>
             </td>
           </tr>
