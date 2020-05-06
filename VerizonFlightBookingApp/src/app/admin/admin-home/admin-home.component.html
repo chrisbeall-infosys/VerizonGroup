@@ -1,1 +1,30 @@
-<p>admin-home works!</p>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark" style="margin-left: -15px;margin-right: -15px;">
+    <a class="navbar-brand" href="#"><img src="" class="logo" alt="" srcset="">Verizon Flight</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <!-- <li class="nav-item navbar-left">
+                <a routerLink="viewFlights" routerLinkActive="active" class="nav-link">
+                    View Flights
+                </a>
+            </li> -->
+            <li class="nav-item">
+                <a routerLink="addFlight" routerLinkActive="active" class="nav-link">
+                    Add Flight
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav navbar-right ml-auto">
+            <li class="nav-item">
+                <a routerLink="/applicationHome" routerLinkActive="active" class="nav-link">
+                    Log out
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div>
+    <router-outlet></router-outlet>
+</div>

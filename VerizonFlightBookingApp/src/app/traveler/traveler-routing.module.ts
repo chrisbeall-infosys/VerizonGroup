@@ -8,6 +8,7 @@ import { TravelerLandingPageComponent } from './traveler-landing-page/traveler-l
 import { LoginComponent } from './traveler-landing-page/login/login.component';
 import { RegistrationComponent } from './traveler-landing-page/registration/registration.component';
 import { BookingComponent } from './booking/booking.component';
+import { TravelerViewFlightComponent } from './traveler-home/traveler-view-flight/traveler-view-flight.component';
 
 const routes: Routes = [
   { path: 'applicationHome', component: TravelerLandingPageComponent, children: [
@@ -17,7 +18,8 @@ const routes: Routes = [
   ] },
   { path: 'travelerHome', component: TravelerHomeComponent,canActivate: [VerizonRoutingGuard], children: [
     {path: '', redirectTo: 'travelerHome', pathMatch: 'full'},
-    {path:'booking', component:BookingComponent}
+    {path:'booking', component:BookingComponent},
+    { path: 'viewFlights', component: TravelerViewFlightComponent}
   ]},
   { path: '', redirectTo: '/applicationHome', pathMatch: 'full' }
 

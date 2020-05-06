@@ -1,0 +1,79 @@
+
+<div class="row">
+    <div class="col-md-8 offset-md-2 bordering-side form-bg-light">
+      <h3 class="title">Enter the details to add a flight</h3>
+      <br>
+      <form [formGroup]="addFlightForm" (ngSubmit)="addFlight()">
+        <table class="table table-condensed">
+          <tr>
+            <th>Flight ID :</th>
+            <td>
+                <input type="number" class="form-control"  formControlName="flightId" required/>
+                <div class="text-danger" *ngIf="addFlightForm.get('flightId').invalid &&
+                    addFlightForm.get('flightId').dirty">
+                    Flight ID needs to be greater than 1000
+                </div>
+            </td>
+          </tr>
+          <tr>
+            <th>Fare :</th>
+            <td>
+                <input type="number" class="form-control"  formControlName="fare" required="required"/>
+                <div class="text-danger" *ngIf="addFlightForm.get('fare').invalid &&
+                    addFlightForm.get('fare').dirty">
+                    Fare is must be greater than 0
+                </div>
+            </td>
+          </tr>
+          
+          <tr>
+            <th>Taxes :</th>
+            <td>      
+                <input type="number" class="form-control"  formControlName="taxes" required="required"/>
+                <div class="text-danger" *ngIf="addFlightForm.get('taxes').invalid &&
+                    addFlightForm.get('taxes').dirty">
+                    Taxes is must be greater than 0
+                </div>
+            </td>
+          </tr>
+          <tr>
+            <th>From Airport :</th>
+            <td>
+                <input type="text" class="form-control" formControlName="toAir" required />
+                <div class="text-danger" *ngIf="addFlightForm.get('toAir').invalid &&
+                    addFlightForm.get('toAir').dirty">
+                    To Airport is required
+                </div>
+            </td>
+          </tr>
+  
+          <tr>
+            <th>To Airport :</th>
+            <td>
+                <input type="text" class="form-control" formControlName="fromAir" required/>
+                <div class="text-danger" *ngIf="addFlightForm.get('fromAir').invalid &&
+                    addFlightForm.get('fromAir').dirty">
+                    From Airport is required
+                </div>
+            </td>
+          </tr>
+         
+        </table>
+        <div>
+            <div class="row">          
+                <button type="submit" [disabled]="!addFlightForm.valid || addFlightForm.pristine"           
+                    class="col-md-4 offset-md-4 btn btn-success form-button" >          
+                    Add Flight
+                 </button>          
+          </div></div> 
+      </form>
+      <div *ngIf="successMessage!=null || errorMessage!=null">
+        <div class="success-message text-center">
+            {{successMessage}}
+        </div>
+        <div class="error-message text-center">
+            {{errorMessage}}
+        </div>
+      </div>
+    </div>
+  </div>
