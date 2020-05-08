@@ -72,6 +72,7 @@ public class BookingServiceTest {
 		Integer value = bookingService.addNewBooking(booking);
 		System.out.println(value);
 
+
 	}
 
 }
