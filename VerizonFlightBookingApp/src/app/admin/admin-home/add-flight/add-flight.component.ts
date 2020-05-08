@@ -58,7 +58,7 @@ export class AddFlightComponent implements OnInit {
       error => {
         console.log(error);
         this.errorMessage = error.error.message;
-      },
+      }
     )
 
   }
