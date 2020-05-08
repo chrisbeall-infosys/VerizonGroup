@@ -2,6 +2,9 @@ package com.infy.verizon.model;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 
 public class Booking {
 
@@ -9,15 +12,16 @@ public class Booking {
 
 	private Integer bookingId;
 
-	
+	@NotNull
 	private Traveler traveler;
 	
+	@NotNull
 	private LocalDate dateOfTravel;
-	
+	@NotNull @Min(1)
 	private Integer numberOfTravelers;
-	
+	@NotNull
 	private Flight flight;
-	
+	@NotNull @Min(1)
 	private Double cost; 
 
 	public Double getCost() {
@@ -41,7 +45,7 @@ public class Booking {
 	}
 
 	public void setTraveler(Traveler traveler) {
-		this.traveler = traveler;
+		this.traveler = traveler; 
 	}
 
 	public LocalDate getDateOfTravel() {

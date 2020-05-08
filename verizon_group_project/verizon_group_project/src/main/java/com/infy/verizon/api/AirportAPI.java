@@ -2,6 +2,8 @@ package com.infy.verizon.api;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -29,7 +31,7 @@ public class AirportAPI {
 	private Environment environment;
 	
 	@PostMapping(value = "addAirport")
-	public ResponseEntity<String> addAirport(@RequestBody Airport airport) throws Exception{
+	public ResponseEntity<String> addAirport(@RequestBody @Valid Airport airport) throws Exception{
 		
 		try{
 			airportService.addAirport(airport);
