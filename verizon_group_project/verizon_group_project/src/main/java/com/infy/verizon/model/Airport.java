@@ -1,7 +1,10 @@
 package com.infy.verizon.model;
 
+import javax.validation.constraints.NotNull;
+
 public class Airport {
 	
+	@NotNull
 	private String airportId;
 
 	public String getAirportId() {

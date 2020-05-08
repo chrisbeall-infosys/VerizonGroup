@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.infy.verizon.dao.BookingDAOImpl;
 import com.infy.verizon.entity.BookingEntity;
 import com.infy.verizon.model.Booking;
-import com.infy.verizon.validator.BookingValidator;
 
 @Service(value="bookingService")
 @Transactional
@@ -18,11 +17,10 @@ public class BookingServiceImpl implements BookingService{
 	
 	@Override
 	public Integer addNewBooking(Booking booking) throws Exception{
-		BookingValidator.validateBooking(booking);
 		
 		BookingEntity value = bookingDAO.addNewBooking(booking);
 		
-		if (value == null){
+		if (value == null){ 
 			throw new Exception("A field was left null");
 		}
 		return value.getBookingId();
