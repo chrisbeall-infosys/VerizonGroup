@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.infy.verizon.dao.AirportDAO;
+import com.infy.verizon.entity.AirportEntity;
 import com.infy.verizon.model.Airport;
 
 @Transactional
@@ -17,7 +18,7 @@ public class AirportServiceImpl implements AirportService {
 	private AirportDAO airportDAO;
 	
 	@Override
-	public void addAirport(Airport airport) throws Exception {
+	public String addAirport(Airport airport) throws Exception {
 		List<Airport> existingAirports = airportDAO.getAirports();
 		
 		for(Airport existingAirport : existingAirports){
@@ -25,7 +26,11 @@ public class AirportServiceImpl implements AirportService {
 				throw new Exception("AirprotService.AIRPORT_ID_ALREADY_EXISTS");
 			}
 		}
-		airportDAO.addAirport(airport);
+		AirportEntity fromDAO = airportDAO.addAirport(airport);
+		if(fromDAO == null){
+			throw new Exception("AirportService.NULL_FIELD");
+		}
+		return fromDAO.getAirportId();
 	}
 	
 	@Override

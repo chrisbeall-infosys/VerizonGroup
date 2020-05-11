@@ -49,7 +49,7 @@ export class AdminViewFlightComponent implements OnInit {
           this.errorMessage = error.error.message;
         }
       );
-      setTimeout(() => {console.log("Delay");}, 3000);
+      setTimeout(() => {console.log("Delay");}, 5000);
       window.location.reload();   // this sometimes caueses erors, when it reloads too soon, hence delay.
   }
 

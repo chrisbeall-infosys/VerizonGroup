@@ -19,14 +19,17 @@ public class AirportDAOImpl implements AirportDAO{
 	private EntityManager entityManager;
 	
 	@Override
-	public void addAirport(Airport airport){
-		
+	public AirportEntity addAirport(Airport airport){
+		// NULL check
+		if(airport == null || airport.getAirportId() == null){
+			return null;
+		}
 		AirportEntity airportEntity = new AirportEntity();
 		
 		airportEntity.setAirportId(airport.getAirportId());	// can be auto generated
 		
 		entityManager.persist(airportEntity);
-		
+		return airportEntity;
 	}
 	
 	@Override
@@ -45,12 +48,17 @@ public class AirportDAOImpl implements AirportDAO{
 		List<AirportEntity> airportEntityList = query.getResultList();
 		List<Airport> airportList = new ArrayList<Airport>();
 		
-		Airport airport = null;
-		for(AirportEntity airportEntity : airportEntityList){
-			airport = new Airport();
+		airportEntityList.stream().forEach(airportEntity -> {
+			Airport airport = new Airport();
 			airport.setAirportId(airportEntity.getAirportId());
 			airportList.add(airport);
-		}
+		});
+//		Airport airport = null;
+//		for(AirportEntity airportEntity : airportEntityList){
+//			airport = new Airport();
+//			airport.setAirportId(airportEntity.getAirportId());
+//			airportList.add(airport);
+//		}
 		return airportList;
 	}
 	

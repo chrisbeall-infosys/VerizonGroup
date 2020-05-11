@@ -21,39 +21,60 @@ public class FlightDAOImpl implements FlightDAO {
 	private EntityManager entityManager;
 
 	@Override
-	public void addFlight(Flight flight) {
-
+	public FlightEntity addFlight(Flight flight) {
+		
+		// NULL Checks:
+		if(flight == null || flight.getFlightId() == null || flight.getFare() == null
+				|| flight.getTaxes() == null || flight.getFromAirport() == null
+				|| flight.getToAirport() == null){
+			return null;
+		}
+		
+		
 		FlightEntity flightEntity = new FlightEntity();
 
 		flightEntity.setFlightId(flight.getFlightId()); // can be auto generated
 		flightEntity.setFare(flight.getFare());
 		flightEntity.setTaxes(flight.getTaxes());
-
-		AirportEntity fromAirportEntity = new AirportEntity();
-		fromAirportEntity.setAirportId(flight.getFromAirport().getAirportId()); // this
-																				// can
-																				// be
-																				// auto
-																				// generated
+		
+		AirportEntity fromAirportEntity = entityManager.find(AirportEntity.class,
+				flight.getFromAirport().getAirportId());
+		
+		if(fromAirportEntity == null){
+			//System.out.println("From Airport did not exist.");
+			fromAirportEntity = new AirportEntity();
+			fromAirportEntity.setAirportId(flight.getFromAirport().getAirportId());
+			entityManager.persist(fromAirportEntity);
+		}
+		else{
+			//System.out.println("From Airport Already exists");
+		}
 		flightEntity.setFromAirportEntity(fromAirportEntity);
 
-		AirportEntity toAirportEntity = new AirportEntity();
-		toAirportEntity.setAirportId(flight.getToAirport().getAirportId()); // can
-																			// be
-																			// auto
-																			// generated
+		AirportEntity toAirportEntity = entityManager.find(AirportEntity.class,
+				flight.getToAirport().getAirportId());
+		if(toAirportEntity == null){
+			System.out.println("To Airport did not exist.");
+			toAirportEntity = new AirportEntity();
+			toAirportEntity.setAirportId(flight.getToAirport().getAirportId());
+			entityManager.persist(toAirportEntity);
+		}
+		else{
+			System.out.println("To Airport Already exists");
+		}
 		flightEntity.setToAirportEntity(toAirportEntity);
 
 		entityManager.persist(flightEntity);
-
+		return flightEntity;
 	}
 
 	@Override
-	public void removeFlight(Integer flightId) {
+	public FlightEntity removeFlight(Integer flightId) {
 
 		FlightEntity flightEntity = entityManager.find(FlightEntity.class, flightId);
 
 		entityManager.remove(flightEntity);
+		return flightEntity;
 	}
 
 	@Override

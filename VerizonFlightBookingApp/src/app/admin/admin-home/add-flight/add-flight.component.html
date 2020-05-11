@@ -42,7 +42,7 @@
                 <input type="text" class="form-control" formControlName="toAir" required />
                 <div class="text-danger" *ngIf="addFlightForm.get('toAir').invalid &&
                     addFlightForm.get('toAir').dirty">
-                    To Airport is required
+                    To Airport must contain 1 to 4 characters
                 </div>
             </td>
           </tr>
@@ -53,7 +53,7 @@
                 <input type="text" class="form-control" formControlName="fromAir" required/>
                 <div class="text-danger" *ngIf="addFlightForm.get('fromAir').invalid &&
                     addFlightForm.get('fromAir').dirty">
-                    From Airport is required
+                    From Airport must contain 1 to 4 characters
                 </div>
             </td>
           </tr>
