@@ -20,7 +20,7 @@ export class AdminViewFlightService {
 
   removeFlight(flight: Flight){
     const url = environment.flightAPIUrl + "/removeFlight";
-    return this.http.post<String>(url, flight.flightId)
+    return this.http.post<String>(url, flight.flightId, {responseType: 'text' as 'json'})
       .pipe(catchError(this.handleError));
   }
 

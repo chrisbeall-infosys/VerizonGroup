@@ -21,7 +21,7 @@ export class AdminViewAirportService {
 
   removeAirport(airport: Airport){
     const url = environment.airportAPIUrl + "/removeAirport";
-    return this.http.post<String>(url, airport.airportId)
+    return this.http.post<String>(url, airport.airportId, {responseType: 'text' as 'json'})
       .pipe(catchError(this.handleError));
   }
 
