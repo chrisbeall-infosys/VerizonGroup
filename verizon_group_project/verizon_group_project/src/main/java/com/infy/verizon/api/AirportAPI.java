@@ -48,7 +48,7 @@ public class AirportAPI {
 	public ResponseEntity<String> removeAirport(@RequestBody String airportId) throws Exception{
 		
 		try{
-			airportService.removeAirport(Integer.parseInt(airportId));
+			airportService.removeAirport(airportId);
 			
 			String message = environment.getProperty("AirportAPI.AIRPORT_DELETED_SUCCESSFULLY");
 			return new ResponseEntity<String>(message, HttpStatus.OK);

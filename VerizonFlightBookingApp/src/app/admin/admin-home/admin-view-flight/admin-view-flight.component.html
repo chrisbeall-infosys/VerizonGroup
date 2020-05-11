@@ -1,5 +1,5 @@
 
-<div class="text-center table-responsive table-border" *ngIf="flightList.length !=0">
+<div class="text-center table-responsive table-border" *ngIf="length !=0">
     <h3 class="title">
         Flights
     </h3>
@@ -22,14 +22,15 @@
                 <td>{{flight.toAirport.airportId}}</td>
                 <td>{{flight.fromAirport.airportId}}</td>
                 <td>
-                    <!-- <button class="btn-danger" (click)='removeFlight(flight)'>
+                    <button class="btn-danger" (click)='removeFlight(flight)'>
                         Remove
-                    </button> -->
+                    </button>
                 </td>
             </tr>
         </tbody>
     </table>
-    <div *ngIf="(errorMessage!='' || successMessage!=0)">
+    
+    <div *ngIf="(errorMessage!='' || successMessage!='')">
         <div class="error-message text-center font-weight-bold">{{errorMessage}}</div>
         <div class="success-message text-center font-weight-bold">{{successMessage}}</div>
     </div>

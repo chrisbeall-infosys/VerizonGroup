@@ -3,23 +3,31 @@ import { Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpErrorResponse } from '../../../../../node_modules/@angular/common/http';
 import { catchError } from '../../../../../node_modules/rxjs/operators';
-import { Flight } from 'src/app/shared/models/flight';
+import { Airport } from 'src/app/shared/models/airport';
+import { error } from '@angular/compiler/src/util';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TravelerViewFlightService {
+export class AdminViewAirportService {
 
   constructor(private http: HttpClient) { }
 
-  getFlights(): Observable<Flight[]> {
-    let url = environment.flightAPIUrl + "/getFlights";
-    return this.http.get<Flight[]>(url)
+  getAirports(): Observable<Airport[]> {
+    let url = environment.airportAPIUrl + "/getAirports";
+    return this.http.get<Airport[]>(url)
       .pipe(catchError(this.handleError))
   }
 
+  removeAirport(airport: Airport){
+    const url = environment.airportAPIUrl + "/removeAirport";
+    return this.http.post<String>(url, airport.airportId)
+      .pipe(catchError(this.handleError));
+  }
+
   private handleError(err: HttpErrorResponse) {
-    console.log(err)
+
+    console.log(err);
     let errMsg:string='';
     if (err.error instanceof Error) {   
         errMsg=err.error.message;
@@ -37,4 +45,5 @@ export class TravelerViewFlightService {
      }
         return throwError(errMsg);
   }
+ 
 }

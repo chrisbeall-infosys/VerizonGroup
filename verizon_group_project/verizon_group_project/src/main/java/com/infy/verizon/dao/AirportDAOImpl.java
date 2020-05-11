@@ -30,7 +30,7 @@ public class AirportDAOImpl implements AirportDAO{
 	}
 	
 	@Override
-	public void removeAirport(Integer airportId){
+	public void removeAirport(String airportId){
 		
 		AirportEntity airportEntity = entityManager.find(AirportEntity.class, airportId);
 		

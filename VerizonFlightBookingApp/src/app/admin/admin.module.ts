@@ -13,6 +13,8 @@ import { AdminLoginService } from './admin-landing-page/login/admin-login.servic
 import { AdminRegistrationService } from './admin-landing-page/registration/admin-registration.service';
 import { AdminViewFlightComponent } from './admin-home/admin-view-flight/admin-view-flight.component';
 import { AddFlightComponent } from './admin-home/add-flight/add-flight.component';
+import { AdminViewAirportComponent } from './admin-home/admin-view-airport/admin-view-airport.component';
+import { AddAirportComponent } from './admin-home/add-airport/add-airport.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { AddFlightComponent } from './admin-home/add-flight/add-flight.component
     RegistrationComponent,
     AdminViewFlightComponent,
     AddFlightComponent,
+    AdminViewAirportComponent,
+    AddAirportComponent,
   ],
   imports: [
     CommonModule,

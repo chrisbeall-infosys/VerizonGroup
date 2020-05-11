@@ -29,7 +29,7 @@ public class AirportServiceImpl implements AirportService {
 	}
 	
 	@Override
-	public void removeAirport(Integer airportId) throws Exception {
+	public void removeAirport(String airportId) throws Exception {
 		airportDAO.removeAirport(airportId);
 	}
 	

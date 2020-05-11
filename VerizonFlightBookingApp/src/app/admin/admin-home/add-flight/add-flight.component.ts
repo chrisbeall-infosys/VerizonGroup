@@ -60,7 +60,7 @@ export class AddFlightComponent implements OnInit {
         this.errorMessage = error.error.message;
       }
     )
-
+    this.addFlightForm.reset();
   }
 
 }

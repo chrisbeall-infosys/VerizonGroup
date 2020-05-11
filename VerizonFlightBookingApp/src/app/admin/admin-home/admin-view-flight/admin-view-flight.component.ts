@@ -11,10 +11,10 @@ import { AdminViewFlightService } from './admin-view-flight.service';
 export class AdminViewFlightComponent implements OnInit {
 
   errorMessage: String = "";
-  successMessage: number = 0;
+  successMessage: String = "";
 
   flightList: Flight[];
-  flightListToDisplay: Flight[] = []; // used for searching
+  length: number;
 
   constructor(private adminViewFlightService: AdminViewFlightService) { }
 
@@ -26,7 +26,7 @@ export class AdminViewFlightComponent implements OnInit {
     this.adminViewFlightService.getFlights()
       .subscribe(flights => {
         this.flightList = flights;
-        this.flightListToDisplay = this.flightList;
+        this.length = this.flightList.length;
       });
   }
 
@@ -36,13 +36,21 @@ export class AdminViewFlightComponent implements OnInit {
         success => {
           console.log(success);
           this.successMessage = success;
+          let newFlightList: Flight[] = [];
+          for(let tempFlight of this.flightList){
+            if(tempFlight.flightId != flight.flightId){
+              newFlightList.push(tempFlight);
+            }
+          }
+          this.flightList = newFlightList;
         },
         error => {
           console.log(error);
           this.errorMessage = error.error.message;
         }
       );
-    this.getFlights();
+      setTimeout(() => {console.log("Delay");}, 3000);
+      window.location.reload();   // this sometimes caueses erors, when it reloads too soon, hence delay.
   }
 
 }
