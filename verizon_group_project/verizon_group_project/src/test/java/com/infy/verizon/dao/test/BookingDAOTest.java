@@ -13,7 +13,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.infy.verizon.dao.BookingDAO;
-import com.infy.verizon.model.Airport;
 import com.infy.verizon.model.Booking;
 import com.infy.verizon.model.Flight;
 import com.infy.verizon.model.Traveler;

@@ -1,6 +1,8 @@
-package com.infy.verizon.service.test;
+package com.infy.verizon.api.test;
 
+import java.time.LocalDate;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -9,37 +11,39 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.env.Environment;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import com.infy.verizon.dao.BookingDAO;
-import com.infy.verizon.entity.BookingEntity;
+
+import com.infy.verizon.api.BookingAPI;
 import com.infy.verizon.model.Airport;
 import com.infy.verizon.model.Booking;
 import com.infy.verizon.model.Flight;
 import com.infy.verizon.model.Traveler;
 import com.infy.verizon.service.BookingService;
-import com.infy.verizon.service.BookingServiceImpl;
-import java.time.LocalDate;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class BookingServiceTest {
-
+public class BookingAPITest {
+	
 	@Mock
-	private BookingDAO bookingDAO;
-
+	private BookingService bookingService;
+	
+	@Mock
+	private Environment environment;
 	@InjectMocks
-	private BookingService bookingService = new BookingServiceImpl();
-
-	@Rule
-	public ExpectedException expectedException = ExpectedException.none();
+	private BookingAPI bookingAPI = new BookingAPI();
+	
+	@Rule 
+	public ExpectedException ee = ExpectedException.none();
 	
 	private Booking booking;
 	
 	@Before
-	public void init(){
-	    
-
+	public void initialize(){
 		booking = new Booking();
 		Traveler traveler = new Traveler();
 		traveler.setLoginId("test");
@@ -66,28 +70,16 @@ public class BookingServiceTest {
 		booking.setCost(2.0);
 		booking.setNumberOfTravelers(1);
 		booking.setDateOfTravel(LocalDate.now());
-		booking.setBookingId(1);
-	}
-	@Test
-	public void testAddNewBookingCorrectly() throws Exception {
-
-		BookingEntity be = new BookingEntity();
-		be.setBookingId(1);
-		Mockito.when(bookingDAO.addNewBooking(booking)).thenReturn(be);
-		bookingDAO.addNewBooking(booking);
 		
 	}
 	
 	@Test
-	public void testAddNewBookingBad() throws Exception{
-		expectedException.expect(Exception.class);
-		expectedException.expectMessage("BookingService.NULL_FIELD");
-		BookingEntity be = new BookingEntity();
-		be.setBookingId(1);
-		Mockito.when(bookingDAO.addNewBooking(booking)).thenReturn(null);
-	
-		bookingService.addNewBooking(booking);
+	public void testBookingAPIAddNewBooking() throws Exception{
+		Integer value = 1;
+		Mockito.when(bookingService.addNewBooking(Mockito.any())).thenReturn(value);
+		Mockito.when(environment.getProperty(Mockito.anyString())).thenReturn("success");
 		
+		ResponseEntity<String> response = bookingAPI.addNewBooking(booking);
+		Assert.assertEquals(response.getStatusCode(), HttpStatus.OK);
 	}
-
 }

@@ -9,19 +9,19 @@ import javax.validation.constraints.NotNull;
 public class Booking {
 
 	
-
+	
 	private Integer bookingId;
 
-	@NotNull
+	@NotNull(message="The traveler was left null.")
 	private Traveler traveler;
 	
-	@NotNull
+	@NotNull(message="The date of travel was left null.")
 	private LocalDate dateOfTravel;
-	@NotNull @Min(1)
+	@NotNull(message="Number of travelers was left null.") @Min(1)
 	private Integer numberOfTravelers;
-	@NotNull
+	@NotNull(message="Flight was left null.")
 	private Flight flight;
-	@NotNull @Min(1)
+	@NotNull(message="Cost was left null.") @Min(1)
 	private Double cost; 
 
 	public Double getCost() {
