@@ -1,0 +1,36 @@
+
+<div class="row">
+    <div class="col-md-8 offset-md-2 bordering-side form-bg-light">
+      <h3 class="title">Enter the details to add an Airport</h3>
+      <br>
+      <form [formGroup]="addAirportForm" (ngSubmit)="addAirport()">
+        <table class="table table-condensed">
+          <tr>
+            <th>Airport ID :</th>
+            <td>
+                <input type="text" class="form-control" formControlName="airportId" required/>
+                <div class="text-danger" *ngIf="addAirportForm.get('airportId').invalid &&
+                    addAirportForm.get('airportId').dirty">
+                    Airport ID must contain 1 to 4 characters
+                </div>
+            </td>
+          </tr>
+        </table>
+        <div>
+            <div class="row">          
+                <button type="submit" [disabled]="!addAirportForm.valid || addAirportForm.pristine"           
+                    class="col-md-4 offset-md-4 btn btn-success form-button" >          
+                    Add Airport
+                </button>
+            </div></div> 
+      </form>
+      <div *ngIf="successMessage!=null || errorMessage!=null">
+        <div class="success-message text-center text-success">
+            {{successMessage}}
+        </div>
+        <div class="error-message text-center">
+            {{errorMessage}}
+        </div>
+      </div>
+    </div>
+  </div>

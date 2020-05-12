@@ -37,23 +37,23 @@
             </td>
           </tr>
           <tr>
-            <th>From Airport :</th>
+            <th>To Airport :</th>
             <td>
                 <input type="text" class="form-control" formControlName="toAir" required />
                 <div class="text-danger" *ngIf="addFlightForm.get('toAir').invalid &&
                     addFlightForm.get('toAir').dirty">
-                    To Airport is required
+                    To Airport must contain 1 to 4 characters
                 </div>
             </td>
           </tr>
   
           <tr>
-            <th>To Airport :</th>
+            <th>From Airport :</th>
             <td>
                 <input type="text" class="form-control" formControlName="fromAir" required/>
                 <div class="text-danger" *ngIf="addFlightForm.get('fromAir').invalid &&
                     addFlightForm.get('fromAir').dirty">
-                    From Airport is required
+                    From Airport must contain 1 to 4 characters
                 </div>
             </td>
           </tr>
@@ -68,7 +68,7 @@
           </div></div> 
       </form>
       <div *ngIf="successMessage!=null || errorMessage!=null">
-        <div class="success-message text-center">
+        <div class="success-message text-center text-success">
             {{successMessage}}
         </div>
         <div class="error-message text-center">

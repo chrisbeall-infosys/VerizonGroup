@@ -33,7 +33,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public String registerNewAdmin(Admin admin) throws Exception {
 		
-		String registeredWithLoginId = null;
+		String registeredWithLoginId = null; 
 		
 		AdminValidator.validateAdminForRegistration(admin);
 		Boolean available = adminDAO.checkAvailabilityOfLoginId(admin.getLoginId());

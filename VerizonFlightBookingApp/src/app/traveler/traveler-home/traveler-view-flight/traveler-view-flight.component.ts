@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Flight } from 'src/app/shared/models/Flight';
+import { TravelerViewFlightService } from './traveler-view-flight.service';
+//import { AdminViewFlightService } from 'src/app/admin/admin-home/admin-view-flight/admin-view-flight.service';
 
 @Component({
   selector: 'app-traveler-view-flight',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TravelerViewFlightComponent implements OnInit {
 
-  constructor() { }
+  errorMessage: String = "";
+  successMessage: String = "";
+
+  flightList: Flight[];
+  length: number;
+
+  constructor(private travelerViewFlightService: TravelerViewFlightService) { }
 
   ngOnInit(): void {
+    this.getFlights();
+  }
+
+  getFlights(){
+    this.travelerViewFlightService.getFlights()
+      .subscribe(flights => {
+        this.flightList = flights;
+        this.length = this.flightList.length;
+      });
   }
 
 }

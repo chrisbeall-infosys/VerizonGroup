@@ -23,6 +23,8 @@ import com.infy.verizon.utility.HashingUtility;
 public class AdminServiceTest {
 	@Mock
 	private AdminDAO adminDAO;
+
+	
 	@InjectMocks
 	private AdminService adminService=new AdminServiceImpl();
 	@Rule
@@ -146,6 +148,22 @@ public class AdminServiceTest {
 		Assert.assertNotNull(adminService.registerNewAdmin(admin));
 
 	}
+	
+	@Test
+	public void testAuthenticateAdminPasswordDoesNotMatch() throws Exception{
+		
+		expectedException.expect(Exception.class);
+		expectedException.expectMessage("AdminService.INVALID_CREDENTIALS");
+		String loginId="thu123";
+		String password="Abc@123$";
+		String wrongPass = "Wrong@123";
+		
+		Mockito.when(adminDAO.getPasswordOfAdmin(loginId)).thenReturn(wrongPass);
+		Mockito.when(adminDAO.getAdminByLoginId(loginId)).thenReturn(new Admin());
+		adminService.authenticateAdmin(loginId, password);
+		System.out.println("did we make it here");
+	}
+	
 	
 	
 }

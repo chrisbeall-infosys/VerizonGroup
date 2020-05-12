@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.infy.verizon.dao.FlightDAO;
+import com.infy.verizon.entity.FlightEntity;
 import com.infy.verizon.model.Flight;
 
 @Transactional
@@ -17,7 +18,7 @@ public class FlightServiceImpl implements FlightService{
 	private FlightDAO flightDAO;
 	
 	@Override
-	public void addFlight(Flight flight) throws Exception {
+	public Integer addFlight(Flight flight) throws Exception {
 		
 		List<Flight> existingFlights = flightDAO.getFlights();
 		
@@ -26,7 +27,11 @@ public class FlightServiceImpl implements FlightService{
 				throw new Exception("FlightService.FLIGHT_ID_ALREADY_EXISTS");
 			}
 		}
-		flightDAO.addFlight(flight);
+		FlightEntity fromDAO = flightDAO.addFlight(flight);
+		if (fromDAO == null){ 
+			throw new Exception("FlightService.NULL_FIELD");
+		}
+		return fromDAO.getFlightId();
 	}
 	
 	@Override

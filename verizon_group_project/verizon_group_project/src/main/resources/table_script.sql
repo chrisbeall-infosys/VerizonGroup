@@ -80,9 +80,6 @@ create table Booking(
 	constraint booking_flight_id_fk foreign key (flight_id) references flights(flight_id)
 );
 
-select * from Flights;
-select * from Admin;
-select * from Traveler;
 
 insert into Traveler values ('testtest', 'test@infy.com', 'name' , '0c4e6700d91615d0c955abe0f9971c4eef6b6c1b4679f085d6bd8a5c6a7f6a87');
 
@@ -101,5 +98,6 @@ insert into Flights values (5, 100.20, 10.20, 'TST', 'LAX');
 insert into Booking (booking_id, login_id, date_of_travel, number_of_travelers, flight_id, COST) values (1000, 'testtest', TO_DATE('2003/07/09', 'yyyy/mm/dd'), 2, 1, 2000.20);
 
 select * from Flights;
+select * from Airport;
 select * from Admin;
 select * from Traveler;

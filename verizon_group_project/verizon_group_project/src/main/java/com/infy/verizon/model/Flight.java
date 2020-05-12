@@ -1,5 +1,6 @@
 package com.infy.verizon.model;
 
+<<<<<<< HEAD
 
 public class Flight {
 	
@@ -14,6 +15,23 @@ public class Flight {
 	
 	//@Getter @Setter
 	private Airport fromAirport;
+=======
+import javax.validation.constraints.NotNull;
+
+public class Flight {
+	
+	
+	private Integer FlightId;
+	
+	@NotNull
+	private Double fare;
+	@NotNull
+	private Double taxes;
+	@NotNull
+	private Airport fromAirport;
+	@NotNull
+	private Airport toAirport;
+>>>>>>> 4fed3ec43409b516710ac75a736770e5d62aa60b
 	
 	//@Getter @Setter
 	private Airport toAirport;

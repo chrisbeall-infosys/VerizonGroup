@@ -44,5 +44,6 @@
         </div>
         <button type="submit" class="btn btn-primary" [disabled]="addBookingForm.pristine" *ngIf="successMessage == null">Submit</button>
         <div class="text-success" *ngIf="successMessage != null">{{successMessage}}</div>
+        <div class="text-danger" *ngIf="errorMessage != null">{{errorMessage}}</div>
     </form>
 </div>

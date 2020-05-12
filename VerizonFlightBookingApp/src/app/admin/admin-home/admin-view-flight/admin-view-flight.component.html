@@ -1,1 +1,37 @@
-<p>admin-view-flight works!</p>
+
+<div class="text-center table-responsive table-border" *ngIf="length !=0">
+    <h3 class="title">
+        Flights
+    </h3>
+
+    <table class="table text-center">
+        <thead>
+            <tr>
+                <th style="text-align: center">Flight Id</th>
+                <th style="text-align: center"> Fare </th>
+                <th style="text-align: center"> Taxes </th>
+                <th style="text-align: center"> To Airport </th>
+                <th style="text-align: center"> From Airport </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let flight of flightList">
+                <td>{{flight.flightId}}</td>
+                <td>{{flight.fare}}</td>
+                <td>{{flight.taxes}}</td>
+                <td>{{flight.toAirport.airportId}}</td>
+                <td>{{flight.fromAirport.airportId}}</td>
+                <td>
+                    <button class="btn-danger" (click)='removeFlight(flight)'>
+                        Remove
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div *ngIf="(errorMessage!='' || successMessage!='')">
+        <div class="error-message text-center font-weight-bold">{{errorMessage}}</div>
+        <div class="success-message text-center font-weight-bold">{{successMessage}}</div>
+    </div>
+</div>
