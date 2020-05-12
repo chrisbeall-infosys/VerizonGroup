@@ -11,79 +11,35 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name="Booking")
 public class BookingEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Getter @Setter
 	private Integer BookingId;
 	
 	@ManyToOne
 	@JoinColumn(name="login_id")
+	@Getter @Setter
 	private TravelerEntity travelerEntity;
 	
+	@Getter @Setter
 	private LocalDate dateOfTravel;
 	
+	@Getter @Setter
 	private Integer numberOfTravelers;
 	
+	@Getter @Setter
 	private Double cost;
 	
 	@ManyToOne
 	@JoinColumn(name="flight_id")
+	@Getter @Setter
 	private FlightEntity flightEntity;
-	
-	
-	
-
-	public Double getCost() {
-		return cost;
-	}
-
-	public void setCost(Double cost) {
-		this.cost = cost;
-	}
-
-	public Integer getBookingId() {
-		return BookingId;
-	}
-
-	public void setBookingId(Integer bookingId) {
-		BookingId = bookingId;
-	}
-
-	public TravelerEntity getTravelerEntity() {
-		return travelerEntity;
-	}
-
-	public void setTravelerEntity(TravelerEntity travelerEntity) {
-		this.travelerEntity = travelerEntity;
-	}
-
-	public LocalDate getDateOfTravel() {
-		return dateOfTravel;
-	}
-
-	public void setDateOfTravel(LocalDate dateOfTravel) {
-		this.dateOfTravel = dateOfTravel;
-	}
-
-	public Integer getNumberOfTravelers() {
-		return numberOfTravelers;
-	}
-
-	public void setNumberOfTravelers(Integer numberOfTravelers) {
-		this.numberOfTravelers = numberOfTravelers;
-	}
-
-	public FlightEntity getFlightEntity() {
-		return flightEntity;
-	}
-
-	public void setFlightEntity(FlightEntity flightEntity) {
-		this.flightEntity = flightEntity;
-	}
-	
-	
 	
 	
 }

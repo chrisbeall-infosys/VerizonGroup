@@ -38,19 +38,19 @@ public class TravelerServiceTest {
 		Mockito.when(travelerDAO.getPasswordOfTraveler(Mockito.anyString())).thenReturn(null);
 		expectedException.expect(Exception.class);
 		expectedException.expectMessage("TravelerService.INVALID_CREDENTIALS");
-		travelerService.authenticateTraveler("Toinfosys.com", password);
+		travelerService.authenticateTraveler("Toinfosys", password);
 	}
 	
 	
 	@Test
 	public void authenticateTravelerInValidDetails1() throws Exception {
 		
-		String password = "Tom23";
+		String password = "Tom123$";
 		String hashPassword = HashingUtility.getHashValue(password)+" ";
 		Mockito.when(travelerDAO.getPasswordOfTraveler(Mockito.anyString())).thenReturn(hashPassword);
 		expectedException.expect(Exception.class);
 		expectedException.expectMessage("TravelerService.INVALID_CREDENTIALS");
-		travelerService.authenticateTraveler("Tom@infosys.com", password);
+		travelerService.authenticateTraveler("Tom123", password);
 		
 	}
 	
@@ -58,11 +58,11 @@ public class TravelerServiceTest {
 	public void authenticateTravelerInValidDetails2() throws Exception {
 		
 
-		String password = "Tom23";
+		String password = "Tom2$3";
 		Mockito.when(travelerDAO.getPasswordOfTraveler(Mockito.anyString())).thenReturn(null);
 		expectedException.expect(Exception.class);
 		expectedException.expectMessage("TravelerService.INVALID_CREDENTIALS");
-		travelerService.authenticateTraveler("Tom@infosys.com", password);
+		travelerService.authenticateTraveler("Tom1234", password);
 		
 	}
 	
