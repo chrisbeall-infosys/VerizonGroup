@@ -74,10 +74,8 @@ public class BookingServiceTest {
 		System.out.println(value);
 		
 		
-<<<<<<< HEAD
-		Assert.assertNotNull(this.bookingService.addNewBooking(this.booking));
-=======
->>>>>>> 89d56d3573c457e979dc9d7b9653a06c6222e1d9
+		Assert.assertNotNull(this.bookingService.addNewBooking(booking));
+
 	}
 
 	@Test 
