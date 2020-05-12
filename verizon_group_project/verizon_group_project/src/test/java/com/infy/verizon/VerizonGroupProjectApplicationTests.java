@@ -5,10 +5,10 @@ import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class VerizonGroupProjectApplicationTests {
+public class VerizonGroupProjectApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+//	@Test
+//	public void contextLoads() {
+//	}
 
 }

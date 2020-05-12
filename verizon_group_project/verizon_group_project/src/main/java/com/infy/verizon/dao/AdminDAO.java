@@ -1,10 +1,9 @@
 package com.infy.verizon.dao;
 
 
-
 import com.infy.verizon.model.Admin;
 
-public interface AdminDAO {
+public interface AdminDAO{
 	
 	public String registerNewAdmin(Admin admin);
 	

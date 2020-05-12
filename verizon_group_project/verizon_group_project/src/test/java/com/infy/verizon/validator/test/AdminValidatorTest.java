@@ -77,7 +77,7 @@ public class AdminValidatorTest {
 	@Test
 	public void validateAdminLoginInValidFormat1() throws Exception{
 		expectedException.expect(Exception.class);
-		expectedException.expectMessage("AdminValidator.INVALID_EMAIL_FORMAT");
+		expectedException.expectMessage("AdminValidator.INVALID_LOGINID_FORMAT_FOR_LOGIN");
 		AdminValidator.validateAdminForLogin("Jack@infosys.com", "Jack@23");
 		Assert.assertFalse(false);
 		
@@ -85,7 +85,7 @@ public class AdminValidatorTest {
 	@Test
 	public void validateAdminLoginInValidFormat2() throws Exception{
 		expectedException.expect(Exception.class);
-		expectedException.expectMessage("AdminValidator.INVALID_PASSWORD_FORMAT");
+		expectedException.expectMessage("AdminValidator.INVALID_LOGINID_FORMAT_FOR_LOGIN");
 		AdminValidator.validateAdminForLogin("Jack@infosys.com", "Jack23");
 		Assert.assertFalse(false);
 		
@@ -106,7 +106,7 @@ public class AdminValidatorTest {
 		expectedException.expect(Exception.class);
 		expectedException.expectMessage("AdminValidator.INVALID_LOGINID");
 		Admin admin =new Admin();
-		admin.setEmail("Ja@ck12@infosys.com");
+		admin.setEmail("Jack12@infosys.com");
 		admin.setName("Jack");
 		admin.setPassword("Jack@123");
 		admin.setLoginId("Jerry1992@");
@@ -288,7 +288,7 @@ public class AdminValidatorTest {
 	@Test
 	public void validateAdminRegisterInvalidPassword8() throws Exception{
 		expectedException.expect(Exception.class);
-		expectedException.expectMessage("SellerValidator.INVALID_PASSWORD");
+		expectedException.expectMessage("AdminValidator.INVALID_PASSWORD_FORMAT");
 		Admin admin =new Admin();
 		admin.setEmail("Jack12@infosys.com");
 		admin.setName("Jack");

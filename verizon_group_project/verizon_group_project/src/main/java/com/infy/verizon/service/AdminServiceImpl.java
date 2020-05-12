@@ -1,10 +1,18 @@
 package com.infy.verizon.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.infy.verizon.dao.AdminDAO;
+import com.infy.verizon.entity.AdminEntity;
 import com.infy.verizon.model.Admin;
 import com.infy.verizon.utility.HashingUtility;
 import com.infy.verizon.validator.AdminValidator;
@@ -13,9 +21,15 @@ import com.infy.verizon.validator.AdminValidator;
 @Transactional
 public class AdminServiceImpl implements AdminService {
 
+	private Admin admin;
+	
+	
 	@Autowired
 	private AdminDAO adminDAO;
 	
+//	@Autowired
+//	private PasswordEncoder bcryptEncoder;
+//	
 	@Override
 	public String registerNewAdmin(Admin admin) throws Exception {
 		
@@ -43,7 +57,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public Admin authenticateAdmin(String loginId, String password) throws Exception {
 		
-		Admin admin = null;
+		this.admin = null;
 		loginId = loginId.toLowerCase();
 		
 		AdminValidator.validateAdminForLogin(loginId, password);
@@ -67,4 +81,22 @@ public class AdminServiceImpl implements AdminService {
 		return admin;
 	}
 
+//	@Override
+//	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+//		
+//		Admin admin = null;
+//		try {
+//			admin = adminDAO.getAdminByLoginId(userName);
+//			if (admin == null) {
+//				throw new UsernameNotFoundException("AdminService.USER_NOT_FOUND" + userName);
+//			}
+//		} catch (Exception e) {
+//			System.out.println(e.getMessage());
+//		}
+//		return new org.springframework.security.core.userdetails.User(admin.getLoginId(), admin.getPassword(),
+//				new ArrayList<>());
+//	}
+//		
+	
+	
 }

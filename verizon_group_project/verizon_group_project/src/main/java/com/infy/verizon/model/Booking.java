@@ -3,30 +3,25 @@ package com.infy.verizon.model;
 import java.time.LocalDate;
 
 
+
 public class Booking {
-
-	
-
+	//@Getter @Setter
 	private Integer bookingId;
 
-	
+	//@Getter @Setter
 	private Traveler traveler;
 	
+	//@Getter @Setter
 	private LocalDate dateOfTravel;
 	
+	//@Getter @Setter
 	private Integer numberOfTravelers;
 	
+	//@Getter @Setter
 	private Flight flight;
 	
-	private Double cost; 
-
-	public Double getCost() {
-		return cost;
-	}
-
-	public void setCost(Double cost) {
-		this.cost = cost;
-	}
+	//@Getter @Setter
+	private Double cost;
 
 	public Integer getBookingId() {
 		return bookingId;
@@ -68,5 +63,14 @@ public class Booking {
 		this.flight = flight;
 	}
 
+	public Double getCost() {
+		return cost;
+	}
+
+	public void setCost(Double cost) {
+		this.cost = cost;
+	} 
+
+	
 	
 }

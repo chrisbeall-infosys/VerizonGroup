@@ -18,6 +18,8 @@ public class AirportEntity {
 	public void setAirportId(String airportId) {
 		this.airportId = airportId;
 	}
+
+	
 	
 	
 }

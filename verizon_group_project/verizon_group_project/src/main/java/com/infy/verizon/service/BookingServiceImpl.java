@@ -5,7 +5,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.infy.verizon.dao.BookingDAOImpl;
+import com.infy.verizon.dao.BookingDAO;
 import com.infy.verizon.model.Booking;
 import com.infy.verizon.validator.BookingValidator;
 
@@ -13,7 +13,7 @@ import com.infy.verizon.validator.BookingValidator;
 @Transactional
 public class BookingServiceImpl implements BookingService{
 	@Autowired
-	private BookingDAOImpl bookingDAO;
+	private BookingDAO bookingDAO;
 	
 	@Override
 	public Integer addNewBooking(Booking booking) throws Exception{

@@ -37,7 +37,7 @@ public class TravelerServiceTest {
 		String password = "Tom@123";
 		Mockito.when(travelerDAO.getPasswordOfTraveler(Mockito.anyString())).thenReturn(null);
 		expectedException.expect(Exception.class);
-		expectedException.expectMessage("TravelerService.INVALID_CREDENTIALS");
+		expectedException.expectMessage("TravelerValidator.INVALID_LOGINID_FORMAT_FOR_LOGIN");
 		travelerService.authenticateTraveler("Toinfosys.com", password);
 	}
 	
@@ -49,7 +49,7 @@ public class TravelerServiceTest {
 		String hashPassword = HashingUtility.getHashValue(password)+" ";
 		Mockito.when(travelerDAO.getPasswordOfTraveler(Mockito.anyString())).thenReturn(hashPassword);
 		expectedException.expect(Exception.class);
-		expectedException.expectMessage("TravelerService.INVALID_CREDENTIALS");
+		expectedException.expectMessage("TravelerValidator.INVALID_LOGINID_FORMAT_FOR_LOGIN");
 		travelerService.authenticateTraveler("Tom@infosys.com", password);
 		
 	}
@@ -61,7 +61,7 @@ public class TravelerServiceTest {
 		String password = "Tom23";
 		Mockito.when(travelerDAO.getPasswordOfTraveler(Mockito.anyString())).thenReturn(null);
 		expectedException.expect(Exception.class);
-		expectedException.expectMessage("TravelerService.INVALID_CREDENTIALS");
+		expectedException.expectMessage("TravelerValidator.INVALID_LOGINID_FORMAT_FOR_LOGIN");
 		travelerService.authenticateTraveler("Tom@infosys.com", password);
 		
 	}

@@ -16,32 +16,25 @@ import javax.persistence.Table;
 public class BookingEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	
 	private Integer BookingId;
 	
 	@ManyToOne
 	@JoinColumn(name="login_id")
 	private TravelerEntity travelerEntity;
 	
+	
 	private LocalDate dateOfTravel;
 	
+	
 	private Integer numberOfTravelers;
+	
 	
 	private Double cost;
 	
 	@ManyToOne
 	@JoinColumn(name="flight_id")
 	private FlightEntity flightEntity;
-	
-	
-	
-
-	public Double getCost() {
-		return cost;
-	}
-
-	public void setCost(Double cost) {
-		this.cost = cost;
-	}
 
 	public Integer getBookingId() {
 		return BookingId;
@@ -75,6 +68,14 @@ public class BookingEntity {
 		this.numberOfTravelers = numberOfTravelers;
 	}
 
+	public Double getCost() {
+		return cost;
+	}
+
+	public void setCost(Double cost) {
+		this.cost = cost;
+	}
+
 	public FlightEntity getFlightEntity() {
 		return flightEntity;
 	}
@@ -82,6 +83,11 @@ public class BookingEntity {
 	public void setFlightEntity(FlightEntity flightEntity) {
 		this.flightEntity = flightEntity;
 	}
+	
+	
+	
+	
+
 	
 	
 	

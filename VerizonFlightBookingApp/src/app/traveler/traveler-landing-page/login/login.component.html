@@ -8,7 +8,7 @@
 
                     <div class="form-group">
                         <label for="loginId">Username</label>
-                        <input class="form-control" formControlName="loginId" placeholder="Username" id="loginId" />
+                        <input class="form-control" name="username" formControlName="loginId" placeholder="Username" id="loginId" />
                         <div *ngIf="loginForm.controls.loginId.invalid && loginForm.controls.loginId.touched">
 
                             <div class="text-danger" *ngIf="loginForm.controls.loginId.hasError('required')">
@@ -23,7 +23,7 @@
 
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" formControlName="password" placeholder="Password"
+                        <input type="password" class="form-control" name="password" formControlName="password" placeholder="Password"
                             id="password" />
                         <div *ngIf="loginForm.controls.password.invalid
                                                         && loginForm.controls.password.touched">

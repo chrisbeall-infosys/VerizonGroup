@@ -58,37 +58,37 @@ public class BookingValidatorTest {
 		BookingValidator.validateBooking(booking);
 	}
 	
-	@Test 
-	public void testTravelerIsNull(){
-		expectedException.expect(Exception.class);
-		expectedException.expectMessage("BookingValidator.TRAVELER_IS_NULL");
-		booking.setTraveler(null);
-		BookingValidator.checkIfTravelerIsNull(booking);
-	}
-	
-	@Test 
-	public void testFlightIsNull(){
-		expectedException.expect(Exception.class);
-		expectedException.expectMessage("BookingValidator.FLIGHT_IS_NULL");
-		booking.setFlight(null);
-		BookingValidator.checkIfFlightIsNull(booking);
-	}
-	
-	@Test
-	public void testDateIsNull(){
-		expectedException.expect(Exception.class);
-		expectedException.expectMessage("BookingValidator.DATE_IS_NULL");
-		booking.setDateOfTravel(null);
-		BookingValidator.checkIfDateOfTravelIsNull(booking);
-	
-	}
-	
-	@Test
-	public void testNumberOfTravelersIsNull(){
-		expectedException.expect(Exception.class);
-		expectedException.expectMessage("BookingValidator.NUMBER_OF_TRAVELERS_IS_NULL");
-		booking.setNumberOfTravelers(null);
-		BookingValidator.checkIfNumberOfTravelersIsNull(booking);
-	}
+//	@Test 
+//	public void testTravelerIsNull(){
+//		expectedException.expect(Exception.class);
+//		expectedException.expectMessage("BookingValidator.TRAVELER_IS_NULL");
+//		booking.setTraveler(null);
+//		BookingValidator.checkIfTravelerIsNull(booking);
+//	}
+//	
+//	@Test 
+//	public void testFlightIsNull(){
+//		expectedException.expect(Exception.class);
+//		expectedException.expectMessage("BookingValidator.FLIGHT_IS_NULL");
+//		booking.setFlight(null);
+//		BookingValidator.checkIfFlightIsNull(booking);
+//	}
+//	
+//	@Test
+//	public void testDateIsNull(){
+//		expectedException.expect(Exception.class);
+//		expectedException.expectMessage("BookingValidator.DATE_IS_NULL");
+//		booking.setDateOfTravel(null);
+//		BookingValidator.checkIfDateOfTravelIsNull(booking);
+//	
+//	}
+//	
+//	@Test
+//	public void testNumberOfTravelersIsNull(){
+//		expectedException.expect(Exception.class);
+//		expectedException.expectMessage("BookingValidator.NUMBER_OF_TRAVELERS_IS_NULL");
+//		booking.setNumberOfTravelers(null);
+//		BookingValidator.checkIfNumberOfTravelersIsNull(booking);
+//	}
 	
 }

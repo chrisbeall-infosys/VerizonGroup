@@ -1,7 +1,5 @@
 package com.infy.verizon.dao;
 
-
-
 import com.infy.verizon.model.Traveler;
 
 public interface TravelerDAO {
