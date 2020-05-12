@@ -1,11 +1,19 @@
 package com.infy.verizon.model;
 
+import javax.validation.constraints.NotNull;
+
 public class Flight {
 	
+	
 	private Integer FlightId;
+	
+	@NotNull
 	private Double fare;
+	@NotNull
 	private Double taxes;
+	@NotNull
 	private Airport fromAirport;
+	@NotNull
 	private Airport toAirport;
 	
 	public Integer getFlightId() {

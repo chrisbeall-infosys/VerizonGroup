@@ -10,6 +10,8 @@ import { RegistrationComponent } from './admin-landing-page/registration/registr
 import { LoginComponent } from './admin-landing-page/login/login.component';
 import { AdminViewFlightComponent } from './admin-home/admin-view-flight/admin-view-flight.component';
 import { AddFlightComponent } from './admin-home/add-flight/add-flight.component';
+import { AdminViewAirportComponent } from './admin-home/admin-view-airport/admin-view-airport.component';
+import { AddAirportComponent } from './admin-home/add-airport/add-airport.component';
 
 const routes: Routes = [
 
@@ -21,7 +23,9 @@ const routes: Routes = [
   {
     path: 'adminHome', component: AdminHomeComponent,canActivate:[VerizonRoutingGuard], children: [
       { path: 'viewFlights', component: AdminViewFlightComponent},
-      { path: 'addFlight', component: AddFlightComponent}
+      { path: 'addFlight', component: AddFlightComponent},
+      { path: 'viewAirports', component: AdminViewAirportComponent},
+      { path: 'addAirport', component: AddAirportComponent}
     ]
   },
   {path:'adminRegistration',component:RegistrationComponent},

@@ -32,7 +32,7 @@ public class TravelerAPI {
 	public ResponseEntity<String> registerTraveler(@RequestBody Traveler traveler) throws Exception {
 		try
 		{
-			logger.info("TRAVELER TRYING TO REGISTER. TRAVELER LOGIN ID: "+ traveler.getLoginId());
+			logger.info("TRAVELER TRYING TO REGISTER. TRAVELER LOGIN ID: "+ traveler.getLoginId()); 
 			
 			String registeredWithLoginId = travelerService.registerNewTraveler(traveler);
 			

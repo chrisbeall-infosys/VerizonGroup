@@ -2,6 +2,8 @@ package com.infy.verizon.api;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -20,7 +22,7 @@ import com.infy.verizon.service.FlightService;
 @CrossOrigin(origins="http://localhost:4200")
 @RestController
 @RequestMapping("FlightAPI")	// http://localhost:3333/verizon_group_project/FlightAPI
-public class FlightAPI {
+public class FlightAPI  {
 	
 	@Autowired
 	private FlightService flightService;
@@ -28,7 +30,7 @@ public class FlightAPI {
 	private Environment environment;
 	
 	@PostMapping(value = "addFlight")
-	public ResponseEntity<String> addFlight(@RequestBody Flight flight) throws Exception{
+	public ResponseEntity<String> addFlight(@RequestBody @Valid Flight flight) throws Exception{
 		
 		try{
 			flightService.addFlight(flight);

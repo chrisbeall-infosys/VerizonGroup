@@ -31,8 +31,8 @@ export class AddFlightComponent implements OnInit {
       flightId: ["", [Validators.required, Validators.min(0)]],
       fare: ["", [Validators.required, Validators.min(1)]],
       taxes: ["", [Validators.required, Validators.min(1)]],
-      toAir: ["", Validators.required],
-      fromAir: ["", Validators.required]
+      toAir: ["", [Validators.required, Validators.minLength(1), Validators.maxLength(4)]],
+      fromAir: ["", [Validators.required, Validators.minLength(1), Validators.maxLength(4)]]
     })
   }
 
@@ -58,9 +58,9 @@ export class AddFlightComponent implements OnInit {
       error => {
         console.log(error);
         this.errorMessage = error.error.message;
-      },
+      }
     )
-
+    this.addFlightForm.reset();
   }
 
 }

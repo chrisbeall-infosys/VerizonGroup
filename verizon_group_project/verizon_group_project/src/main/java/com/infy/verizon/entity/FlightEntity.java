@@ -3,6 +3,8 @@ package com.infy.verizon.entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -14,14 +16,15 @@ import javax.persistence.Table;
 public class FlightEntity {
 	
 	@Id
+	//@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer FlightId;
 	private Double fare;
 	private Double taxes;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="from_airport")
 	private AirportEntity fromAirportEntity;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="to_airport")
 	private AirportEntity toAirportEntity;
 

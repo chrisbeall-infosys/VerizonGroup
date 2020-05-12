@@ -1,0 +1,24 @@
+
+<div class="text-center table-responsive table-border" *ngIf="length != 0">
+    <h3 class="title">
+        Airport
+    </h3>
+
+    <table class="table text-center">
+        <thead>
+            <tr>
+                <th style="text-align: center">Airport Id</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let airport of airportList">
+                <td>{{airport.airportId}}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div *ngIf="(errorMessage!='' || successMessage!='')">
+        <div class="error-message text-center font-weight-bold">{{errorMessage}}</div>
+        <div class="success-message text-success text-center font-weight-bold">{{successMessage}}</div>
+    </div>
+</div>
