@@ -6,9 +6,9 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.1.1.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	
+
 	<groupId>com.infy.verizon</groupId>
 	<artifactId>verizon_group_project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -17,16 +17,16 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-    	<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
-		</dependency>	
-		
-		
+		</dependency>
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -38,32 +38,36 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>	
+			<scope>test</scope>
 		</dependency>
-		
-		
-		
-		<!-- Swagger -->
-			<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
-			<dependency>
-			    <groupId>io.springfox</groupId>
-			    <artifactId>springfox-swagger2</artifactId>
-			    <version>2.9.2</version>
-			</dependency>
-			<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
-			<dependency>
-			    <groupId>io.springfox</groupId>
-			    <artifactId>springfox-swagger-ui</artifactId>
-			    <version>2.9.2</version>
-			</dependency>
-		
-		
-		
 		<dependency>
-            <groupId>com.github.noraui</groupId>
-            <artifactId>ojdbc7</artifactId>
-            <version>12.1.0.2</version>
-        </dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+
+
+		<!-- Swagger -->
+		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+
+
+
+		<dependency>
+			<groupId>com.github.noraui</groupId>
+			<artifactId>ojdbc7</artifactId>
+			<version>12.1.0.2</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -71,7 +75,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				
+
 			</plugin>
 		</plugins>
 	</build>
