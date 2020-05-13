@@ -1,5 +1,8 @@
 package com.infy.verizon.service.test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -48,25 +51,103 @@ public class FlightServiceTest {
 		Airport toAirport = new Airport();
 		toAirport.setAirportId("TO");
 		flight.setToAirport(toAirport);
-		
 	}
 	
 	@Test
-	public void addFlightServiceTestSuccess() throws Exception {
+	public void addFlightServiceSuccess() throws Exception {
+		List<Flight> flightList = new ArrayList<Flight>();
+		Mockito.when(flightDAO.getFlights()).thenReturn(flightList);
+		
 		FlightEntity flightEntity = new FlightEntity();
 		flightEntity.setFlightId(10);
+		
+		Mockito.when(flightDAO.addFlight(flight)).thenReturn(flightEntity);
+		Integer flightId = flightService.addFlight(flight);
+	}
+	// FlightService.FLIGHT_ID_ALREADY_EXISTS test
+	@Test
+	public void addFlightServiceDuplicate() throws Exception {
+		expectedException.expect(Exception.class);
+		expectedException.expectMessage("FlightService.FLIGHT_ID_ALREADY_EXISTS");
+		
+		List<Flight> flightList = new ArrayList<Flight>();
+		flightList.add(flight);
+		Mockito.when(flightDAO.getFlights()).thenReturn(flightList);
+		
+		FlightEntity flightEntity = new FlightEntity();
+		flightEntity.setFlightId(10);
+		
 		Mockito.when(flightDAO.addFlight(flight)).thenReturn(flightEntity);
 		Integer flightId = flightService.addFlight(flight);
 	}
 	@Test
-	public void addFlightServiceTestFail() throws Exception {
+	public void addFlightServiceNull() throws Exception {
 		expectedException.expect(Exception.class);
 		expectedException.expectMessage("FlightService.NULL_FIELD");
 		
+		List<Flight> flightList = new ArrayList<Flight>();
+		Mockito.when(flightDAO.getFlights()).thenReturn(flightList);
+		
 		FlightEntity flightEntity = new FlightEntity();
-		flightEntity.setFlightId(10);
+		flightEntity.setFlightId(null);
+		
 		Mockito.when(flightDAO.addFlight(flight)).thenReturn(null);
 		Integer flightId = flightService.addFlight(flight);
+	}
+	@Test
+	public void removeFlightSuccess() throws Exception {
+		
+		List<Flight> flightList = new ArrayList<Flight>();
+		flightList.add(flight);
+		
+		Mockito.when(flightDAO.getFlights()).thenReturn(flightList);
+		
+		FlightEntity flightEntity = new FlightEntity();
+		flightEntity.setFlightId(10);
+		
+		Mockito.when(flightDAO.removeFlight(flight.getFlightId())).thenReturn(flightEntity);
+		Integer flightId = flightService.removeFlight(flight.getFlightId());
+	}
+	@Test
+	public void removeFlightFail() throws Exception {
+		expectedException.expect(Exception.class);
+		expectedException.expectMessage("FlightService.FLIGHT_ID_DOES NOT_EXIST");
+		
+		List<Flight> flightList = new ArrayList<Flight>();	// List is empty
+		
+		Mockito.when(flightDAO.getFlights()).thenReturn(flightList);
+		
+		FlightEntity flightEntity = new FlightEntity();
+		flightEntity.setFlightId(10);
+		
+		Mockito.when(flightDAO.removeFlight(flight.getFlightId())).thenReturn(null);
+		Integer flightId = flightService.removeFlight(flight.getFlightId());
+	}
+	@Test
+	public void getFlightsSuccess() throws Exception {
+		List<Flight> flightListDAO = new ArrayList<Flight>();
+		flightListDAO.add(flight);
+		
+		Mockito.when(flightDAO.getFlights()).thenReturn(flightListDAO);
+		List<Flight> flightListService = flightService.getFlights();
+	}
+	@Test
+	public void getFlightsEmpty() throws Exception {
+		expectedException.expect(Exception.class);
+		expectedException.expectMessage("FlightService.NO_FLIGHTS_IN_TABLE");
+		
+		List<Flight> flightListDAO = new ArrayList<Flight>();
+		
+		Mockito.when(flightDAO.getFlights()).thenReturn(flightListDAO);
+		List<Flight> flightListService = flightService.getFlights();
+	}
+	@Test
+	public void getFlightsNull() throws Exception {
+		expectedException.expect(Exception.class);
+		expectedException.expectMessage("FlightService.NO_FLIGHTS_IN_TABLE");
+		
+		Mockito.when(flightDAO.getFlights()).thenReturn(null);
+		List<Flight> flightListService = flightService.getFlights();
 	}
 	
 }

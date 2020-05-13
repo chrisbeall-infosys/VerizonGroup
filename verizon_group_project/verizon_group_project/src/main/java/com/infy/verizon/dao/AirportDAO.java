@@ -8,7 +8,7 @@ import com.infy.verizon.model.Airport;
 public interface AirportDAO {
 	
 	public AirportEntity addAirport(Airport airport);
-	public void removeAirport(String airportId);
+	public AirportEntity removeAirport(String airportId);
 	public List<Airport> getAirports();
 	
 }

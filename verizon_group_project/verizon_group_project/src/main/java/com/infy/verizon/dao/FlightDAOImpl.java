@@ -46,22 +46,23 @@ public class FlightDAOImpl implements FlightDAO {
 			fromAirportEntity.setAirportId(flight.getFromAirport().getAirportId());
 			entityManager.persist(fromAirportEntity);
 		}
-		else{
+		//else{
 			//System.out.println("From Airport Already exists");
-		}
+		//}
 		flightEntity.setFromAirportEntity(fromAirportEntity);
 
 		AirportEntity toAirportEntity = entityManager.find(AirportEntity.class,
 				flight.getToAirport().getAirportId());
 		if(toAirportEntity == null){
-			System.out.println("To Airport did not exist.");
+			//System.out.println("To Airport did not exist.");
 			toAirportEntity = new AirportEntity();
 			toAirportEntity.setAirportId(flight.getToAirport().getAirportId());
 			entityManager.persist(toAirportEntity);
 		}
-		else{
-			System.out.println("To Airport Already exists");
-		}
+		//else{
+			//System.out.println("To Airport Already exists");
+			// add logger here:
+		//}
 		flightEntity.setToAirportEntity(toAirportEntity);
 
 		entityManager.persist(flightEntity);
@@ -70,11 +71,24 @@ public class FlightDAOImpl implements FlightDAO {
 
 	@Override
 	public FlightEntity removeFlight(Integer flightId) {
-
+		// For tester
+		if(flightId == null){
+			return null;
+		}
+		
 		FlightEntity flightEntity = entityManager.find(FlightEntity.class, flightId);
-
+		
 		entityManager.remove(flightEntity);
-		return flightEntity;
+		
+		// For tester:
+		if(entityManager.find(FlightEntity.class, flightId) == null){
+			//System.out.println("Flight Entity is null, post delete.");
+			return flightEntity;
+		}
+		else{
+			//System.out.println("delete Failed.");
+			return null;
+		}
 	}
 
 	@Override
@@ -85,7 +99,6 @@ public class FlightDAOImpl implements FlightDAO {
 		List<FlightEntity> flightEntityList = query.getResultList();
 		List<Flight> flightList = new ArrayList<Flight>();
 
-		//Flight flight = null; // in case flight table is empty
 		flightEntityList.stream().forEach(flightEntity -> {
 			Flight flight = new Flight();
 
@@ -103,6 +116,7 @@ public class FlightDAOImpl implements FlightDAO {
 
 			flightList.add(flight);
 		});
+		//Flight flight = null; // in case flight table is empty
 //		for (FlightEntity flightEntity : flightEntityList) {
 //			flight = new Flight();
 //

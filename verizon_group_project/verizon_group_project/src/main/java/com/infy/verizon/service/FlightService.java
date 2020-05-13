@@ -8,7 +8,7 @@ import com.infy.verizon.model.Flight;
 public interface FlightService {
 	
 	public Integer addFlight(Flight flight) throws Exception;
-	public void removeFlight(Integer flightId) throws Exception;
+	public Integer removeFlight(Integer flightId) throws Exception;
 	public List<Flight> getFlights() throws Exception;
 	
 	

@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -29,16 +32,23 @@ public class FlightAPI  {
 	@Autowired
 	private Environment environment;
 	
+	static Logger logger = LogManager.getLogger(BookingAPI.class.getName());
+	
 	@PostMapping(value = "addFlight")
 	public ResponseEntity<String> addFlight(@RequestBody @Valid Flight flight) throws Exception{
 		
 		try{
-			flightService.addFlight(flight);
+			logger.info("Adding new Flight");
+			
+			Integer newFlightId = flightService.addFlight(flight);
+			
+			logger.info("Flight added successfully with ID: " + newFlightId);
 			
 			String message = environment.getProperty("FlightAPI.FLIGHT_ADDED_SUCCESSFULLY");
 			return new ResponseEntity<String>(message, HttpStatus.OK);
 		}
 		catch(Exception e){
+			logger.error("Failed to add Flight");
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, environment.getProperty(e.getMessage()));
 		}	
 	}
@@ -47,12 +57,15 @@ public class FlightAPI  {
 	public ResponseEntity<String> removeFlight(@RequestBody String flightId) throws Exception{
 		
 		try{
+			logger.info("removing Flight with ID: " + flightId);
 			flightService.removeFlight(Integer.parseInt(flightId));
+			logger.info("Successfully removed Flight with ID: " + flightId);
 			
 			String message = environment.getProperty("FlightAPI.FLIGHT_DELETED_SUCCESSFULLY");
 			return new ResponseEntity<String>(message, HttpStatus.OK);
 		}
 		catch(Exception e){
+			logger.error("Failed to remove Flight with ID: " + flightId);
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, environment.getProperty(e.getMessage()));
 		}
 	}
@@ -63,12 +76,15 @@ public class FlightAPI  {
 		List<Flight> flightList = null;
 		
 		try{
+			logger.info("Retrieving Flight list from database");
 			flightList = flightService.getFlights();
+			logger.info("Flight list retrieved");
 			
 			ResponseEntity<List<Flight>> response = new ResponseEntity<List<Flight>>(flightList, HttpStatus.OK);
 			return response;
 		}
 		catch(Exception e){
+			logger.error("Failed to retrieve Flight list form database");
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, environment.getProperty(e.getMessage()));
 		}
 	}
