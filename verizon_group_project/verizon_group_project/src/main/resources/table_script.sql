@@ -3,34 +3,40 @@ drop table flights;
 drop table traveler;
 drop table admin;
 drop table airport;
-drop table authorities;
 drop table users;
-
-
+drop table roles;
+drop table user_roles;
 
 drop sequence hibernate_sequence;
 
 create sequence hibernate_sequence start with 1 increment by 1;
 
 create table users(
-    username varchar2(50) not null primary key,
-    password varchar2(50) not null,
-    enabled number(1) default(0) not null
-);
-
-insert into users values ('thu', 'Abc123$', 1);
-insert into users values ('mike', 'Abc123$', 1);
-
-create table authorities (
+	id number not null primary key,
+	name varchar2(50) not null,
     username varchar2(50) not null,
-    authority varchar2(50) not null,
-    constraint fk_authorities_users foreign key(username) references users(username)
+    password varchar2(70) not null,
+    email varchar2(50) not null  
 );
 
-insert into authorities values ('thu', 'TRAVELER');
-insert into authorities values ('mike', 'ADMIN');
 
-create unique index ix_auth_username on authorities (username,authority);
+insert into users values (1, 'thu', 'thu123', 'Abc123$', 'thu1@infy.com');
+insert into users values (2, 'mike', 'mike123', 'Abc123$', 'mike1@infy.com');
+
+
+create table user_roles (
+	user_id number not null primary key,
+	role_id number not null
+);
+
+
+create table roles (
+	id number primary key,
+	name varchar2(50) not null
+);
+
+INSERT INTO roles(id, name) VALUES(1, 'ROLE_TRAVELER');
+INSERT INTO roles(id, name) VALUES(2, 'ROLE_ADMIN');
 
 
 create table Traveler(

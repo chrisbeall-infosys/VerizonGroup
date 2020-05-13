@@ -12,7 +12,7 @@ import com.infy.verizon.model.Airport;
 import com.infy.verizon.model.Booking;
 import com.infy.verizon.model.Flight;
 import com.infy.verizon.model.Traveler;
-import com.infy.verizon.validator.BookingValidator;
+
 
 public class BookingValidatorTest {
 	@Rule
@@ -53,11 +53,11 @@ public class BookingValidatorTest {
 		booking = null;
 	}
 	
-	@Test 
-	public void testValidateBooking() throws Exception{
-		BookingValidator.validateBooking(booking);
-	}
-	
+//	@Test 
+//	public void testValidateBooking() throws Exception{
+//		BookingValidator.validateBooking(booking);
+//	}
+//	
 //	@Test 
 //	public void testTravelerIsNull(){
 //		expectedException.expect(Exception.class);

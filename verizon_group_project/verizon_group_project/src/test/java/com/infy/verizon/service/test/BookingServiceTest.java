@@ -36,46 +36,7 @@ public class BookingServiceTest {
 	
 	private Booking booking;
 	
-<<<<<<< HEAD
-	@Test 
-	public void testAddNewBookingCorrectly() throws Exception{
-//		Booking booking = new Booking();
-//		Traveler traveler = new Traveler();
-//		traveler.setLoginId("test");
-//		traveler.setEmail("test@test.com");
-//		traveler.setName("Test Testman");
-//		traveler.setPassword("TestPass@1");
-//		
-//		Flight flight = new Flight();
-//		flight.setFare(1.0);
-//		flight.setFlightId(1);
-//		Airport airportTo = new Airport();
-//		airportTo.setAirportId("TST");
-//		Airport airportFrom = new Airport();
-//		airportFrom.setAirportId("TFT");
-//		flight.setFromAirport(airportFrom);
-//		flight.setToAirport(airportTo);
-//		flight.setTaxes(1.0);
-//		
-//		booking.setFlight(flight);
-//		booking.setTraveler(traveler);
-//		booking.setBookingId(1);
-//		booking.setCost(2.0);
-//		booking.setNumberOfTravelers(1);
-//		booking.setDateOfTravel(LocalDate.now());
-//		booking.setBookingId(1);
-//		
-//		doReturn(1).when(this.bookingDAO).addNewBooking(booking);
-//
-//		Integer value = bookingService.addNewBooking(booking);
-//		System.out.println(value);
-//		
-//		
 
-		//Assert.assertNotNull(this.bookingService.addNewBooking(booking));
-		Assert.assertTrue(true);
-
-=======
 	@Before
 	public void init(){
 	    
@@ -116,15 +77,10 @@ public class BookingServiceTest {
 		Mockito.when(bookingDAO.addNewBooking(booking)).thenReturn(be);
 		bookingDAO.addNewBooking(booking);
 		
-<<<<<<< HEAD
->>>>>>> 4fed3ec43409b516710ac75a736770e5d62aa60b
-=======
 
 		
 		//Assert.assertNotNull(this.bookingService.addNewBooking(booking));
 
-
->>>>>>> bbd3cd511fc00561e7299fd1da2a54821ae2d9a0
 	}
 	
 	@Test

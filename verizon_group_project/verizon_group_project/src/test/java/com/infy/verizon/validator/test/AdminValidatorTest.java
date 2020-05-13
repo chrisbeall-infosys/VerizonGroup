@@ -85,13 +85,10 @@ public class AdminValidatorTest {
 	@Test
 	public void validateAdminLoginInValidFormat2() throws Exception{
 		expectedException.expect(Exception.class);
-<<<<<<< HEAD
-		expectedException.expectMessage("AdminValidator.INVALID_LOGINID_FORMAT_FOR_LOGIN");
-		AdminValidator.validateAdminForLogin("Jack@infosys.com", "Jack23");
-=======
+
 		expectedException.expectMessage("AdminValidator.INVALID_PASSWORD_FORMAT");
 		AdminValidator.validateAdminForLogin("Jack123", "Jack23");
->>>>>>> bbd3cd511fc00561e7299fd1da2a54821ae2d9a0
+
 		Assert.assertFalse(false);
 		
 	}

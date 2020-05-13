@@ -6,11 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.infy.verizon.dao.BookingDAO;
-<<<<<<< HEAD
-=======
 
 import com.infy.verizon.entity.BookingEntity;
->>>>>>> 4fed3ec43409b516710ac75a736770e5d62aa60b
+
 import com.infy.verizon.model.Booking;
 
 @Service(value="bookingService")
