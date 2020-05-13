@@ -110,7 +110,6 @@ public class AdminServiceTest {
 		admin.setPassword("Thu@123");
 		admin.setEmail("thu@infy.com");
 		Mockito.when(adminDAO.checkAvailabilityOfLoginId(admin.getLoginId())).thenReturn(false);
-		System.out.println("Is Available? " + adminDAO.checkAvailabilityOfLoginId(admin.getLoginId()));
 		Assert.assertNull(adminService.registerNewAdmin(admin));
 	}
 	

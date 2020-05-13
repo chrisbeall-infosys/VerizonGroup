@@ -5,11 +5,15 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name="Admin")
 public class AdminEntity {
 	
 	@Id
+<<<<<<< HEAD
 	
 	private String loginId;
 	
@@ -53,8 +57,19 @@ public class AdminEntity {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+=======
+	@Getter @Setter
+	private String loginId;
 	
+	@Getter @Setter
+	private String email;
+>>>>>>> bbd3cd511fc00561e7299fd1da2a54821ae2d9a0
 	
+	@Getter @Setter
+	private String name;
+	
+	@Getter @Setter
+	private String password;
 	
 	
 	

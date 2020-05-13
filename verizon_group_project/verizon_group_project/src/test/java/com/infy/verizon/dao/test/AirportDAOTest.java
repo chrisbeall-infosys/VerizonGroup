@@ -22,26 +22,60 @@ public class AirportDAOTest {
 	@Autowired
 	AirportDAO airportDAO;
 	
-	Airport airport;
+	private Airport airport1;
+	private Airport airport2;
+	private int airportCount;
 	
 	@Before
 	public void init(){
-		airport = new Airport();
-		airport.setAirportId("TEST");
+		airport1 = new Airport();
+		airport1.setAirportId("TEST");
+		
+		airport2 = new Airport();
+		airport2.setAirportId("T2");
+		
+		airportCount = airportDAO.getAirports().size();
 	}
 	@Test
 	public void addAirportNotNull(){
-		Assert.assertNotNull(airportDAO.addAirport(airport));
+		Assert.assertNotNull(airportDAO.addAirport(airport1));
 	}
 	@Test
 	public void addAirportNull(){
-		airport = null;
-		Assert.assertNull(airportDAO.addAirport(airport));
+		airport1 = null;
+		Assert.assertNull(airportDAO.addAirport(airport1));
 	}
 	@Test
 	public void addAirportIdNull(){
-		airport.setAirportId(null);
-		Assert.assertNull(airportDAO.addAirport(airport));
+		airport1.setAirportId(null);
+		Assert.assertNull(airportDAO.addAirport(airport1));
 	}
-	
+	@Test
+	public void removeAirportSuccess(){
+		airportDAO.addAirport(airport1);
+		Assert.assertNotNull(airportDAO.removeAirport(airport1.getAirportId()));
+	}
+	@Test
+	public void removeAirportFail(){
+		airport1.setAirportId(null);
+		Assert.assertNull(airportDAO.removeAirport(airport1.getAirportId()));
+	}
+	@Test
+	public void getAirportPass1(){
+		Assert.assertEquals(airportCount, airportDAO.getAirports().size());
+	}
+	@Test
+	public void getAirportPass2(){
+		airportDAO.addAirport(airport1);
+		Assert.assertEquals(airportCount + 1, airportDAO.getAirports().size());
+		airportDAO.removeAirport(airport1.getAirportId());
+	}
+	@Test
+	public void getAirportPass3(){
+		airportDAO.addAirport(airport1);
+		airportDAO.addAirport(airport2);
+		Assert.assertEquals(airportCount + 2, airportDAO.getAirports().size());
+		airportDAO.removeAirport(airport1.getAirportId());
+		airportDAO.removeAirport(airport2.getAirportId());
+	}
 }

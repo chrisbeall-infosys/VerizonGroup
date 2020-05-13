@@ -1,5 +1,6 @@
 package com.infy.verizon.model;
 
+<<<<<<< HEAD
 
 
 
@@ -13,8 +14,22 @@ public class Admin {
 	
 	
 	private String name;
+=======
+import lombok.Getter;
+import lombok.Setter;
+
+public class Admin {
+	@Getter @Setter
+	private String loginId;
 	
+	@Getter @Setter
+	private String email;
+>>>>>>> bbd3cd511fc00561e7299fd1da2a54821ae2d9a0
 	
+	@Getter @Setter
+	private String name;
+	
+<<<<<<< HEAD
 	private String password;
 
 	public String getLoginId() {
@@ -51,4 +66,9 @@ public class Admin {
 	
 	
 
+=======
+	@Getter @Setter
+	private String password;
+	
+>>>>>>> bbd3cd511fc00561e7299fd1da2a54821ae2d9a0
 }

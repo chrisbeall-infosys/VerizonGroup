@@ -18,21 +18,32 @@ public class Flight {
 =======
 import javax.validation.constraints.NotNull;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class Flight {
 	
-	
+	@Getter @Setter
 	private Integer FlightId;
 	
+	@Getter @Setter
 	@NotNull
 	private Double fare;
+	
+	@Getter @Setter
 	@NotNull
 	private Double taxes;
+	
+	@Getter @Setter
 	@NotNull
 	private Airport fromAirport;
+	
+	@Getter @Setter
 	@NotNull
 	private Airport toAirport;
 >>>>>>> 4fed3ec43409b516710ac75a736770e5d62aa60b
 	
+<<<<<<< HEAD
 	//@Getter @Setter
 	private Airport toAirport;
 
@@ -78,4 +89,6 @@ public class Flight {
 	
 	
 	
+=======
+>>>>>>> bbd3cd511fc00561e7299fd1da2a54821ae2d9a0
 }

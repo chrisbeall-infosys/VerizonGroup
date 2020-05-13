@@ -35,8 +35,21 @@ public class FlightServiceImpl implements FlightService{
 	}
 	
 	@Override
-	public void removeFlight(Integer flightId) throws Exception {
-		flightDAO.removeFlight(flightId);
+	public Integer removeFlight(Integer flightId) throws Exception {
+		List<Flight> flightList = flightDAO.getFlights();
+		boolean found = false;
+		for(Flight flight : flightList){
+			if(flight.getFlightId() == flightId){
+				System.out.println(flight.getFlightId());
+				found = true;
+				break;
+			}
+		}
+		if(!found){
+			throw new Exception("FlightService.FLIGHT_ID_DOES NOT_EXIST");
+		}
+		return flightDAO.removeFlight(flightId).getFlightId();
+		
 	}
 	
 	@Override

@@ -1,5 +1,6 @@
 package com.infy.verizon.model;
 
+<<<<<<< HEAD
 
 public class Traveler {
 	
@@ -46,6 +47,24 @@ public class Traveler {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+=======
+import lombok.Getter;
+import lombok.Setter;
+
+public class Traveler {
+	
+	@Getter @Setter
+	private String loginId;
+	
+	@Getter @Setter
+	private String email;
+	
+	@Getter @Setter
+	private String name;
+	
+	@Getter @Setter
+	private String password;
+>>>>>>> bbd3cd511fc00561e7299fd1da2a54821ae2d9a0
 	
 	
 }

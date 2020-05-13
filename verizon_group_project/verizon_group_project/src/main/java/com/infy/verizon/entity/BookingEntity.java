@@ -11,18 +11,27 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name="Booking")
 public class BookingEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+<<<<<<< HEAD
 	
+=======
+	@Getter @Setter
+>>>>>>> bbd3cd511fc00561e7299fd1da2a54821ae2d9a0
 	private Integer BookingId;
 	
 	@ManyToOne
 	@JoinColumn(name="login_id")
+	@Getter @Setter
 	private TravelerEntity travelerEntity;
 	
+<<<<<<< HEAD
 	
 	private LocalDate dateOfTravel;
 	
@@ -30,11 +39,22 @@ public class BookingEntity {
 	private Integer numberOfTravelers;
 	
 	
+=======
+	@Getter @Setter
+	private LocalDate dateOfTravel;
+	
+	@Getter @Setter
+	private Integer numberOfTravelers;
+	
+	@Getter @Setter
+>>>>>>> bbd3cd511fc00561e7299fd1da2a54821ae2d9a0
 	private Double cost;
 	
 	@ManyToOne
 	@JoinColumn(name="flight_id")
+	@Getter @Setter
 	private FlightEntity flightEntity;
+<<<<<<< HEAD
 
 	public Integer getBookingId() {
 		return BookingId;
@@ -90,6 +110,8 @@ public class BookingEntity {
 
 	
 	
+=======
+>>>>>>> bbd3cd511fc00561e7299fd1da2a54821ae2d9a0
 	
 	
 }

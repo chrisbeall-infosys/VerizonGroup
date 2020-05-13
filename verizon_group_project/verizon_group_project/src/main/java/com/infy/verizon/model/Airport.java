@@ -7,8 +7,12 @@ public class Airport {
 =======
 import javax.validation.constraints.NotNull;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class Airport {
 	
+<<<<<<< HEAD
 	@NotNull
 >>>>>>> 4fed3ec43409b516710ac75a736770e5d62aa60b
 	private String airportId;
@@ -22,5 +26,9 @@ public class Airport {
 	}
 
 	
+=======
+	@NotNull @Getter @Setter
+	private String airportId;
+>>>>>>> bbd3cd511fc00561e7299fd1da2a54821ae2d9a0
 	
 }

@@ -17,6 +17,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.infy.verizon.api.BookingAPI;
 import com.infy.verizon.model.Airport;
@@ -81,5 +82,12 @@ public class BookingAPITest {
 		
 		ResponseEntity<String> response = bookingAPI.addNewBooking(booking);
 		Assert.assertEquals(response.getStatusCode(), HttpStatus.OK);
+	}
+	
+	@Test
+	public void testBookingAPIthrowsValidatorException() throws Exception{
+		ee.expect(ResponseStatusException.class);
+		Mockito.when(bookingService.addNewBooking(Mockito.any())).thenThrow(new Exception("test exception"));
+		ResponseEntity<String> response = bookingAPI.addNewBooking(booking);
 	}
 }

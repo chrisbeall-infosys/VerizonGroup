@@ -33,11 +33,22 @@ public class AirportDAOImpl implements AirportDAO{
 	}
 	
 	@Override
-	public void removeAirport(String airportId){
+	public AirportEntity removeAirport(String airportId){
+		// For tester:
+		if(airportId == null){
+			return null;
+		}
 		
 		AirportEntity airportEntity = entityManager.find(AirportEntity.class, airportId);
-		
 		entityManager.remove(airportEntity);
+		
+		// For tester:
+		if(entityManager.find(AirportEntity.class, airportId) == null){
+			return airportEntity;
+		}
+		else{
+			return null;
+		}
 	}
 	
 	@Override

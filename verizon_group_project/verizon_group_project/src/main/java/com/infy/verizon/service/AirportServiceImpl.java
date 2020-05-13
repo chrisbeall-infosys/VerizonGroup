@@ -34,8 +34,19 @@ public class AirportServiceImpl implements AirportService {
 	}
 	
 	@Override
-	public void removeAirport(String airportId) throws Exception {
-		airportDAO.removeAirport(airportId);
+	public String removeAirport(String airportId) throws Exception {
+		List<Airport> airportList = airportDAO.getAirports();
+		boolean found = false;
+		for(Airport airport : airportList){
+			if(airport.getAirportId().equals(airportId)){
+				found = true;
+				break;
+			}
+		}
+		if(!found){
+			throw new Exception("AirportService.AIRPORT_ID_DOES_NOT_EXIST");
+		}
+		return airportDAO.removeAirport(airportId).getAirportId();
 	}
 	
 	@Override

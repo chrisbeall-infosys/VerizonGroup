@@ -37,20 +37,30 @@ public class TravelerServiceTest {
 		String password = "Tom@123";
 		Mockito.when(travelerDAO.getPasswordOfTraveler(Mockito.anyString())).thenReturn(null);
 		expectedException.expect(Exception.class);
+<<<<<<< HEAD
 		expectedException.expectMessage("TravelerValidator.INVALID_LOGINID_FORMAT_FOR_LOGIN");
 		travelerService.authenticateTraveler("Toinfosys.com", password);
+=======
+		expectedException.expectMessage("TravelerService.INVALID_CREDENTIALS");
+		travelerService.authenticateTraveler("Toinfosys", password);
+>>>>>>> bbd3cd511fc00561e7299fd1da2a54821ae2d9a0
 	}
 	
 	
 	@Test
 	public void authenticateTravelerInValidDetails1() throws Exception {
 		
-		String password = "Tom23";
+		String password = "Tom123$";
 		String hashPassword = HashingUtility.getHashValue(password)+" ";
 		Mockito.when(travelerDAO.getPasswordOfTraveler(Mockito.anyString())).thenReturn(hashPassword);
 		expectedException.expect(Exception.class);
+<<<<<<< HEAD
 		expectedException.expectMessage("TravelerValidator.INVALID_LOGINID_FORMAT_FOR_LOGIN");
 		travelerService.authenticateTraveler("Tom@infosys.com", password);
+=======
+		expectedException.expectMessage("TravelerService.INVALID_CREDENTIALS");
+		travelerService.authenticateTraveler("Tom123", password);
+>>>>>>> bbd3cd511fc00561e7299fd1da2a54821ae2d9a0
 		
 	}
 	
@@ -58,11 +68,16 @@ public class TravelerServiceTest {
 	public void authenticateTravelerInValidDetails2() throws Exception {
 		
 
-		String password = "Tom23";
+		String password = "Tom2$3";
 		Mockito.when(travelerDAO.getPasswordOfTraveler(Mockito.anyString())).thenReturn(null);
 		expectedException.expect(Exception.class);
+<<<<<<< HEAD
 		expectedException.expectMessage("TravelerValidator.INVALID_LOGINID_FORMAT_FOR_LOGIN");
 		travelerService.authenticateTraveler("Tom@infosys.com", password);
+=======
+		expectedException.expectMessage("TravelerService.INVALID_CREDENTIALS");
+		travelerService.authenticateTraveler("Tom1234", password);
+>>>>>>> bbd3cd511fc00561e7299fd1da2a54821ae2d9a0
 		
 	}
 	
