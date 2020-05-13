@@ -76,6 +76,11 @@ public class BookingServiceTest {
 		Mockito.when(bookingDAO.addNewBooking(booking)).thenReturn(be);
 		bookingDAO.addNewBooking(booking);
 		
+
+		
+		//Assert.assertNotNull(this.bookingService.addNewBooking(booking));
+
+
 	}
 	
 	@Test

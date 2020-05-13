@@ -4,20 +4,15 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name = "Airport")
 public class AirportEntity {
 	
 	@Id
+	@Getter @Setter
 	private String airportId;
-
-	public String getAirportId() {
-		return airportId;
-	}
-
-	public void setAirportId(String airportId) {
-		this.airportId = airportId;
-	}
-	
 	
 }

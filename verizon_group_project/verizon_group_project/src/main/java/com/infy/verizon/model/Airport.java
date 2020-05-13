@@ -2,19 +2,12 @@ package com.infy.verizon.model;
 
 import javax.validation.constraints.NotNull;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class Airport {
 	
-	@NotNull
+	@NotNull @Getter @Setter
 	private String airportId;
-
-	public String getAirportId() {
-		return airportId;
-	}
-
-	public void setAirportId(String airportId) {
-		this.airportId = airportId;
-	}
-	
-	
 	
 }
