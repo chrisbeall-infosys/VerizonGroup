@@ -1,8 +1,11 @@
 package com.infy.verizon.service;
 
+import java.util.Optional;
+
+import com.infy.verizon.entity.BookingEntity;
 import com.infy.verizon.model.Booking;
 
 public interface BookingService {
 
-	public Integer addNewBooking(Booking booking) throws Exception;
+	public Optional<BookingEntity> addNewBooking(Booking booking);
 }

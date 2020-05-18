@@ -1,9 +1,10 @@
 package com.infy.verizon.api;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.core.env.Environment;
@@ -16,14 +17,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
+
+
+import com.infy.verizon.entity.BookingEntity;
+import com.infy.verizon.exception.BookingAPIException;
 
 import com.infy.verizon.model.Booking;
 import com.infy.verizon.service.BookingService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.annotations.Tag;
+
+@Api(tags = {"Swagger Resource"})
+@SwaggerDefinition(tags = {
+    @Tag(name = "Swagger Resource", description = "Booking API, used to create new bookings.")
+})
 @CrossOrigin
 @RestController
-@RequestMapping("BookingAPI")
 public class BookingAPI {
 	
 	@Autowired
@@ -31,33 +44,25 @@ public class BookingAPI {
 	
 	@Autowired
 	private Environment environment;
-	
-	
-	
-	
-	static Logger logger = LogManager.getLogger(BookingAPI.class.getName());
-	
-	
-	@PostMapping(value="addNewBooking")
-	public ResponseEntity<String> addNewBooking(@RequestBody @Valid Booking booking){
-		try
-		{ 
-			logger.info("Registering new booking");
-			
-			Integer newBookingId = bookingService.addNewBooking(booking);
-			
-			logger.info("Booking Successful, ID: " + newBookingId);
-			
-			String bookingMessage = environment.getProperty("BookingAPI.NEW_BOOKING_SUCCESS")+ newBookingId;
-			System.out.println(bookingMessage);
-			
-			return new ResponseEntity<String>(bookingMessage, HttpStatus.OK);
-			
-		}
-		catch (Exception e){
 		
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, environment.getProperty(e.getMessage()));
-		}
+	
+	@PostMapping(value="booking")
+	@ApiOperation(value="Add a new booking")
+	public ResponseEntity<String> addNewBooking(
+			@ApiParam(value = "Booking object used to create a new booking for a specific traveler", required = true)
+			@RequestBody @Valid Booking booking){
+					
+			Optional<BookingEntity> newBooking = bookingService.addNewBooking(booking);
+			if (!newBooking.isPresent()){
+				throw new BookingAPIException("BookingAPI.BOOKING_IS_NULL");
+			}
+			
+			String bookingMessage = environment.getProperty("BookingAPI.NEW_BOOKING_SUCCESS")+ newBooking.get().getBookingId();
+			
+			return new ResponseEntity<>(bookingMessage, HttpStatus.OK);
+			
+		
+	
 	}
 
 }

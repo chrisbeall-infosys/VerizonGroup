@@ -7,7 +7,7 @@ public class AdminValidator {
 	public static void validateAdminForLogin(String loginId, String password) throws Exception {
 		if (!validateLoginId(loginId))
 			throw new Exception("AdminValidator.INVALID_LOGINID_FORMAT_FOR_LOGIN");
-
+ 
 		if (!validatePassword(password))
 			throw new Exception("AdminValidator.INVALID_PASSWORD_FORMAT_FOR_LOGIN");
 	}

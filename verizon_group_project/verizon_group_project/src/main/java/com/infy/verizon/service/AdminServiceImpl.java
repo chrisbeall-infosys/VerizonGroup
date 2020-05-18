@@ -30,7 +30,7 @@ public class AdminServiceImpl implements AdminService {
 				
 				admin.setLoginId(loginIdToDB);
 				admin.setPassword(passwordToDB);
-				
+			 	
 				registeredWithLoginId = adminDAO.registerNewAdmin(admin);
 				
 		} else{

@@ -1,5 +1,7 @@
 package com.infy.verizon.dao;
 
+import java.util.Optional;
+
 import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,25 +19,26 @@ public class BookingDAOImpl implements BookingDAO{
 	private EntityManager entityManager;
 
 	@Override
-	public BookingEntity addNewBooking(Booking booking){
+	public Optional<BookingEntity> addNewBooking(Booking booking){
 		BookingEntity bookingEntity = new BookingEntity(); 
-		if (booking == null){
-			return null;
+		Optional<Booking> optionalBooking = Optional.ofNullable(booking);
+		if (!optionalBooking.isPresent()){
+			return Optional.empty();
 		}
 		if (booking.getCost() == null){
-			return null;
+			return Optional.empty();
 		}
 		if (booking.getDateOfTravel() == null){
-			return null;
+			return Optional.empty();
 		}
-		if (booking.getFlight() == null){
-			return null;
+		if (booking.getFlight() == null){ 
+			return Optional.empty();
 		}
 		if (booking.getNumberOfTravelers() == null){
-			return null;
+			return Optional.empty();
 		}
 		if (booking.getTraveler() == null){
-			return null;
+			return Optional.empty();
 		}
 		
 		bookingEntity.setDateOfTravel(booking.getDateOfTravel());
@@ -50,7 +53,7 @@ public class BookingDAOImpl implements BookingDAO{
 		
 		entityManager.persist(bookingEntity);
 		
-		return bookingEntity;
+		return Optional.ofNullable(bookingEntity);
 	}
 	
 }

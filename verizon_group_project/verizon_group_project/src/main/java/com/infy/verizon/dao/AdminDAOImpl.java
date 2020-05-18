@@ -65,7 +65,7 @@ public class AdminDAOImpl implements AdminDAO {
 		
 		return password;
 	}
-
+ 
 	@Override
 	public Boolean checkAvailabilityOfLoginId(String loginId) {
 		Boolean flag = false;

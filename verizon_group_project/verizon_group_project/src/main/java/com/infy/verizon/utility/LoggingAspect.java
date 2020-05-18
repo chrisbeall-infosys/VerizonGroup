@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
+import org.junit.Before;
 import org.springframework.stereotype.Component;
 
 
@@ -20,7 +21,7 @@ public class LoggingAspect {
 	public void logExceptionFromService(Exception exception) throws Exception {
 			log(exception);
 	}
-
+	
 	
 	private void log(Exception exception) {
 		Logger logger = LogManager.getLogger(this.getClass());
