@@ -1,5 +1,7 @@
 package com.infy.verizon.api;
 
+import javax.validation.Valid;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +31,7 @@ public class TravelerAPI {
 	static Logger logger = LogManager.getLogger(TravelerAPI.class.getName());
 	
 	@PostMapping(value = "registerTraveler")
-	public ResponseEntity<String> registerTraveler(@RequestBody Traveler traveler) throws Exception {
+	public ResponseEntity<String> registerTraveler(@RequestBody @Valid Traveler traveler) throws Exception {
 		try
 		{
 			logger.info("TRAVELER TRYING TO REGISTER. TRAVELER LOGIN ID: "+ traveler.getLoginId()); 
@@ -52,7 +54,7 @@ public class TravelerAPI {
 	}
 	
 	@PostMapping(value = "travelerLogin")
-	public ResponseEntity<Traveler> authenticateTraveler(@RequestBody Traveler traveler) throws Exception {
+	public ResponseEntity<Traveler> authenticateTraveler(@RequestBody @Valid Traveler traveler) throws Exception {
 		try
 		{	
 			logger.info("TRAVELER TRYING TO LOGIN. TRAVELER LOGIN ID: "+traveler.getLoginId());

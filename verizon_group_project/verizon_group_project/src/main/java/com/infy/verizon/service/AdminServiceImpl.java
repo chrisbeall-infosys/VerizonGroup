@@ -1,5 +1,7 @@
 package com.infy.verizon.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,11 +19,11 @@ public class AdminServiceImpl implements AdminService {
 	private AdminDAO adminDAO;
 	
 	@Override
-	public String registerNewAdmin(Admin admin) throws Exception {
+	public Optional<Admin> registerNewAdmin(Admin admin) throws Exception {
 		
-		String registeredWithLoginId = null; 
+		Optional<Admin> newAdmin = Optional.empty();
 		
-		AdminValidator.validateAdminForRegistration(admin);
+		//AdminValidator.validateAdminForRegistration(admin);
 		Boolean available = adminDAO.checkAvailabilityOfLoginId(admin.getLoginId());
 		if(available){
 			
@@ -31,13 +33,13 @@ public class AdminServiceImpl implements AdminService {
 				admin.setLoginId(loginIdToDB);
 				admin.setPassword(passwordToDB);
 				
-				registeredWithLoginId = adminDAO.registerNewAdmin(admin);
+				newAdmin = adminDAO.registerNewAdmin(admin);
 				
 		} else{
 			throw new Exception("AdminService.LOGIN_ID_ALREADY_IN_USE");
 		}
 		
-		return registeredWithLoginId;
+		return newAdmin;
 	}
 
 	@Override
@@ -46,7 +48,7 @@ public class AdminServiceImpl implements AdminService {
 		Admin admin = null;
 		loginId = loginId.toLowerCase();
 		
-		AdminValidator.validateAdminForLogin(loginId, password);
+		//AdminValidator.validateAdminForLogin(loginId, password);
 
 		String passwordFromDB = adminDAO.getPasswordOfAdmin(loginId);
 		

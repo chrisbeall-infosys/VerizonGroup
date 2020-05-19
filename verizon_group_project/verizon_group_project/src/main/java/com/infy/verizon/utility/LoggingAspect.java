@@ -2,9 +2,12 @@ package com.infy.verizon.utility;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
+
 
 
 @Component
@@ -21,6 +24,16 @@ public class LoggingAspect {
 			log(exception);
 	}
 
+	@AfterThrowing(pointcut="execution(* com.infy.verizon.api.*.*(..))", throwing = "exception")
+	public void logBeforeFromAPI(Exception exception) throws Exception {
+		log(exception);
+	}
+	
+	@AfterThrowing(pointcut="execution(* com.infy.verizon.api.*.*(..))",throwing="exception")
+	public void logAfterFromAPI(Exception exception) throws Exception {
+		log(exception);
+	}
+	
 	
 	private void log(Exception exception) {
 		Logger logger = LogManager.getLogger(this.getClass());
@@ -32,5 +45,9 @@ public class LoggingAspect {
 			logger.error(exception.getMessage(), exception);
 		}
 	}
+	
+	
+	
+	
 
 }

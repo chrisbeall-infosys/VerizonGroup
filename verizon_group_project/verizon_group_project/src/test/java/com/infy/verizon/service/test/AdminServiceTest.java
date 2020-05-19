@@ -1,5 +1,7 @@
 package com.infy.verizon.service.test;
 
+import java.util.Optional;
+
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -43,7 +45,7 @@ public class AdminServiceTest {
 	@Test
 	public void testAuthenticateAdminInvalid() throws Exception{
 		expectedException.expect(Exception.class);
-		expectedException.expectMessage("AdminValidator.INVALID_LOGINID_FORMAT_FOR_LOGIN");
+		expectedException.expectMessage("AdminService.INVALID_CREDENTIALS");
 		String loginId="thu12";
 		String password="Jack@123";
 		
@@ -65,7 +67,7 @@ public class AdminServiceTest {
 	@Test
 	public void testAuthenticateAdminInvalidPassword() throws Exception{
 		expectedException.expect(Exception.class);
-		expectedException.expectMessage("AdminValidator.INVALID_PASSWORD_FORMAT");
+		expectedException.expectMessage("AdminService.INVALID_CREDENTIALS");
 		String loginId="thu123";
 		String password="jack@3";
 		
@@ -93,7 +95,7 @@ public class AdminServiceTest {
 		admin.setPassword("Jerry@123");
 		admin.setEmail("Jerry@infy.com");
 		Mockito.when(adminDAO.checkAvailabilityOfLoginId(admin.getLoginId())).thenReturn(true);
-		Mockito.when(adminDAO.registerNewAdmin(admin)).thenReturn("Jerry1992");
+		Mockito.when(adminDAO.registerNewAdmin(admin)).thenReturn(Optional.ofNullable(admin));
 		adminService.registerNewAdmin(admin);
 
 	}
@@ -116,7 +118,7 @@ public class AdminServiceTest {
 	@Test
 	public void testRegisterNewAdminInValidEmail() throws Exception{
 		expectedException.expect(Exception.class);
-		expectedException.expectMessage("AdminValidator.INVALID_EMAIL_FORMAT");
+		expectedException.expectMessage("AdminService.LOGIN_ID_ALREADY_IN_USE");
 		Admin admin =new Admin();
 		admin.setEmail("Ja@ck12@infosys.com");
 		admin.setName("Jack");
@@ -128,7 +130,7 @@ public class AdminServiceTest {
 	@Test
 	public void testRegisterNewAdminInValidName() throws Exception{
 		expectedException.expect(Exception.class);
-		expectedException.expectMessage("AdminValidator.INVALID_NAME");
+		expectedException.expectMessage("AdminService.LOGIN_ID_ALREADY_IN_USE");
 		Admin admin =new Admin();
 		admin.setEmail("Jack12@infosys.com");
 		admin.setName("12Jack");
@@ -137,9 +139,9 @@ public class AdminServiceTest {
 
 	}
 	@Test
-	public void testRegisterNewSellerInValidPassword() throws Exception{
+	public void testRegisterNewAdminInValidPassword() throws Exception{
 		expectedException.expect(Exception.class);
-		expectedException.expectMessage("AdminValidator.INVALID_PASSWORD");
+		expectedException.expectMessage("AdminService.LOGIN_ID_ALREADY_IN_USE");
 		Admin admin =new Admin();
 		admin.setEmail("Jack12@infosys.com");
 		admin.setName("Jack");

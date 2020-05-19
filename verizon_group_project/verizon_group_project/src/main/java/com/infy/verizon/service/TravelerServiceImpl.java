@@ -21,7 +21,7 @@ public class TravelerServiceImpl implements TravelerService {
 		
 		String registeredWithLoginId = null;
 		
-		TravelerValidator.validateTravelerForRegistration(traveler);
+		//TravelerValidator.validateTravelerForRegistration(traveler);
 		Boolean available = travelerDAO.checkAvailabilityOfLoginId(traveler.getLoginId());
 		if(available){
 			
@@ -44,7 +44,7 @@ public class TravelerServiceImpl implements TravelerService {
 	public Traveler authenticateTraveler(String loginId, String password) throws Exception {
 		
 		Traveler traveler = null;
-		TravelerValidator.validateTravelerForLogin(loginId, password);
+		//TravelerValidator.validateTravelerForLogin(loginId, password);
 		String passwordToDB = HashingUtility.getHashValue(password);
 		String travelerLoginIdFromDAO = travelerDAO.authenticateTraveler(loginId, passwordToDB);
 		

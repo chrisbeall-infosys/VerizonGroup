@@ -1,6 +1,7 @@
 package com.infy.verizon.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -18,9 +19,9 @@ public class AdminDAOImpl implements AdminDAO {
 	private EntityManager entityManager;
 	
 	@Override
-	public String registerNewAdmin(Admin admin) {
-		String registeredWithLoginId = null;
-
+	public Optional<Admin> registerNewAdmin(Admin admin) {
+		
+		Optional<Admin> newAdmin = Optional.ofNullable(admin);
 		AdminEntity adminEntity = new AdminEntity();
 
 		adminEntity.setEmail(admin.getEmail());
@@ -30,9 +31,9 @@ public class AdminDAOImpl implements AdminDAO {
 		
 		entityManager.persist(adminEntity);
 		
-		registeredWithLoginId = adminEntity.getLoginId();
 		
-		return registeredWithLoginId;
+		
+		return newAdmin;
 	}
 
 
@@ -72,6 +73,7 @@ public class AdminDAOImpl implements AdminDAO {
 		
 		Query query = entityManager.createQuery("select a from AdminEntity a where a.loginId =: loginId");
 		query.setParameter("loginId", loginId);
+		
 		@SuppressWarnings("unchecked")
 		List<AdminEntity> adminEntities = query.getResultList();
 
