@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +24,7 @@ import com.infy.verizon.exception.BookingAPIException;
 
 import com.infy.verizon.model.Booking;
 import com.infy.verizon.service.BookingService;
+import com.infy.verizon.validator.AddNewBookingValidationGroup;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -31,9 +32,9 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.SwaggerDefinition;
 import io.swagger.annotations.Tag;
 
-@Api(tags = {"Swagger Resource"})
+@Api(tags = {"Booking API"})
 @SwaggerDefinition(tags = {
-    @Tag(name = "Swagger Resource", description = "Booking API, used to create new bookings.")
+    @Tag(name = "Booking API", description = "Booking API, used to create new bookings.")
 })
 @CrossOrigin
 @RestController
@@ -50,7 +51,7 @@ public class BookingAPI {
 	@ApiOperation(value="Add a new booking")
 	public ResponseEntity<String> addNewBooking(
 			@ApiParam(value = "Booking object used to create a new booking for a specific traveler", required = true)
-			@RequestBody @Valid Booking booking){
+			@RequestBody @Validated(AddNewBookingValidationGroup.class) Booking booking){
 					
 			Optional<BookingEntity> newBooking = bookingService.addNewBooking(booking);
 			if (!newBooking.isPresent()){

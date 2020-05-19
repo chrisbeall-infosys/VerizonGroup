@@ -15,7 +15,7 @@ export class BookingService {
   constructor(private http: HttpClient) { } 
 
   addNewBooking(booking: Booking): Observable<string>{
-    const url = environment.bookingAPIUrl + "/addNewBooking";
+    const url = environment.bookingAPIUrl + "/booking";
     return this.http.post<string>(url, booking, {responseType: 'text' as 'json'})
     .pipe(catchError(this.handleError));
   }
