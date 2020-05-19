@@ -1,5 +1,7 @@
 package com.infy.verizon.service;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.infy.verizon.dao.BookingDAO;
 
 import com.infy.verizon.entity.BookingEntity;
+import com.infy.verizon.exception.BookingServiceException;
 import com.infy.verizon.model.Booking;
 
 @Service(value="bookingService")
@@ -16,16 +19,15 @@ public class BookingServiceImpl implements BookingService{
 	
 	@Autowired
 	private BookingDAO bookingDAO;
-	
+	 
 	@Override
-	public Integer addNewBooking(Booking booking) throws Exception{
-		System.out.println(bookingDAO);
+	public Optional<BookingEntity> addNewBooking(Booking booking){
 		
-		BookingEntity value = bookingDAO.addNewBooking(booking);
+		Optional<BookingEntity> newBooking = bookingDAO.addNewBooking(booking);
 		
-		if (value == null){ 
-			throw new Exception("BookingService.NULL_FIELD");
+		if (!newBooking.isPresent()){ 
+			throw new BookingServiceException("BookingService.NULL_FIELD");
 		}
-		return value.getBookingId();
+		return newBooking;
 	}
 }

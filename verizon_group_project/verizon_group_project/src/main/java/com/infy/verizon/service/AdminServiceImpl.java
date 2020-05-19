@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.infy.verizon.dao.AdminDAO;
 import com.infy.verizon.model.Admin;
 import com.infy.verizon.utility.HashingUtility;
-import com.infy.verizon.validator.AdminValidator;
+
 
 @Service(value="adminService" )
 @Transactional
@@ -32,8 +32,10 @@ public class AdminServiceImpl implements AdminService {
 				
 				admin.setLoginId(loginIdToDB);
 				admin.setPassword(passwordToDB);
+
 				
 				newAdmin = adminDAO.registerNewAdmin(admin);
+
 				
 		} else{
 			throw new Exception("AdminService.LOGIN_ID_ALREADY_IN_USE");

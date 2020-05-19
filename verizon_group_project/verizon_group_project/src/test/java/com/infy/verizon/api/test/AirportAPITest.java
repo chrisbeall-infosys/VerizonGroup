@@ -44,7 +44,7 @@ public class AirportAPITest {
 		airport = new Airport();
 		airport.setAirportId("TEST");
 	}
-	
+	 
 	@Test
 	public void addAirportAPITest() throws Exception {
 		String airportId = "TEST";

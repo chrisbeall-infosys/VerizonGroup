@@ -20,6 +20,7 @@ import com.infy.verizon.model.Traveler;
 import com.infy.verizon.service.BookingService;
 import com.infy.verizon.service.BookingServiceImpl;
 import java.time.LocalDate;
+import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -72,14 +73,11 @@ public class BookingServiceTest {
 	public void testAddNewBookingCorrectly() throws Exception {
 
 		BookingEntity be = new BookingEntity();
+		Optional<BookingEntity> optBookingEntity = Optional.of(be);
 		be.setBookingId(1);
-		Mockito.when(bookingDAO.addNewBooking(booking)).thenReturn(be);
+		Mockito.when(bookingDAO.addNewBooking(booking)).thenReturn(optBookingEntity);
 		bookingDAO.addNewBooking(booking);
 		
-
-		
-		//Assert.assertNotNull(this.bookingService.addNewBooking(booking));
-
 
 	}
 	
@@ -89,7 +87,7 @@ public class BookingServiceTest {
 		expectedException.expectMessage("BookingService.NULL_FIELD");
 		BookingEntity be = new BookingEntity();
 		be.setBookingId(1);
-		Mockito.when(bookingDAO.addNewBooking(booking)).thenReturn(null);
+		Mockito.when(bookingDAO.addNewBooking(booking)).thenReturn(Optional.empty());
 	
 		bookingService.addNewBooking(booking);
 		

@@ -1,6 +1,7 @@
 package com.infy.verizon.api.test;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -20,6 +21,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.infy.verizon.api.BookingAPI;
+import com.infy.verizon.entity.BookingEntity;
 import com.infy.verizon.model.Airport;
 import com.infy.verizon.model.Booking;
 import com.infy.verizon.model.Flight;
@@ -76,7 +78,9 @@ public class BookingAPITest {
 	
 	@Test
 	public void testBookingAPIAddNewBooking() throws Exception{
-		Integer value = 1;
+		BookingEntity be = new BookingEntity();
+		be.setBookingId(1);
+		Optional<BookingEntity> value = Optional.of(be);
 		Mockito.when(bookingService.addNewBooking(Mockito.any())).thenReturn(value);
 		Mockito.when(environment.getProperty(Mockito.anyString())).thenReturn("success");
 		
