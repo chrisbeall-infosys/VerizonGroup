@@ -21,10 +21,11 @@ public class SpringFoxConfig {
 		          .select()                                  
 		          .apis(RequestHandlerSelectors.any())              
 		          .paths(PathSelectors.any())                          
-		          .build();  
+		          .build()
+		          .apiInfo(apiDetails());  
 	}
 	
-	@SuppressWarnings("unused")
+	
 	private ApiInfo apiDetails() {
 		return new ApiInfo(
 				"Verizon Flights API",

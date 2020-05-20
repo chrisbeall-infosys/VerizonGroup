@@ -2,6 +2,7 @@ package com.infy.verizon.dao;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -20,9 +21,8 @@ public class TravelerDAOImpl implements TravelerDAO {
 	private EntityManager entityManager;
 	
 	@Override
-	public String registerNewTraveler(Traveler traveler) {
-		String registeredWithLoginId = null;
-
+	public Optional<Traveler> registerNewTraveler(Traveler traveler) {
+	
 		TravelerEntity travelerEntity = new TravelerEntity();
 
 		travelerEntity.setEmail(traveler.getEmail());
@@ -32,9 +32,7 @@ public class TravelerDAOImpl implements TravelerDAO {
 		
 		entityManager.persist(travelerEntity);
 		
-		registeredWithLoginId = travelerEntity.getLoginId();
-		
-		return registeredWithLoginId;
+		return Optional.ofNullable(traveler);
 	}
 
 	@Override
@@ -53,7 +51,7 @@ public class TravelerDAOImpl implements TravelerDAO {
 	}
 
 	@Override
-	public Traveler getTravelerByLoginId(String loginId)  {
+	public Optional<Traveler> getTravelerByLoginId(String loginId)  {
 
 		Traveler traveler = null;
 		loginId = loginId.toLowerCase();
@@ -68,7 +66,7 @@ public class TravelerDAOImpl implements TravelerDAO {
 			
 		}
 		
-		return traveler;
+		return Optional.ofNullable(traveler);
 	}
 
 	@Override

@@ -22,6 +22,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.infy.verizon.api.BookingAPI;
 import com.infy.verizon.entity.BookingEntity;
+import com.infy.verizon.exception.BookingAPIException;
 import com.infy.verizon.model.Airport;
 import com.infy.verizon.model.Booking;
 import com.infy.verizon.model.Flight;
@@ -37,6 +38,7 @@ public class BookingAPITest {
 	
 	@Mock
 	private Environment environment;
+	
 	@InjectMocks
 	private BookingAPI bookingAPI = new BookingAPI();
 	
@@ -90,8 +92,8 @@ public class BookingAPITest {
 	
 	@Test
 	public void testBookingAPIthrowsValidatorException() throws Exception{
-		ee.expect(ResponseStatusException.class);
-		Mockito.when(bookingService.addNewBooking(Mockito.any())).thenThrow(new Exception("test exception"));
+		ee.expect(BookingAPIException.class);
+		//Mockito.when(bookingService.addNewBooking(Mockito.any())).thenThrow(new Exception("test exception"));
 		ResponseEntity<String> response = bookingAPI.addNewBooking(booking);
 	}
 }

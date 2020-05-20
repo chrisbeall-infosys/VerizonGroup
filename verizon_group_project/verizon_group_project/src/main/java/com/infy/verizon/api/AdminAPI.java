@@ -4,8 +4,7 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -13,10 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
+import com.infy.verizon.exception.AdminAPIException;
 import com.infy.verizon.model.Admin;
 import com.infy.verizon.service.AdminService;
 
@@ -37,63 +35,52 @@ import io.swagger.annotations.Tag;
 public class AdminAPI {
 	@Autowired
 	private AdminService adminService;
-	
-	@Autowired
-	private AdminService adminLoginService;
 
 	@Autowired
 	private Environment environment;
 	
-	static Logger logger = LogManager.getLogger(AdminAPI.class.getName());
-	
 	@PostMapping(value = "registerAdmin")
-	@ApiOperation(value="Register a new Admin")
+	@ApiOperation(value = "Register a new Admin", 
+				  notes = "Provide username, password, name, and email to register", 
+				  response = ResponseEntity.class)
 	public ResponseEntity<String> registerAdmin(
 			@ApiParam(value = "Admin object was provided by user to register", required = true)
 			@RequestBody @Valid Admin admin) throws Exception {
 		
-		String registeredWithLoginId = null;
-//		try
-//		{
-			//logger.info("ADMIN TRYING TO REGISTER. ADMIN LOGIN ID: "+admin.getLoginId());
-			
+			String registeredWithLoginId = null;
+	
 			Optional<Admin> newAdmin = adminService.registerNewAdmin(admin);
 			
-			//logger.info("ADMIN REGISTRATION SUCCESSFUL. ADMIN LOGIN ID: "+admin.getLoginId());
+			if (!newAdmin.isPresent()) {
+				throw new AdminAPIException("AdminService.LOGIN_ID_ALREADY_IN_USE");
+			}
 			
-			registeredWithLoginId = environment.getProperty("AdminAPI.ADMIN_REGISTRATION_SUCCESS")+registeredWithLoginId;
+			registeredWithLoginId = environment.getProperty("AdminAPI.ADMIN_REGISTRATION_SUCCESS")+newAdmin.get().getLoginId();
 			
 			return new ResponseEntity<String>(registeredWithLoginId, HttpStatus.OK);
 			
-//		}
-//		catch (Exception e){
-//			if(e.getMessage().contains("Validator")){
-//				throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, environment.getProperty(e.getMessage()));
-//			}
+
 //			throw new ResponseStatusException(HttpStatus.CONFLICT, environment.getProperty(e.getMessage()));
-//		}
+
 	}
 	
 	@PostMapping(value = "adminLogin")
-	@ApiOperation(value="Authenticate admin credentials")
+	@ApiOperation(value="Authenticate admin credentials",
+			      notes = "Provide username, password to login", 
+			      response = ResponseEntity.class)
 	public ResponseEntity<Admin> authenticateAdmin(
 			@ApiParam(value = "Admin object was provided by user to authenticate", required = true)
 			@RequestBody @Valid Admin admin) throws Exception {
-		try
-		{
-			//logger.info("ADMIN TRYING TO LOGIN. ADMIN LOGIN ID: "+admin.getLoginId());
-			
-			
-			Admin adminFromDB =  adminLoginService.authenticateAdmin(admin.getLoginId(), admin.getPassword());
-			
-			
-			//logger.info("ADMIN LOGIN SUCCESSFUL. ADMIN LOGIN ID: "+admin.getLoginId());
-			
-			return new ResponseEntity<Admin>(adminFromDB, HttpStatus.OK);
-		}
-		catch (Exception e) {
 
-			throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, environment.getProperty(e.getMessage()));
-		}
+			Optional<Admin> adminFromDB =  adminService.authenticateAdmin(admin.getLoginId(), admin.getPassword());
+			
+			if (!adminFromDB.isPresent()) {
+				throw new AdminAPIException("AdminService.INVALID_CREDENTIALS");
+			}
+			
+			return new ResponseEntity<Admin>(adminFromDB.get(), HttpStatus.OK);
+
+//			throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, environment.getProperty(e.getMessage()));
+
 	}	
 }

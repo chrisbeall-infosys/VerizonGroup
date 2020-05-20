@@ -1,5 +1,7 @@
 package com.infy.verizon.service.test;
 
+import java.util.Optional;
+
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -76,7 +78,7 @@ public class TravelerServiceTest {
 		traveler.setPassword("Fahad@123");
 		traveler.setLoginId("Fahad1345");
 		Mockito.when(travelerDAO.checkAvailabilityOfLoginId(traveler.getLoginId())).thenReturn(true);
-		Mockito.when(travelerDAO.registerNewTraveler(traveler)).thenReturn("Fahad1345");
+		Mockito.when(travelerDAO.registerNewTraveler(traveler)).thenReturn(Optional.ofNullable(traveler));
 		Assert.assertNotNull(travelerService.registerNewTraveler(traveler));
 	}
 	

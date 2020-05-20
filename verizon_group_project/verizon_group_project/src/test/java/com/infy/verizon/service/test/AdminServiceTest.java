@@ -39,7 +39,7 @@ public class AdminServiceTest {
 		String hashedPassword = HashingUtility.getHashValue(password);
 
 		Mockito.when(adminDAO.getPasswordOfAdmin(loginId)).thenReturn(hashedPassword);
-		Mockito.when(adminDAO.getAdminByLoginId(loginId)).thenReturn(new Admin());
+		Mockito.when(adminDAO.getAdminByLoginId(loginId)).thenReturn(Optional.ofNullable(new Admin()));
 		Assert.assertNotNull(adminService.authenticateAdmin(loginId, password));
 	}
 	@Test
@@ -50,7 +50,7 @@ public class AdminServiceTest {
 		String password="Jack@123";
 		
 		Mockito.when(adminDAO.getPasswordOfAdmin(loginId)).thenReturn(password);
-		Mockito.when(adminDAO.getAdminByLoginId(loginId)).thenReturn(new Admin());
+		Mockito.when(adminDAO.getAdminByLoginId(loginId)).thenReturn(Optional.ofNullable(new Admin()));
 		Assert.assertNotNull(adminService.authenticateAdmin(loginId, password));
 	}
 	@Test
@@ -61,7 +61,7 @@ public class AdminServiceTest {
 		String password="Jack@123";
 		
 		Mockito.when(adminDAO.getPasswordOfAdmin(loginId)).thenReturn(password);
-		Mockito.when(adminDAO.getAdminByLoginId(loginId)).thenReturn(new Admin());
+		Mockito.when(adminDAO.getAdminByLoginId(loginId)).thenReturn(Optional.ofNullable(new Admin()));
 		adminService.authenticateAdmin(loginId, password);
 	}
 	@Test
@@ -82,7 +82,7 @@ public class AdminServiceTest {
 		String password="Jack@123";
 		
 		Mockito.when(adminDAO.getPasswordOfAdmin(loginId)).thenReturn(null);
-		Mockito.when(adminDAO.getAdminByLoginId(loginId)).thenReturn(new Admin());
+		Mockito.when(adminDAO.getAdminByLoginId(loginId)).thenReturn(Optional.ofNullable(new Admin()));
 		Assert.assertNotNull(adminService.authenticateAdmin(loginId, password));
 	}
 	
@@ -160,7 +160,7 @@ public class AdminServiceTest {
 		String wrongPass = "Wrong@123";
 		
 		Mockito.when(adminDAO.getPasswordOfAdmin(loginId)).thenReturn(wrongPass);
-		Mockito.when(adminDAO.getAdminByLoginId(loginId)).thenReturn(new Admin());
+		Mockito.when(adminDAO.getAdminByLoginId(loginId)).thenReturn(Optional.ofNullable(new Admin()));
 		adminService.authenticateAdmin(loginId, password);
 		System.out.println("did we make it here");
 	}

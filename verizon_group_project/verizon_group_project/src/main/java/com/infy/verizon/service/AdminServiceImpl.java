@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.infy.verizon.dao.AdminDAO;
+import com.infy.verizon.exception.AdminServiceException;
 import com.infy.verizon.model.Admin;
 import com.infy.verizon.utility.HashingUtility;
 
@@ -38,35 +39,28 @@ public class AdminServiceImpl implements AdminService {
 
 				
 		} else{
-			throw new Exception("AdminService.LOGIN_ID_ALREADY_IN_USE");
+			throw new AdminServiceException("AdminService.LOGIN_ID_ALREADY_IN_USE");
 		}
 		
 		return newAdmin;
 	}
 
 	@Override
-	public Admin authenticateAdmin(String loginId, String password) throws Exception {
+	public Optional<Admin> authenticateAdmin(String loginId, String password) throws Exception {
 		
-		Admin admin = null;
+		Optional<Admin> admin = Optional.empty();
 		loginId = loginId.toLowerCase();
-		
-		//AdminValidator.validateAdminForLogin(loginId, password);
 
-		String passwordFromDB = adminDAO.getPasswordOfAdmin(loginId);
+		String passwordToDB = HashingUtility.getHashValue(password);
 		
-		if(passwordFromDB != null){
-			String hashedPassword = HashingUtility.getHashValue(password);
+		String adminLoginIdFromDAO = adminDAO.authenticateAdmin(loginId, passwordToDB);
+		
+		if(adminLoginIdFromDAO !=null){
 			
-			if(hashedPassword.equals(passwordFromDB)){
-				
-				admin  = adminDAO.getAdminByLoginId(loginId);
-			}
-			else
-				throw new Exception ("AdminService.INVALID_CREDENTIALS");
+				admin  = adminDAO.getAdminByLoginId(adminLoginIdFromDAO);
 		}
 		else
-			
-			throw new Exception ("AdminService.INVALID_CREDENTIALS");
+			throw new AdminServiceException("AdminService.INVALID_CREDENTIALS");
 		
 		return admin;
 	}

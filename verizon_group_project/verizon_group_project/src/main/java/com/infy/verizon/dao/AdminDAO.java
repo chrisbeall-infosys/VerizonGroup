@@ -10,8 +10,12 @@ public interface AdminDAO {
 	
 	public Optional<Admin> registerNewAdmin(Admin admin);
 	
-	public Admin getAdminByLoginId(String loginId) throws Exception;
-	public String getPasswordOfAdmin(String emailId);
+	public String authenticateAdmin(String loginId, String password);
+	
+	public Optional<Admin> getAdminByLoginId(String loginId);
+	
+	public String getPasswordOfAdmin(String loginId);
+	
 	public Boolean checkAvailabilityOfLoginId(String loginId);
 	
 	
