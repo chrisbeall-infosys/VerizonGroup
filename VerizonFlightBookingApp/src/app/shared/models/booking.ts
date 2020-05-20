@@ -7,4 +7,5 @@ export class Booking{
     dateOfTravel: Date;
     bookingId: number;
     numberOfTravelers: number;
+    cost: number;
 }

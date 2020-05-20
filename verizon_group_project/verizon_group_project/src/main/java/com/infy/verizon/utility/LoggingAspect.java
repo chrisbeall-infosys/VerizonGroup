@@ -10,11 +10,20 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
+<<<<<<< HEAD
 import com.infy.verizon.model.Admin;
 import com.infy.verizon.model.Traveler;
 
 import com.infy.verizon.model.Booking;
 
+=======
+
+import com.infy.verizon.model.Admin;
+import com.infy.verizon.model.Traveler;
+import com.infy.verizon.model.Booking;
+
+
+>>>>>>> bead8206994285d22e50ad160c7a2f8861d1ba30
 
 @Component
 @Aspect
