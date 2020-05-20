@@ -12,37 +12,32 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
-
+@Getter
+@Setter
 @ApiModel(description="Details about a booking")
 public class Booking {
 
 	@ApiModelProperty(notes="Database generated ID")
-	@Getter @Setter
 	@NotNull
 	private Integer bookingId;
 
 	@ApiModelProperty(notes="The traveler that is making the booking.")
-	@Getter @Setter
 	@NotNull(message="The traveler was left null.", groups={AddNewBookingValidationGroup.class})
 	private Traveler traveler;
 	
 	@ApiModelProperty(notes="Date of the flight")
-	@Getter @Setter
 	@NotNull(message="The date of travel was left null.", groups={AddNewBookingValidationGroup.class})
 	private LocalDate dateOfTravel;
 	
 	@ApiModelProperty(notes="Number of people included in the booking.")
-	@Getter @Setter
 	@NotNull(message="Number of travelers was left null." ,groups={AddNewBookingValidationGroup.class}) @Min(value=1, groups={AddNewBookingValidationGroup.class})
 	private Integer numberOfTravelers;
 	
 	@ApiModelProperty(notes="The flight that the traveler picked.")
-	@Getter @Setter
 	@NotNull(message="Flight was left null.", groups={AddNewBookingValidationGroup.class})
 	private Flight flight;
 	
 	@ApiModelProperty(notes="The totcal cost of the booking")
-	@Getter @Setter
 	@NotNull(message="Cost was left null." , groups={AddNewBookingValidationGroup.class}) @Min(value=1, groups={AddNewBookingValidationGroup.class})
 
 	private Double cost; 

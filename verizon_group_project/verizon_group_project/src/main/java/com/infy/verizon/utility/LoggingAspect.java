@@ -11,13 +11,12 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
-<<<<<<< HEAD
+
 import com.infy.verizon.model.Admin;
 import com.infy.verizon.model.Traveler;
-=======
 import com.infy.verizon.model.Booking;
 
->>>>>>> e1e0128c900216af56eec1eeee1755b457f91b29
+
 
 @Component
 @Aspect
