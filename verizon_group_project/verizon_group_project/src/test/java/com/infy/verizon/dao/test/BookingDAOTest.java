@@ -1,6 +1,7 @@
 package com.infy.verizon.dao.test;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -49,36 +50,36 @@ public class BookingDAOTest {
 	
 	@Test
 	public void addNewBooking(){
-		Assert.assertNotNull(bookingDAO.addNewBooking(booking));
+		Assert.assertEquals(true, bookingDAO.addNewBooking(booking).isPresent());
 	}
 	
 	@Test
 	public void addNewBookingTravelerNull(){
 		booking.setTraveler(null);
-		Assert.assertNull(bookingDAO.addNewBooking(booking));
+		Assert.assertEquals(Optional.empty(), bookingDAO.addNewBooking(booking));
 	}
 	@Test 
 	public void addNewBookingFlightNull(){
 		booking.setFlight(null);
-		Assert.assertNull(bookingDAO.addNewBooking(booking));
+		Assert.assertEquals(Optional.empty(), bookingDAO.addNewBooking(booking));
 	}
 	
 	@Test
 	public void addNewBookingCostNull(){
 		booking.setCost(null);
-		Assert.assertNull(bookingDAO.addNewBooking(booking));
+		Assert.assertEquals(Optional.empty(), bookingDAO.addNewBooking(booking));
 	}
 	
 	@Test
 	public void addNewBookingNumberOfTravelersNull(){
 		booking.setNumberOfTravelers(null);
-		Assert.assertNull(bookingDAO.addNewBooking(booking));
+		Assert.assertEquals(Optional.empty(), bookingDAO.addNewBooking(booking));
 	}
 	
 	@Test
 	public void addNewBookingDateNull(){
 		booking.setDateOfTravel(null);
-		Assert.assertNull(bookingDAO.addNewBooking(booking));
+		Assert.assertEquals(Optional.empty(), bookingDAO.addNewBooking(booking));
 	}
 
 }
