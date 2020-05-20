@@ -95,10 +95,7 @@ public class BookingAPITest {
 		ee.expect(BookingAPIException.class);
 
 		Mockito.when(bookingService.addNewBooking(Mockito.any())).thenThrow(new BookingAPIException("test exception"));
-<<<<<<< HEAD
 
-=======
->>>>>>> bead8206994285d22e50ad160c7a2f8861d1ba30
 		ResponseEntity<String> response = bookingAPI.addNewBooking(booking);
 	}
 }

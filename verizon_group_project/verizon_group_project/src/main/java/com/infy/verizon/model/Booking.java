@@ -21,26 +21,7 @@ public class Booking {
 	@NotNull
 	private Integer bookingId;
 
-<<<<<<< HEAD
 
-	@NotNull(message="The traveler was left null.", groups={AddNewBookingValidationGroup.class})
-	private Traveler traveler;
-	
-
-	@NotNull(message="The date of travel was left null.", groups={AddNewBookingValidationGroup.class})
-	private LocalDate dateOfTravel;
-	
-
-	@NotNull(message="Number of travelers was left null." ,groups={AddNewBookingValidationGroup.class}) @Min(value=1, groups={AddNewBookingValidationGroup.class})
-	private Integer numberOfTravelers;
-	
-
-	@NotNull(message="Flight was left null.", groups={AddNewBookingValidationGroup.class})
-	private Flight flight;
-	
-
-	@NotNull(message="Cost was left null." , groups={AddNewBookingValidationGroup.class}) @Min(value=1, groups={AddNewBookingValidationGroup.class})
-=======
 	@ApiModelProperty(notes="The traveler that is making the booking.")
 	@NotNull(message="The traveler was left null.", groups={AddNewBookingValidationGroup.class})
 	private Traveler traveler;
@@ -60,7 +41,6 @@ public class Booking {
 	@ApiModelProperty(notes="The totcal cost of the booking")
 	@NotNull(message="Cost was left null." , groups={AddNewBookingValidationGroup.class}) @Min(value=1, groups={AddNewBookingValidationGroup.class})
 
->>>>>>> bead8206994285d22e50ad160c7a2f8861d1ba30
 	private Double cost; 
 
 }
