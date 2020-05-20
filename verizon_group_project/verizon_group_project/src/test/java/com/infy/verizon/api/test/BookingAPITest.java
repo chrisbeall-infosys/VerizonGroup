@@ -38,6 +38,7 @@ public class BookingAPITest {
 	
 	@Mock
 	private Environment environment;
+	
 	@InjectMocks
 	private BookingAPI bookingAPI = new BookingAPI();
 	
@@ -92,7 +93,11 @@ public class BookingAPITest {
 	@Test
 	public void testBookingAPIthrowsValidatorException() throws Exception{
 		ee.expect(BookingAPIException.class);
+<<<<<<< HEAD
+		//Mockito.when(bookingService.addNewBooking(Mockito.any())).thenThrow(new Exception("test exception"));
+=======
 		Mockito.when(bookingService.addNewBooking(Mockito.any())).thenThrow(new BookingAPIException("test exception"));
+>>>>>>> e1e0128c900216af56eec1eeee1755b457f91b29
 		ResponseEntity<String> response = bookingAPI.addNewBooking(booking);
 	}
 }

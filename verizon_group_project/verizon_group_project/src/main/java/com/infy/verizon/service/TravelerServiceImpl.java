@@ -1,13 +1,15 @@
 package com.infy.verizon.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.infy.verizon.dao.TravelerDAO;
+import com.infy.verizon.exception.TravelerServiceException;
 import com.infy.verizon.model.Traveler;
 import com.infy.verizon.utility.HashingUtility;
-import com.infy.verizon.validator.TravelerValidator;
 
 @Service(value="travelerService" )
 @Transactional
@@ -17,11 +19,11 @@ public class TravelerServiceImpl implements TravelerService {
 	private TravelerDAO travelerDAO;
 	
 	@Override
-	public String registerNewTraveler(Traveler traveler) throws Exception {
+	public Optional<Traveler> registerNewTraveler(Traveler traveler) throws Exception {
 		
-		String registeredWithLoginId = null;
 		
-		TravelerValidator.validateTravelerForRegistration(traveler);
+		Optional<Traveler> newTraveler = Optional.empty();
+		
 		Boolean available = travelerDAO.checkAvailabilityOfLoginId(traveler.getLoginId());
 		if(available){
 			
@@ -31,29 +33,29 @@ public class TravelerServiceImpl implements TravelerService {
 				traveler.setLoginId(loginIdToDB);
 				traveler.setPassword(passwordToDB);
 				
-				registeredWithLoginId = travelerDAO.registerNewTraveler(traveler);
+				newTraveler = travelerDAO.registerNewTraveler(traveler);
 				
 		} else{
-			throw new Exception("TravelerService.LOGIN_ID_ALREADY_IN_USE");
+			throw new TravelerServiceException("TravelerService.LOGIN_ID_ALREADY_IN_USE");
 		}
 		
-		return registeredWithLoginId;
+		return newTraveler;
 	}
 
 	@Override
-	public Traveler authenticateTraveler(String loginId, String password) throws Exception {
+	public Optional<Traveler> authenticateTraveler(String loginId, String password) throws Exception {
 		
-		Traveler traveler = null;
-		TravelerValidator.validateTravelerForLogin(loginId, password);
+		Optional<Traveler> traveler = Optional.empty();
+		
 		String passwordToDB = HashingUtility.getHashValue(password);
 		String travelerLoginIdFromDAO = travelerDAO.authenticateTraveler(loginId, passwordToDB);
 		
-		if(travelerLoginIdFromDAO!=null){
+		if(travelerLoginIdFromDAO !=null){
 			
 				traveler  = travelerDAO.getTravelerByLoginId(travelerLoginIdFromDAO);
 		}
 		else
-			throw new Exception ("TravelerService.INVALID_CREDENTIALS");
+			throw new TravelerServiceException("TravelerService.INVALID_CREDENTIALS");
 		
 		return traveler;
 	}

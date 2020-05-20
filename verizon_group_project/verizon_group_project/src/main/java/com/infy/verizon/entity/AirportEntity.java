@@ -8,11 +8,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@Getter 
+@Setter
 @Table(name = "Airport")
 public class AirportEntity {
 	
 	@Id
-	@Getter @Setter
 	private String airportId;
 	
 }

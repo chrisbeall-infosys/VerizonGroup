@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+
 @ApiModel(description="Details about a booking")
 public class Booking {
 
@@ -43,6 +44,7 @@ public class Booking {
 	@ApiModelProperty(notes="The totcal cost of the booking")
 	@Getter @Setter
 	@NotNull(message="Cost was left null." , groups={AddNewBookingValidationGroup.class}) @Min(value=1, groups={AddNewBookingValidationGroup.class})
+
 	private Double cost; 
 
 }
