@@ -86,7 +86,7 @@ public class BookingAPITest {
 		Mockito.when(environment.getProperty(Mockito.anyString())).thenReturn("success");
 		
 		ResponseEntity<String> response = bookingAPI.addNewBooking(booking);
-		Assert.assertEquals(response.getStatusCode(), HttpStatus.OK);
+		Assert.assertEquals(response.getStatusCode(), HttpStatus.CREATED);
 	}
 	
 	@Test

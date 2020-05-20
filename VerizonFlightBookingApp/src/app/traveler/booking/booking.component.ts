@@ -57,6 +57,7 @@ export class BookingComponent implements OnInit {
     booking.flight = this.addBookingForm.get('toAirport').value;
     booking.numberOfTravelers = this.addBookingForm.get('numberOfTravelers').value;
     booking.traveler = JSON.parse(sessionStorage.getItem("traveler"));
+    booking.cost = this.total;
     console.log(booking);
     this.bookingService.addNewBooking(booking).subscribe(
       success => {
