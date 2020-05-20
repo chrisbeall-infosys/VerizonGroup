@@ -68,7 +68,6 @@ public class TravelerServiceTest {
 		
 	}
 	
-
 	
 	@Test
 	public void testRegisterNewTraveler() throws Exception{

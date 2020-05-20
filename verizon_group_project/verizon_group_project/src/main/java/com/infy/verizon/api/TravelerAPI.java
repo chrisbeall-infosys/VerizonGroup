@@ -24,9 +24,9 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.SwaggerDefinition;
 import io.swagger.annotations.Tag;
 
-@Api(tags= {"Swagger Resource"})
+@Api(tags= {"Traveler API"})
 @SwaggerDefinition(tags= {
-		@Tag(name ="Swagger Resource", description = "Traveler API, used to register and authenticate traveler")
+		@Tag(name ="Traveler API", description = "Traveler API, used to register and authenticate traveler")
 })
 
 
@@ -58,8 +58,6 @@ public class TravelerAPI {
 			
 			return new ResponseEntity<String>(registeredWithLoginId, HttpStatus.OK);
 			
-//			throw new ResponseStatusException(HttpStatus.CONFLICT, environment.getProperty(e.getMessage()));
-
 	}
 	
 	@PostMapping(value = "travelerLogin")
@@ -76,8 +74,6 @@ public class TravelerAPI {
 			}
 			
 			return new ResponseEntity<Traveler>(travelerFromDB.get(), HttpStatus.OK);
-
-//			throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, environment.getProperty(e.getMessage()));
 
 	}	
 }

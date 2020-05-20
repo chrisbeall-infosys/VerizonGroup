@@ -24,14 +24,13 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.SwaggerDefinition;
 import io.swagger.annotations.Tag;
 
-@Api(tags= {"Swagger Resource"})
+@Api(tags= {"Admin API"})
 @SwaggerDefinition(tags= {
-		@Tag(name ="Swagger Resource", description = "Admin API, used to register and authenticate admin")
+		@Tag(name ="Admin API", description = "Admin API, used to register and authenticate admin")
 })
 
 @CrossOrigin
 @RestController
-//@RequestMapping("AdminAPI")
 public class AdminAPI {
 	@Autowired
 	private AdminService adminService;
@@ -59,9 +58,6 @@ public class AdminAPI {
 			
 			return new ResponseEntity<String>(registeredWithLoginId, HttpStatus.OK);
 			
-
-//			throw new ResponseStatusException(HttpStatus.CONFLICT, environment.getProperty(e.getMessage()));
-
 	}
 	
 	@PostMapping(value = "adminLogin")
@@ -79,8 +75,6 @@ public class AdminAPI {
 			}
 			
 			return new ResponseEntity<Admin>(adminFromDB.get(), HttpStatus.OK);
-
-//			throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, environment.getProperty(e.getMessage()));
 
 	}	
 }

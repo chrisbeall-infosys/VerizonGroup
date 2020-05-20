@@ -3,6 +3,7 @@ package com.infy.verizon.service.test;
 import java.util.Optional;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -32,16 +33,35 @@ public class AdminServiceTest {
 	@Rule
 	public ExpectedException expectedException=ExpectedException.none();
 	
-	@Test
-	public void testAuthenticateAdmin() throws Exception{
-		String loginId="thu123";
-		String password="Abc123$";
-		String hashedPassword = HashingUtility.getHashValue(password);
-
-		Mockito.when(adminDAO.getPasswordOfAdmin(loginId)).thenReturn(hashedPassword);
-		Mockito.when(adminDAO.getAdminByLoginId(loginId)).thenReturn(Optional.ofNullable(new Admin()));
-		Assert.assertNotNull(adminService.authenticateAdmin(loginId, password));
+	private Admin admin;
+	
+	@Before
+	public void setup() {
+		admin =new Admin();
+		admin.setName("Jerry Abrahm");
+		admin.setLoginId("Jerry1992");
+		admin.setPassword("Jerry@123");
+		admin.setEmail("Jerry@infy.com");
 	}
+	
+	@Test
+	public void testRegisterNewAdmin() throws Exception{
+		
+		Mockito.when(adminDAO.checkAvailabilityOfLoginId(admin.getLoginId())).thenReturn(true);
+		Mockito.when(adminDAO.registerNewAdmin(admin)).thenReturn(Optional.of(admin));
+		adminService.registerNewAdmin(admin);
+
+	}
+	
+//	@Test
+//	public void testAuthenticateAdmin() throws Exception{
+//		
+//		String hashedPassword = HashingUtility.getHashValue(admin.getPassword());
+//
+//		Mockito.when(adminDAO.getPasswordOfAdmin(admin.getLoginId())).thenReturn(hashedPassword);
+//		Mockito.when(adminDAO.getAdminByLoginId(admin.getLoginId())).thenReturn(Optional.of(admin));
+//		Assert.assertNotNull(Optional.of(adminService.authenticateAdmin(admin.getLoginId(), admin.getPassword())));
+//	}
 	@Test
 	public void testAuthenticateAdminInvalid() throws Exception{
 		expectedException.expect(Exception.class);
@@ -50,7 +70,7 @@ public class AdminServiceTest {
 		String password="Jack@123";
 		
 		Mockito.when(adminDAO.getPasswordOfAdmin(loginId)).thenReturn(password);
-		Mockito.when(adminDAO.getAdminByLoginId(loginId)).thenReturn(Optional.ofNullable(new Admin()));
+		Mockito.when(adminDAO.getAdminByLoginId(loginId)).thenReturn(Optional.of(new Admin()));
 		Assert.assertNotNull(adminService.authenticateAdmin(loginId, password));
 	}
 	@Test
@@ -61,7 +81,7 @@ public class AdminServiceTest {
 		String password="Jack@123";
 		
 		Mockito.when(adminDAO.getPasswordOfAdmin(loginId)).thenReturn(password);
-		Mockito.when(adminDAO.getAdminByLoginId(loginId)).thenReturn(Optional.ofNullable(new Admin()));
+		Mockito.when(adminDAO.getAdminByLoginId(loginId)).thenReturn(Optional.of(new Admin()));
 		adminService.authenticateAdmin(loginId, password);
 	}
 	@Test
@@ -82,23 +102,12 @@ public class AdminServiceTest {
 		String password="Jack@123";
 		
 		Mockito.when(adminDAO.getPasswordOfAdmin(loginId)).thenReturn(null);
-		Mockito.when(adminDAO.getAdminByLoginId(loginId)).thenReturn(Optional.ofNullable(new Admin()));
+		Mockito.when(adminDAO.getAdminByLoginId(loginId)).thenReturn(Optional.of(new Admin()));
 		Assert.assertNotNull(adminService.authenticateAdmin(loginId, password));
 	}
 	
 	
-	@Test
-	public void testRegisterNewAdmin() throws Exception{
-		Admin admin =new Admin();
-		admin.setName("Jerry Abrahm");
-		admin.setLoginId("Jerry1992");
-		admin.setPassword("Jerry@123");
-		admin.setEmail("Jerry@infy.com");
-		Mockito.when(adminDAO.checkAvailabilityOfLoginId(admin.getLoginId())).thenReturn(true);
-		Mockito.when(adminDAO.registerNewAdmin(admin)).thenReturn(Optional.ofNullable(admin));
-		adminService.registerNewAdmin(admin);
-
-	}
+	
 	
 	@Test
 	public void registerNewAdminExistingLoginId() throws Exception {
@@ -160,7 +169,7 @@ public class AdminServiceTest {
 		String wrongPass = "Wrong@123";
 		
 		Mockito.when(adminDAO.getPasswordOfAdmin(loginId)).thenReturn(wrongPass);
-		Mockito.when(adminDAO.getAdminByLoginId(loginId)).thenReturn(Optional.ofNullable(new Admin()));
+		Mockito.when(adminDAO.getAdminByLoginId(loginId)).thenReturn(Optional.of(new Admin()));
 		adminService.authenticateAdmin(loginId, password);
 		System.out.println("did we make it here");
 	}
