@@ -30,7 +30,7 @@ export class AddFlightComponent implements OnInit {
       //description: new FormControl("", [Validators.required, Validators.minLength(10)]),
       flightId: ["", [Validators.required, Validators.min(0)]],
       fare: ["", [Validators.required, Validators.min(1)]],
-      taxes: ["", [Validators.required, Validators.min(1)]],
+      taxes: ["", [ Validators.min(1)]],
       toAir: ["", [Validators.required, Validators.minLength(1), Validators.maxLength(4)]],
       fromAir: ["", [Validators.required, Validators.minLength(1), Validators.maxLength(4)]]
     })

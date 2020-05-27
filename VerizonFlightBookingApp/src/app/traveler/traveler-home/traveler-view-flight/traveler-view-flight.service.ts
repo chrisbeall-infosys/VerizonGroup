@@ -13,7 +13,7 @@ export class TravelerViewFlightService {
   constructor(private http: HttpClient) { }
 
   getFlights(): Observable<Flight[]> {
-    let url = environment.flightAPIUrl + "/getFlights";
+    let url = environment.flightAPIUrl + "/flight";
     return this.http.get<Flight[]>(url)
       .pipe(catchError(this.handleError))
   }

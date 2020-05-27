@@ -13,14 +13,14 @@ export class AdminViewFlightService {
   constructor(private http: HttpClient) { }
 
   getFlights(): Observable<Flight[]> {
-    let url = environment.flightAPIUrl + "/getFlights";
+    let url = environment.flightAPIUrl + "/flight";
     return this.http.get<Flight[]>(url)
       .pipe(catchError(this.handleError))
   }
 
   removeFlight(flight: Flight){
-    const url = environment.flightAPIUrl + "/removeFlight";
-    return this.http.post<String>(url, flight.flightId, {responseType: 'text' as 'json'})
+    const url = environment.flightAPIUrl + "/flight/" + flight.flightId;
+    return this.http.delete<String>(url, {responseType: 'text' as 'json'})
       .pipe(catchError(this.handleError));
   }
 

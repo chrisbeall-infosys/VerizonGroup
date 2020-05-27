@@ -14,7 +14,7 @@ export class AddFlightService {
   constructor(private http: HttpClient) { }
 
   addFlight(flight: Flight): Observable<string> {
-    const url = environment.flightAPIUrl + "/addFlight";
+    const url = environment.flightAPIUrl + "/flight";
     return this.http.post<string>(url, flight, {responseType: 'text' as 'json'})
       .pipe(catchError(this.handleError));
   }

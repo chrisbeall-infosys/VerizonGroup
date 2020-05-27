@@ -1,11 +1,14 @@
 package com.infy.verizon.dao.test;
 
+import java.util.Optional;
+
 import javax.persistence.EntityManager;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,9 @@ public class FlightDAOTest {
 	
 	@Mock
 	EntityManager entityManager;
+	
+	@Rule
+	public ExpectedException expectedException = ExpectedException.none();
 	
 	private Flight flight1;
 	private Flight flight2;
@@ -63,73 +69,76 @@ public class FlightDAOTest {
 		toAirport2.setAirportId("TO_2");
 		flight2.setToAirport(toAirport2);
 		
-		flightCount = flightDAO.getFlights().size();
+		flightCount = flightDAO.getFlights().get().size();
 	}
 	
 	@Test
 	public void addFlightNotNull(){
-		Assert.assertNotNull(flightDAO.addFlight(flight1));
+		Assert.assertEquals(true, flightDAO.addFlight(flight1).isPresent());
 		// flight will successfully get added so needs to be removed for other tests.
 		flightDAO.removeFlight(flight1.getFlightId());
 	}
 	@Test
 	public void addFlightNull(){
 		flight1 = null;
-		Assert.assertNull(flightDAO.addFlight(flight1));
+		Assert.assertEquals(Optional.empty(), flightDAO.addFlight(flight1));
 	}
 	@Test
 	public void addFlightIdNull(){
 		flight1.setFlightId(null);
-		Assert.assertNull(flightDAO.addFlight(flight1));
+		Assert.assertEquals(Optional.empty(), flightDAO.addFlight(flight1));
 	}
 	@Test
 	public void addFlightFareNull(){
 		flight1.setFare(null);
-		Assert.assertNull(flightDAO.addFlight(flight1));
+		Assert.assertEquals(Optional.empty(), flightDAO.addFlight(flight1));
 	}
 	@Test
 	public void addFlightTaxesNull(){
 		flight1.setTaxes(null);
-		Assert.assertNull(flightDAO.addFlight(flight1));
+		Assert.assertEquals(Optional.empty(), flightDAO.addFlight(flight1));
 	}
 	@Test
 	public void addFlightFromAirportNull(){
 		flight1.setFromAirport(null);
-		Assert.assertNull(flightDAO.addFlight(flight1));
+		Assert.assertEquals(Optional.empty(), flightDAO.addFlight(flight1));
 	}
 	@Test
 	public void addFlightToAirportNull(){
 		flight1.setToAirport(null);
-		Assert.assertNull(flightDAO.addFlight(flight1));
+		Assert.assertEquals(Optional.empty(), flightDAO.addFlight(flight1));
 	}
 	@Test
 	public void removeFlightPass(){
 		flightDAO.addFlight(flight1);
 		//Assert.assertNull(flightDAO.removeFlight(flight.getFlightId()));
-		Assert.assertNotNull(flightDAO.removeFlight(flight1.getFlightId()));
+		Assert.assertEquals(flight1.getFlightId(), flightDAO.removeFlight(flight1.getFlightId()).get());
 	}
 	@Test
 	public void removeFlightFail(){
+		expectedException.expect(RuntimeException.class);
+		expectedException.expectMessage("FlightDAO.FLIGHT_ID_DOES_NOT_EXIST");
+		
 		flight1.setFlightId(null);
 		//flightDAO.addFlight(flight1);
 		//Assert.assertNotNull(flightDAO.removeFlight(flight.getFlightId()));
-		Assert.assertNull(flightDAO.removeFlight(flight1.getFlightId()));
+		flightDAO.removeFlight(flight1.getFlightId());
 	}
 	@Test
 	public void getFlightsPass1(){
-		Assert.assertEquals(flightCount, flightDAO.getFlights().size());
+		Assert.assertEquals(flightCount, flightDAO.getFlights().get().size());
 	}
 	@Test
 	public void getFlightsPass2(){
 		flightDAO.addFlight(flight1);
-		Assert.assertEquals(flightCount + 1, flightDAO.getFlights().size());
+		Assert.assertEquals(flightCount + 1, flightDAO.getFlights().get().size());
 		flightDAO.removeFlight(flight1.getFlightId());
 	}
 	@Test
 	public void getFlightPass3(){
 		flightDAO.addFlight(flight1);
 		flightDAO.addFlight(flight2);
-		Assert.assertEquals(flightCount + 2, flightDAO.getFlights().size());
+		Assert.assertEquals(flightCount + 2, flightDAO.getFlights().get().size());
 		flightDAO.removeFlight(flight1.getFlightId());
 		flightDAO.removeFlight(flight2.getFlightId());
 	}

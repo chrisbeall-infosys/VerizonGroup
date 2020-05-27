@@ -1,9 +1,13 @@
 package com.infy.verizon.api.test;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Assert;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -58,8 +62,8 @@ public class FlightAPITest {
 	
 	@Test
 	public void addFlightAPITest() throws Exception {
-		Integer flightId = 10;
-		Mockito.when(flightService.addFlight(flight)).thenReturn(flightId);
+		Optional<Integer> optionalFlightId = Optional.ofNullable(10);
+		Mockito.when(flightService.addFlight(flight)).thenReturn(optionalFlightId);
 		Mockito.when(environment.getProperty(Mockito.anyString())).thenReturn("success");
 		
 		ResponseEntity<String> response = flightAPI.addFlight(flight);
@@ -67,6 +71,8 @@ public class FlightAPITest {
 	}
 	@Test
 	public void removeFlightAPITest() throws Exception {
+		Optional<Integer> optionalFlightId = Optional.ofNullable(10);
+		Mockito.when(flightService.removeFlight(flight.getFlightId())).thenReturn(optionalFlightId);
 		Mockito.when(environment.getProperty(Mockito.anyString())).thenReturn("success");
 		
 		ResponseEntity<String> response = flightAPI.removeFlight(Integer.toString(flight.getFlightId()));
@@ -74,6 +80,10 @@ public class FlightAPITest {
 	}
 	@Test
 	public void getFlightsAPITest() throws Exception {
+		List<Flight> flightList = new ArrayList<Flight>();
+		flightList.add(flight);
+		Optional<List<Flight>> optionalFlightList = Optional.ofNullable(flightList);
+		Mockito.when(flightService.getFlights()).thenReturn(optionalFlightList);
 		Mockito.when(environment.getProperty(Mockito.anyString())).thenReturn("success");
 		
 		ResponseEntity<List<Flight>> response = flightAPI.getFlights();

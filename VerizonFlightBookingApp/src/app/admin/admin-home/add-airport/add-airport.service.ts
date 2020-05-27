@@ -14,7 +14,7 @@ export class AddAirportService {
   constructor(private http: HttpClient) { }
 
   addAirport(airport: Airport): Observable<string> {
-    const url = environment.airportAPIUrl + "/addAirport";
+    const url = environment.airportAPIUrl + "/airport";
     return this.http.post<string>(url, airport, {responseType: 'text' as 'json'})
       .pipe(catchError(this.handleError));
   }

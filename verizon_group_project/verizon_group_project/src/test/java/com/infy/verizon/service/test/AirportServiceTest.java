@@ -2,6 +2,7 @@ package com.infy.verizon.service.test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -45,13 +46,15 @@ public class AirportServiceTest {
 	@Test
 	public void addAirportServiceSuccess() throws Exception {
 		List<Airport> airportList = new ArrayList<Airport>();
-		Mockito.when(airportDAO.getAirports()).thenReturn(airportList);
+		Optional<List<Airport>> optionalAirportList = Optional.ofNullable(airportList);
+		Mockito.when(airportDAO.getAirports()).thenReturn(optionalAirportList);
 		
 		AirportEntity airportEntity = new AirportEntity();
 		airportEntity.setAirportId("TEST");
+		Optional<AirportEntity> optionalAirportEntity = Optional.ofNullable(airportEntity);
 		
-		Mockito.when(airportDAO.addAirport(airport)).thenReturn(airportEntity);
-		String flightId = airportService.addAirport(airport);
+		Mockito.when(airportDAO.addAirport(airport)).thenReturn(optionalAirportEntity);
+		Optional<String> flightId = airportService.addAirport(airport);
 	}
 	@Test
 	public void addAirportServiceDuplicate() throws Exception {
@@ -60,12 +63,15 @@ public class AirportServiceTest {
 		
 		List<Airport> airportList = new ArrayList<Airport>();
 		airportList.add(airport);
-		Mockito.when(airportDAO.getAirports()).thenReturn(airportList);
+		Optional<List<Airport>> optionalAirportList = Optional.ofNullable(airportList);
+		Mockito.when(airportDAO.getAirports()).thenReturn(optionalAirportList);
 		
 		AirportEntity airportEntity = new AirportEntity();
 		airportEntity.setAirportId("TEST");
-		Mockito.when(airportDAO.addAirport(airport)).thenReturn(airportEntity);
-		String flightId = airportService.addAirport(airport);
+		Optional<AirportEntity> optionalAirportEntity = Optional.ofNullable(airportEntity);
+		
+		Mockito.when(airportDAO.addAirport(airport)).thenReturn(optionalAirportEntity);
+		Optional<String> flightId = airportService.addAirport(airport);
 	}
 	@Test
 	public void addAirportServiceNull() throws Exception {
@@ -73,25 +79,29 @@ public class AirportServiceTest {
 		expectedException.expectMessage("AirportService.NULL_FIELD");
 		
 		List<Airport> airportList = new ArrayList<Airport>();
-		Mockito.when(airportDAO.getAirports()).thenReturn(airportList);
+		Optional<List<Airport>> optionalAirportList = Optional.ofNullable(airportList);
+		Mockito.when(airportDAO.getAirports()).thenReturn(optionalAirportList);
 		
 		AirportEntity airportEntity = new AirportEntity();
 		airportEntity.setAirportId(null);
-		Mockito.when(airportDAO.addAirport(airport)).thenReturn(null);
-		String flightId = airportService.addAirport(airport);
+		Optional<AirportEntity> optionalAirportEntity = Optional.ofNullable(airportEntity);
+		
+		Mockito.when(airportDAO.addAirport(airport)).thenReturn(Optional.empty());
+		Optional<String> flightId = airportService.addAirport(airport);
 	}
 	@Test
 	public void removeAirportSuccess() throws Exception {
 		List<Airport> airportList = new ArrayList<Airport>();
 		airportList.add(airport);
-		
-		Mockito.when(airportDAO.getAirports()).thenReturn(airportList);
+		Optional<List<Airport>> optionalAirportList = Optional.ofNullable(airportList);
+		Mockito.when(airportDAO.getAirports()).thenReturn(optionalAirportList);
 		
 		AirportEntity airportEntity = new AirportEntity();
 		airportEntity.setAirportId("TEST");
+		Optional<String> optionalAirportId = Optional.ofNullable(airportEntity.getAirportId());
 		
-		Mockito.when(airportDAO.removeAirport(airport.getAirportId())).thenReturn(airportEntity);
-		String airportId = airportService.removeAirport(airport.getAirportId());
+		Mockito.when(airportDAO.removeAirport(airport.getAirportId())).thenReturn(optionalAirportId);
+		Optional<String> airportId = airportService.removeAirport(airport.getAirportId());
 	}
 	@Test
 	public void removeAirportFail() throws Exception {
@@ -99,22 +109,24 @@ public class AirportServiceTest {
 		expectedException.expectMessage("AirportService.AIRPORT_ID_DOES_NOT_EXIST");
 		
 		List<Airport> airportList = new ArrayList<Airport>();
-		
-		Mockito.when(airportDAO.getAirports()).thenReturn(airportList);
+		Optional<List<Airport>> optionalAirportList = Optional.ofNullable(airportList);
+		Mockito.when(airportDAO.getAirports()).thenReturn(optionalAirportList);
 		
 		AirportEntity airportEntity = new AirportEntity();
 		airportEntity.setAirportId("TEST");
+		Optional<String> optionalAirportId = Optional.ofNullable(airportEntity.getAirportId());
 		
-		Mockito.when(airportDAO.removeAirport(airport.getAirportId())).thenReturn(airportEntity);
-		String airportId = airportService.removeAirport(airport.getAirportId());
+		Mockito.when(airportDAO.removeAirport(airport.getAirportId())).thenReturn(optionalAirportId);
+		Optional<String> airportId = airportService.removeAirport(airport.getAirportId());
 	}
 	@Test
 	public void getAirportSuccess() throws Exception {
 		List<Airport> airportListDAO = new ArrayList<Airport>();
 		airportListDAO.add(airport);
+		Optional<List<Airport>> optionalAirportListDAO = Optional.ofNullable(airportListDAO);
 		
-		Mockito.when(airportDAO.getAirports()).thenReturn(airportListDAO);
-		List<Airport> airportListService = airportService.getAirports();
+		Mockito.when(airportDAO.getAirports()).thenReturn(optionalAirportListDAO);
+		Optional<List<Airport>> airportListService = airportService.getAirports();
 	}
 	@Test
 	public void getAirportEmpty() throws Exception {
@@ -122,16 +134,17 @@ public class AirportServiceTest {
 		expectedException.expectMessage("AirportService.NO_AIRPORTS_IN_TABLE");
 		
 		List<Airport> airportListDAO = new ArrayList<Airport>();
+		Optional<List<Airport>> optionalAirportListDAO = Optional.ofNullable(airportListDAO);
 		
-		Mockito.when(airportDAO.getAirports()).thenReturn(airportListDAO);
-		List<Airport> airportListService = airportService.getAirports();
+		Mockito.when(airportDAO.getAirports()).thenReturn(optionalAirportListDAO);
+		Optional<List<Airport>> airportListService = airportService.getAirports();
 	}
 	@Test
 	public void getAirportNull() throws Exception {
 		expectedException.expect(Exception.class);
 		expectedException.expectMessage("AirportService.NO_AIRPORTS_IN_TABLE");
 		
-		Mockito.when(airportDAO.getAirports()).thenReturn(null);
-		List<Airport> airportListService = airportService.getAirports();
+		Mockito.when(airportDAO.getAirports()).thenReturn(Optional.empty());
+		Optional<List<Airport>> airportListService = airportService.getAirports();
 	}
 }

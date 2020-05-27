@@ -1,30 +1,39 @@
 package com.infy.verizon.api;
 
 import java.util.List;
-
-import javax.validation.Valid;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
+import com.infy.verizon.exception.FlightAPIException;
 import com.infy.verizon.model.Flight;
 import com.infy.verizon.service.FlightService;
+import com.infy.verizon.validator.FlightValidationGroup;
 
-@CrossOrigin(origins="http://localhost:4200")
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.annotations.Tag;
+
+@Api(tags = {"Flight API"})
+@SwaggerDefinition(tags = {
+    @Tag(name = "Flight API", description = "Flight API, used to create new flights.")
+})
+@CrossOrigin
 @RestController
-@RequestMapping("FlightAPI")	// http://localhost:3333/verizon_group_project/FlightAPI
+//@RequestMapping("FlightAPI")	// http://localhost:3333/verizon_group_project/FlightAPI
 public class FlightAPI  {
 	
 	@Autowired
@@ -32,61 +41,53 @@ public class FlightAPI  {
 	@Autowired
 	private Environment environment;
 	
-	static Logger logger = LogManager.getLogger(BookingAPI.class.getName());
-	
-	@PostMapping(value = "addFlight")
-	public ResponseEntity<String> addFlight(@RequestBody @Valid Flight flight) throws Exception{
+	@ApiOperation(value="Add a new flight")
+	@PostMapping(value = "flight")
+	public ResponseEntity<String> addFlight(
+			@ApiParam(value = "Flight object used to create a new flight", required = true)
+			@RequestBody @Validated(FlightValidationGroup.class) Flight flight) {
+			
+		Optional<Integer> newFlightId = flightService.addFlight(flight);
 		
-		try{
-			logger.info("Adding new Flight");
-			
-			Integer newFlightId = flightService.addFlight(flight);
-			
-			logger.info("Flight added successfully with ID: " + newFlightId);
-			
-			String message = environment.getProperty("FlightAPI.FLIGHT_ADDED_SUCCESSFULLY");
-			return new ResponseEntity<String>(message, HttpStatus.OK);
+		if(!newFlightId.isPresent()){
+			throw new FlightAPIException("FlightAPI.NULL_FIELD");
 		}
-		catch(Exception e){
-			logger.error("Failed to add Flight");
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, environment.getProperty(e.getMessage()));
-		}	
+			
+		String message = environment.getProperty("FlightAPI.FLIGHT_ADDED_SUCCESSFULLY") + newFlightId.get();
+		return new ResponseEntity<String>(message, HttpStatus.OK);
+		
+			
 	}
 	
-	@PostMapping(value = "removeFlight")
-	public ResponseEntity<String> removeFlight(@RequestBody String flightId) throws Exception{
+	@ApiOperation(value="Delete a flight")
+	@DeleteMapping(value = "flight/{flightId}")
+	public ResponseEntity<String> removeFlight(
+			@ApiParam(value = "Flight Id used to delete a spacific flight", required = true)
+			@PathVariable String flightId) {
 		
-		try{
-			logger.info("removing Flight with ID: " + flightId);
-			flightService.removeFlight(Integer.parseInt(flightId));
-			logger.info("Successfully removed Flight with ID: " + flightId);
-			
-			String message = environment.getProperty("FlightAPI.FLIGHT_DELETED_SUCCESSFULLY");
-			return new ResponseEntity<String>(message, HttpStatus.OK);
+		Optional<Integer> flightIdFromService = flightService.removeFlight(Integer.parseInt(flightId));
+		
+		if(!flightIdFromService.isPresent()){
+			throw new FlightAPIException("FlightAPI.FLIGHT_ID_DOES_NOT_EXIST");
 		}
-		catch(Exception e){
-			logger.error("Failed to remove Flight with ID: " + flightId);
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, environment.getProperty(e.getMessage()));
-		}
+		
+		String message = environment.getProperty("FlightAPI.FLIGHT_DELETED_SUCCESSFULLY") + flightIdFromService.get();
+		return new ResponseEntity<String>(message, HttpStatus.OK);
 	}
 	
-	@GetMapping(value = "getFlights")
-	public ResponseEntity<List<Flight>> getFlights() throws Exception{
+	@ApiOperation(value="Get list of flights")
+	@GetMapping(value = "flight")
+	public ResponseEntity<List<Flight>> getFlights() {
 		
-		List<Flight> flightList = null;
+		Optional<List<Flight>> flightListFromService = flightService.getFlights();
 		
-		try{
-			logger.info("Retrieving Flight list from database");
-			flightList = flightService.getFlights();
-			logger.info("Flight list retrieved");
-			
-			ResponseEntity<List<Flight>> response = new ResponseEntity<List<Flight>>(flightList, HttpStatus.OK);
-			return response;
+		if(!flightListFromService.isPresent()){
+			throw new FlightAPIException("FlightAPI.NO_FLIGHTS_IN_TABLE");
 		}
-		catch(Exception e){
-			logger.error("Failed to retrieve Flight list form database");
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, environment.getProperty(e.getMessage()));
-		}
+		
+		ResponseEntity<List<Flight>> response = new ResponseEntity<List<Flight>>(flightListFromService.get(), HttpStatus.OK);
+		return response;
+		
 	}
 	
 }

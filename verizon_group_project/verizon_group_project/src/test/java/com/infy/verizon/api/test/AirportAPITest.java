@@ -1,6 +1,8 @@
 package com.infy.verizon.api.test;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -47,8 +49,8 @@ public class AirportAPITest {
 	 
 	@Test
 	public void addAirportAPITest() throws Exception {
-		String airportId = "TEST";
-		Mockito.when(airportService.addAirport(airport)).thenReturn(airportId);
+		Optional<String> optionalAirportId = Optional.ofNullable("TEST");
+		Mockito.when(airportService.addAirport(airport)).thenReturn(optionalAirportId);
 		Mockito.when(environment.getProperty(Mockito.anyString())).thenReturn("success");
 		
 		ResponseEntity<String> response = airportAPI.addAirport(airport);
@@ -56,6 +58,8 @@ public class AirportAPITest {
 	}
 	@Test
 	public void removeAirportAPITest() throws Exception {
+		Optional<String> optionalAirportId = Optional.ofNullable("TEST");
+		Mockito.when(airportService.removeAirport(airport.getAirportId())).thenReturn(optionalAirportId);
 		Mockito.when(environment.getProperty(Mockito.anyString())).thenReturn("success");
 		
 		ResponseEntity<String> response = airportAPI.removeAirport(airport.getAirportId());
@@ -63,6 +67,9 @@ public class AirportAPITest {
 	}
 	@Test
 	public void getAirportsAPITest() throws Exception {
+		List<Airport> airportList = new ArrayList<Airport>();
+		Optional<List<Airport>> optionalAirportList = Optional.ofNullable(airportList);
+		Mockito.when(airportService.getAirports()).thenReturn(optionalAirportList);
 		Mockito.when(environment.getProperty(Mockito.anyString())).thenReturn("success");
 		
 		ResponseEntity<List<Airport>> response = airportAPI.getAirports();

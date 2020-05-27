@@ -2,6 +2,7 @@ package com.infy.verizon.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.infy.verizon.entity.AirportEntity;
 import com.infy.verizon.entity.FlightEntity;
+import com.infy.verizon.exception.FlightDAOException;
 import com.infy.verizon.model.Airport;
 import com.infy.verizon.model.Flight;
 
@@ -21,13 +23,14 @@ public class FlightDAOImpl implements FlightDAO {
 	private EntityManager entityManager;
 
 	@Override
-	public FlightEntity addFlight(Flight flight) {
+	public Optional<FlightEntity> addFlight(Flight flight) {
 		
+		Optional<Flight> optionalFlight = Optional.ofNullable(flight);
 		// NULL Checks:
-		if(flight == null || flight.getFlightId() == null || flight.getFare() == null
+		if(!optionalFlight.isPresent() || flight.getFlightId() == null || flight.getFare() == null
 				|| flight.getTaxes() == null || flight.getFromAirport() == null
 				|| flight.getToAirport() == null){
-			return null;
+			return Optional.empty();
 		}
 		
 		
@@ -41,39 +44,32 @@ public class FlightDAOImpl implements FlightDAO {
 				flight.getFromAirport().getAirportId());
 		
 		if(fromAirportEntity == null){
-			//System.out.println("From Airport did not exist.");
 			fromAirportEntity = new AirportEntity();
 			fromAirportEntity.setAirportId(flight.getFromAirport().getAirportId());
 			entityManager.persist(fromAirportEntity);
 		}
-		//else{
-			//System.out.println("From Airport Already exists");
-		//}
+		
 		flightEntity.setFromAirportEntity(fromAirportEntity);
 
 		AirportEntity toAirportEntity = entityManager.find(AirportEntity.class,
 				flight.getToAirport().getAirportId());
 		if(toAirportEntity == null){
-			//System.out.println("To Airport did not exist.");
 			toAirportEntity = new AirportEntity();
 			toAirportEntity.setAirportId(flight.getToAirport().getAirportId());
 			entityManager.persist(toAirportEntity);
 		}
-		//else{
-			//System.out.println("To Airport Already exists");
-			// add logger here:
-		//}
+		
 		flightEntity.setToAirportEntity(toAirportEntity);
 
 		entityManager.persist(flightEntity);
-		return flightEntity;
+		return Optional.ofNullable(flightEntity);
 	}
 
 	@Override
-	public FlightEntity removeFlight(Integer flightId) {
+	public Optional<Integer> removeFlight(Integer flightId) {
 		// For tester
 		if(flightId == null){
-			return null;
+			throw new FlightDAOException("FlightDAO.FLIGHT_ID_DOES_NOT_EXIST");
 		}
 		
 		FlightEntity flightEntity = entityManager.find(FlightEntity.class, flightId);
@@ -83,16 +79,16 @@ public class FlightDAOImpl implements FlightDAO {
 		// For tester:
 		if(entityManager.find(FlightEntity.class, flightId) == null){
 			//System.out.println("Flight Entity is null, post delete.");
-			return flightEntity;
+			return Optional.ofNullable(flightEntity.getFlightId());
 		}
 		else{
 			//System.out.println("delete Failed.");
-			return null;
+			throw new FlightDAOException("FlightDAO.FAILED_TO_REMOVE_FLIGHT");
 		}
 	}
 
 	@Override
-	public List<Flight> getFlights() {
+	public Optional<List<Flight>> getFlights() {
 
 		Query query = entityManager.createQuery("select f from FlightEntity f");
 
@@ -116,25 +112,8 @@ public class FlightDAOImpl implements FlightDAO {
 
 			flightList.add(flight);
 		});
-		//Flight flight = null; // in case flight table is empty
-//		for (FlightEntity flightEntity : flightEntityList) {
-//			flight = new Flight();
-//
-//			flight.setFlightId(flightEntity.getFlightId());
-//			flight.setFare(flightEntity.getFare());
-//			flight.setTaxes(flightEntity.getTaxes());
-//
-//			Airport fromAirport = new Airport(); // could do error checking here
-//			fromAirport.setAirportId(flightEntity.getFromAirportEntity().getAirportId());
-//			flight.setFromAirport(fromAirport);
-//
-//			Airport toAirport = new Airport();
-//			toAirport.setAirportId(flightEntity.getToAirportEntity().getAirportId());
-//			flight.setToAirport(toAirport);
-//
-//			flightList.add(flight);
-//		}
-		return flightList;
+		
+		return Optional.ofNullable(flightList);
 	}
 
 }

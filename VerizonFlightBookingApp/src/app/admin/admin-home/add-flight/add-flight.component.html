@@ -29,7 +29,7 @@
           <tr>
             <th>Taxes :</th>
             <td>      
-                <input type="number" class="form-control"  formControlName="taxes" required="required"/>
+                <input type="number" class="form-control"  formControlName="taxes" />
                 <div class="text-danger" *ngIf="addFlightForm.get('taxes').invalid &&
                     addFlightForm.get('taxes').dirty">
                     Taxes is must be greater than 0

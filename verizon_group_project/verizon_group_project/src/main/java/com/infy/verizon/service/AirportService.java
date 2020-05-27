@@ -1,13 +1,14 @@
 package com.infy.verizon.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.infy.verizon.model.Airport;
 
 public interface AirportService {
 	
-	public String addAirport(Airport airport) throws Exception;
-	public String removeAirport(String airportId) throws Exception;
-	public List<Airport> getAirports() throws Exception;
+	public Optional<String> addAirport(Airport airport);
+	public Optional<String> removeAirport(String airportId);
+	public Optional<List<Airport>> getAirports();
 	
 }

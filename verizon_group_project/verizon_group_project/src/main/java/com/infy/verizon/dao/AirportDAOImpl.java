@@ -2,6 +2,7 @@ package com.infy.verizon.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.infy.verizon.entity.AirportEntity;
+import com.infy.verizon.exception.AirportDAOException;
 import com.infy.verizon.model.Airport;
 
 @Repository(value = "airportDAO")
@@ -19,24 +21,25 @@ public class AirportDAOImpl implements AirportDAO{
 	private EntityManager entityManager;
 	
 	@Override
-	public AirportEntity addAirport(Airport airport){
+	public Optional<AirportEntity> addAirport(Airport airport){
+		Optional<Airport> optionalAirport = Optional.ofNullable(airport);
 		// NULL check
-		if(airport == null || airport.getAirportId() == null){
-			return null;
+		if(!optionalAirport.isPresent() || airport.getAirportId() == null){
+			return Optional.empty();
 		}
 		AirportEntity airportEntity = new AirportEntity();
 		
 		airportEntity.setAirportId(airport.getAirportId());	// can be auto generated
 		
 		entityManager.persist(airportEntity);
-		return airportEntity;
+		return Optional.ofNullable(airportEntity);
 	}
 	
 	@Override
-	public AirportEntity removeAirport(String airportId){
+	public Optional<String> removeAirport(String airportId){
 		// For tester:
 		if(airportId == null){
-			return null;
+			throw new AirportDAOException("AirportDAO.AIRPORT_ID_DOES_NOT_EXIST");
 		}
 		
 		AirportEntity airportEntity = entityManager.find(AirportEntity.class, airportId);
@@ -44,15 +47,15 @@ public class AirportDAOImpl implements AirportDAO{
 		
 		// For tester:
 		if(entityManager.find(AirportEntity.class, airportId) == null){
-			return airportEntity;
+			return Optional.ofNullable(airportEntity.getAirportId());
 		}
 		else{
-			return null;
+			throw new AirportDAOException("AirportDAO.FAILED_TO_REMOVE_AIRPORT");
 		}
 	}
 	
 	@Override
-	public List<Airport> getAirports(){
+	public Optional<List<Airport>> getAirports(){
 		
 		Query query = entityManager.createQuery("select a from AirportEntity a");
 		
@@ -64,13 +67,8 @@ public class AirportDAOImpl implements AirportDAO{
 			airport.setAirportId(airportEntity.getAirportId());
 			airportList.add(airport);
 		});
-//		Airport airport = null;
-//		for(AirportEntity airportEntity : airportEntityList){
-//			airport = new Airport();
-//			airport.setAirportId(airportEntity.getAirportId());
-//			airportList.add(airport);
-//		}
-		return airportList;
+//		
+		return Optional.ofNullable(airportList);
 	}
 	
 }

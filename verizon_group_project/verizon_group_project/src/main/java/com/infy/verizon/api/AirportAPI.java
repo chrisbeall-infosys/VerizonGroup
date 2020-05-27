@@ -1,30 +1,39 @@
 package com.infy.verizon.api;
 
 import java.util.List;
-
-import javax.validation.Valid;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
+import com.infy.verizon.exception.AirportAPIException;
 import com.infy.verizon.model.Airport;
 import com.infy.verizon.service.AirportService;
+import com.infy.verizon.validator.AirportValidationGroup;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.annotations.Tag;
+
+
+@Api(tags = {"Airport API"})
+@SwaggerDefinition(tags = {
+    @Tag(name = "Airport API", description = "Airport API, used to create new airports.")
+})
 @CrossOrigin
 @RestController
-@RequestMapping("AirportAPI")	// http://localhost:3333/verizon_group_project/AirportAPI/
 public class AirportAPI {
 	
 	@Autowired
@@ -33,62 +42,50 @@ public class AirportAPI {
 	@Autowired
 	private Environment environment;
 	
-	static Logger logger = LogManager.getLogger(BookingAPI.class.getName());
-	
-	@PostMapping(value = "addAirport")
-	public ResponseEntity<String> addAirport(@RequestBody @Valid Airport airport) throws Exception{
+	@ApiOperation(value="Add a new Airport")
+	@PostMapping(value = "airport")
+	public ResponseEntity<String> addAirport(
+			@ApiParam(value = "Airport object used to create a new airport", required = true)
+			@RequestBody @Validated(AirportValidationGroup.class) Airport airport) {
+			
+		Optional<String> newAirportId = airportService.addAirport(airport);
 		
-		try{
-			
-			logger.info("Adding new Airport");
-			
-			String newAirportId = airportService.addAirport(airport);
-			
-			logger.info("Airport added successfully with ID: " + newAirportId);
-			
-			String message = environment.getProperty("AirportAPI.AIRPORT_ADDED_SUCCESSFULLY");
-			return new ResponseEntity<String>(message, HttpStatus.OK);
+		if(!newAirportId.isPresent()){
+			throw new AirportAPIException("AirportAPI.NULL_FIELD");
 		}
-		catch(Exception e){
-			logger.error("Failed to add Airport");
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, environment.getProperty(e.getMessage()));
-		}	
+			
+		String message = environment.getProperty("AirportAPI.AIRPORT_ADDED_SUCCESSFULLY") + newAirportId;
+		return new ResponseEntity<String>(message, HttpStatus.OK);
 	}
 	
-	@PostMapping(value = "removeAirport")
-	public ResponseEntity<String> removeAirport(@RequestBody String airportId) throws Exception{
+	@ApiOperation(value="Delete an airport")
+	@DeleteMapping(value = "airport/{airportId}")
+	public ResponseEntity<String> removeAirport(
+			@ApiParam(value = "Airport Id used to delete a specific airport", required = true)
+			@PathVariable String airportId) {
 		
-		try{
-			logger.info("removing Airport with ID: " + airportId);
-			airportService.removeAirport(airportId);
-			logger.info("successfully removed Airport with ID: " + airportId);
-			
-			String message = environment.getProperty("AirportAPI.AIRPORT_DELETED_SUCCESSFULLY");
-			return new ResponseEntity<String>(message, HttpStatus.OK);
+		Optional<String> airportIdFromService = airportService.removeAirport(airportId);
+		
+		if(!airportIdFromService.isPresent()){
+			throw new AirportAPIException("AirportAPI.AIRPORT_ID_DOES_NOT_EXIST");
 		}
-		catch(Exception e){
-			logger.error("Failed to remove Airport with ID: " + airportId);
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, environment.getProperty(e.getMessage()));
-		}
+		
+		String message = environment.getProperty("AirportAPI.AIRPORT_DELETED_SUCCESSFULLY") + airportIdFromService.get();
+		return new ResponseEntity<String>(message, HttpStatus.OK);
 	}
 	
-	@GetMapping(value = "getAirports")
-	public ResponseEntity<List<Airport>> getAirports() throws Exception{
+	@ApiOperation(value="Get list of airports")
+	@GetMapping(value = "airport")
+	public ResponseEntity<List<Airport>> getAirports() {
 		
-		List<Airport> airportList = null;
+		Optional<List<Airport>> airportListFromService = airportService.getAirports();
 		
-		try{
-			logger.info("Retrieving Airport list from Database");
-			airportList = airportService.getAirports();
-			logger.info("Airport list retrieved");
-			
-			ResponseEntity<List<Airport>> response = new ResponseEntity<List<Airport>>(airportList, HttpStatus.OK);
-			return response;
+		if(!airportListFromService.isPresent()){
+			throw new AirportAPIException("AirportAPI.NO_AIRPORTS_IN_TABLE");
 		}
-		catch(Exception e){
-			logger.error("Failed to retrieve Airport list form database");
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, environment.getProperty(e.getMessage()));
-		}
+		
+		ResponseEntity<List<Airport>> response = new ResponseEntity<List<Airport>>(airportListFromService.get(), HttpStatus.OK);
+		return response;
 	}
 	
 }

@@ -1,6 +1,7 @@
 package com.infy.verizon.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.infy.verizon.dao.AirportDAO;
 import com.infy.verizon.entity.AirportEntity;
+import com.infy.verizon.exception.AirportServiceException;
 import com.infy.verizon.model.Airport;
 
 @Transactional
@@ -18,43 +20,43 @@ public class AirportServiceImpl implements AirportService {
 	private AirportDAO airportDAO;
 	
 	@Override
-	public String addAirport(Airport airport) throws Exception {
-		List<Airport> existingAirports = airportDAO.getAirports();
+	public Optional<String> addAirport(Airport airport) {
+		Optional<List<Airport>> existingAirports = airportDAO.getAirports();
 		
-		for(Airport existingAirport : existingAirports){
+		for(Airport existingAirport : existingAirports.get()){
 			if(airport.getAirportId().equals(existingAirport.getAirportId())){
-				throw new Exception("AirprotService.AIRPORT_ID_ALREADY_EXISTS");
+				throw new AirportServiceException("AirprotService.AIRPORT_ID_ALREADY_EXISTS");
 			}
 		}
-		AirportEntity fromDAO = airportDAO.addAirport(airport);
-		if(fromDAO == null){
-			throw new Exception("AirportService.NULL_FIELD");
+		Optional<AirportEntity> fromDAO = airportDAO.addAirport(airport);
+		if(!fromDAO.isPresent()){
+			throw new AirportServiceException("AirportService.NULL_FIELD");
 		}
-		return fromDAO.getAirportId();
+		return Optional.ofNullable(fromDAO.get().getAirportId());
 	}
 	
 	@Override
-	public String removeAirport(String airportId) throws Exception {
-		List<Airport> airportList = airportDAO.getAirports();
+	public Optional<String> removeAirport(String airportId) {
+		Optional<List<Airport>> airportList = airportDAO.getAirports();
 		boolean found = false;
-		for(Airport airport : airportList){
+		for(Airport airport : airportList.get()){
 			if(airport.getAirportId().equals(airportId)){
 				found = true;
 				break;
 			}
 		}
 		if(!found){
-			throw new Exception("AirportService.AIRPORT_ID_DOES_NOT_EXIST");
+			throw new AirportServiceException("AirportService.AIRPORT_ID_DOES_NOT_EXIST");
 		}
-		return airportDAO.removeAirport(airportId).getAirportId();
+		return airportDAO.removeAirport(airportId);
 	}
 	
 	@Override
-	public List<Airport> getAirports() throws Exception {
+	public Optional<List<Airport>> getAirports() {
 		
-		List<Airport> airportList = airportDAO.getAirports();
-		if(airportList == null || airportList.isEmpty()){
-			throw new Exception("AirportService.NO_AIRPORTS_IN_TABLE");
+		Optional<List<Airport>> airportList = airportDAO.getAirports();
+		if(!airportList.isPresent() || airportList.get().isEmpty()){
+			throw new AirportServiceException("AirportService.NO_AIRPORTS_IN_TABLE");
 		}
 		return airportList;
 	}

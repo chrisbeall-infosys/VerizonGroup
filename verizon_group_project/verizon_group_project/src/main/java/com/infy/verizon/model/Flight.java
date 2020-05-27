@@ -1,5 +1,9 @@
 package com.infy.verizon.model;
 
+import javax.validation.constraints.Min;
+
+import com.infy.verizon.validator.FlightValidationGroup;
+
 import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
@@ -11,19 +15,21 @@ public class Flight {
 	private Integer FlightId;
 	
 	@Getter @Setter
-	@NotNull
+	@Min(1)
+	@NotNull(message="Flight fare was null", groups={FlightValidationGroup.class})
 	private Double fare;
 	
 	@Getter @Setter
-	@NotNull
+	@Min(1)
+	@NotNull(message="Flight taxes were null", groups={FlightValidationGroup.class})
 	private Double taxes;
 	
 	@Getter @Setter
-	@NotNull
+	@NotNull(message="Flight from airport was null", groups={FlightValidationGroup.class})
 	private Airport fromAirport;
 	
 	@Getter @Setter
-	@NotNull
+	@NotNull(message="Flight to airport was null", groups={FlightValidationGroup.class})
 	private Airport toAirport;
 	
 }

@@ -14,7 +14,7 @@ export class TravelerViewAirportService {
   constructor(private http: HttpClient) { }
 
   getAirports(): Observable<Airport[]> {
-    let url = environment.airportAPIUrl + "/getAirports";
+    let url = environment.airportAPIUrl + "/airport";
     return this.http.get<Airport[]>(url)
       .pipe(catchError(this.handleError))
   }
