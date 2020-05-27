@@ -38,6 +38,7 @@ public class BookingAPITest {
 	
 	@Mock
 	private Environment environment;
+	
 	@InjectMocks
 	private BookingAPI bookingAPI = new BookingAPI();
 	
@@ -86,13 +87,15 @@ public class BookingAPITest {
 		Mockito.when(environment.getProperty(Mockito.anyString())).thenReturn("success");
 		
 		ResponseEntity<String> response = bookingAPI.addNewBooking(booking);
-		Assert.assertEquals(response.getStatusCode(), HttpStatus.OK);
+		Assert.assertEquals(response.getStatusCode(), HttpStatus.CREATED);
 	}
 	
 	@Test
 	public void testBookingAPIthrowsValidatorException() throws Exception{
 		ee.expect(BookingAPIException.class);
+
 		Mockito.when(bookingService.addNewBooking(Mockito.any())).thenThrow(new BookingAPIException("test exception"));
+
 		ResponseEntity<String> response = bookingAPI.addNewBooking(booking);
 	}
 }

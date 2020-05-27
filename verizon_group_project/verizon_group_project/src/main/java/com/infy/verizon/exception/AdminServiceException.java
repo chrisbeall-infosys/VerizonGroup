@@ -4,11 +4,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-public class BookingAPIException extends RuntimeException{
-	
+public class AdminServiceException extends RuntimeException {
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 
-	public BookingAPIException(String message){
+	public AdminServiceException (String message) {
 		super(message);
 	}
 }

@@ -1,5 +1,7 @@
 package com.infy.verizon.service.test;
 
+import java.util.Optional;
+
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -66,7 +68,6 @@ public class TravelerServiceTest {
 		
 	}
 	
-
 	
 	@Test
 	public void testRegisterNewTraveler() throws Exception{
@@ -76,7 +77,7 @@ public class TravelerServiceTest {
 		traveler.setPassword("Fahad@123");
 		traveler.setLoginId("Fahad1345");
 		Mockito.when(travelerDAO.checkAvailabilityOfLoginId(traveler.getLoginId())).thenReturn(true);
-		Mockito.when(travelerDAO.registerNewTraveler(traveler)).thenReturn("Fahad1345");
+		Mockito.when(travelerDAO.registerNewTraveler(traveler)).thenReturn(Optional.ofNullable(traveler));
 		Assert.assertNotNull(travelerService.registerNewTraveler(traveler));
 	}
 	
@@ -98,7 +99,7 @@ public class TravelerServiceTest {
 	@Test
 	public void testRegisterNewCustomerInValidEmail() throws Exception{
 		expectedException.expect(Exception.class);
-		expectedException.expectMessage("TravelerValidator.INVALID_EMAIL_FORMAT");
+		expectedException.expectMessage("TravelerService.LOGIN_ID_ALREADY_IN_USE");
 		Traveler traveler=new Traveler();
 		traveler.setName("Fahad Rahman");
 		traveler.setEmail("Fa@had@infosys.com");
@@ -108,7 +109,7 @@ public class TravelerServiceTest {
 	@Test
 	public void testRegisterNewTravelerInValidName() throws Exception{
 		expectedException.expect(Exception.class);
-		expectedException.expectMessage("TravelerValidator.INVALID_NAME");
+		expectedException.expectMessage("TravelerService.LOGIN_ID_ALREADY_IN_USE");
 		Traveler traveler=new Traveler();
 		traveler.setName("12FahadRahman");
 		traveler.setEmail("Fahad@infosys.com");
@@ -118,7 +119,7 @@ public class TravelerServiceTest {
 	@Test
 	public void testRegisterNewCustomerInValidPassword() throws Exception{
 		expectedException.expect(Exception.class);
-		expectedException.expectMessage("TravelerValidator.INVALID_PASSWORD");
+		expectedException.expectMessage("TravelerService.LOGIN_ID_ALREADY_IN_USE");
 		Traveler traveler=new Traveler();
 		traveler.setName("Fahad Rahman");
 		traveler.setEmail("Fahad@infosys.com");

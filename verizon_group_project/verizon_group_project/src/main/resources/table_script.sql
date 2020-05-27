@@ -9,20 +9,20 @@ drop sequence hibernate_sequence;
 create sequence hibernate_sequence start with 1 increment by 1;
 
 create table Traveler(
-	login_id varchar2(50),
+	login_id varchar2(50) NOT NULL,
 	email varchar2(50),
 	name varchar2(50),
-	password varchar2(70),
+	password varchar2(70) NOT NULL,
 	
 	constraint traveler_login_id_pk primary key ( login_id )
 
 );
 
 create table Admin(
-	login_id varchar2(50),
+	login_id varchar2(50) NOT NULL,
 	email varchar2(50),
 	name varchar2(50),
-	password varchar2(70),
+	password varchar2(70) NOT NULL,
 	
 	constraint admin_login_id_pk primary key ( login_id )
 );
